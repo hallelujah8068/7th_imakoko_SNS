@@ -57,23 +57,40 @@ GitFlowを採用する
 
 - 全ファイルにて共通のインデントをとる（スペース2個）
 ```
+// NG例
 .element {
-  color: red; // colorの左には2つのインデントをとる
+   color: red;
+ background-color: blue;
+}
+
+// OK例
+.element {
+  color: red;
+  background-color: blue;
 }
 ```
 
 - ルールセット間にスペースを設ける
 ```
+// NG例
 .danger {
   color: #d9534f;
 }
-// ここにスペースをとる
+.success {
+  color: #5cb85c;
+}
+
+// OK例
+.danger {
+  color: #d9534f;
+}
+
 .success {
   color: #5cb85c;
 }
 ```
 
-- ルールセットにコメントをつける
+- ルールセットにコメント（タイトル）をつける
 ```
 /* Text color Danger */
 .danger {
@@ -83,6 +100,12 @@ GitFlowを採用する
 
 - ルールセット内のスペース
 ```
+// NG例
+.element{
+  color:red;
+}
+
+// OK例
 .element { // elementと{の間に1つのスペース
   color: red; // プロパティ後の:とバリューの間に1つのスペース
 }
@@ -90,6 +113,12 @@ GitFlowを採用する
 
 - 複数のセレクタや宣言がある場合は改行する（1行にしない）
 ```
+// NG例
+.btn, .link {
+  color: red; font-size: 1.5rem;
+}
+
+// OK例
 .btn,
 .link {
   color: red;
@@ -117,8 +146,12 @@ GitFlowを採用する
   color: blue;
 }
 
-// 絶対値を表す命名は避ける
+// 絶対値を表す命名は避ける（以下はNG例）
 .red {
+  color: red;
+}
+(以下はOK例)
+.primaryColor {
   color: red;
 }
 
