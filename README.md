@@ -14,6 +14,13 @@ docker compose run web rails db:create
 docker compose up -d
 ```
 
+- migration
+
+```
+docker compose exec web bash
+rails db:migrate
+```
+
 #### 以下URLにアクセスしサーバーが立ち上がればOK
 
 - http://localhost:3000
