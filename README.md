@@ -25,6 +25,15 @@ rails db:migrate
 
 - http://localhost:3000
 
+### windowsのみ以下エラーが起こる可能性がある
+
+```
+entrypoint.sh：no such file or directory
+```
+
+rails(web)コンテナが立ち上がらないはず
+対応方法：https://prograshi.com/platform/docker/convert-crlf-to-lf/
+
 ### バージョン情報
 
 name|version
