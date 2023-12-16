@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_173342) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_16_072752) do
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -64,7 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_173342) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "user_name", null: false
-    t.string "profile_picture_path"
     t.string "thumbnail_path"
     t.text "description"
     t.datetime "discarded_at"
