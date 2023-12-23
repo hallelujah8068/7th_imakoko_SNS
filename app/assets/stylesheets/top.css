@@ -1,1 +1,105 @@
 /* サービスTOP画面 */
+
+
+
+/* サイドバー表示エリア */
+.side_area {
+    width: 25%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.main_area {
+    width: 50%;
+    height: 100%;
+    background-color: #E27D27;
+}
+
+.right_area {
+    width: 25%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.side-text {
+    height: 100%;
+    width: 40%;
+    float: right;
+    margin-right: 10%;
+
+}
+
+img.logo {
+    display: block;
+}
+
+.logo {
+    width: 158px;
+    /* 幅を指定 */
+    height: 74px;
+    /* 高さを指定 */
+}
+
+.channel-list {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+}
+
+li {
+    padding: 5px;
+
+}
+
+.home-button {
+    color: black;
+    text-decoration: none;
+}
+
+.home-button::before {
+    content: url('/assets/images/home.png');
+    margin-right: 10px;
+}
+
+.profile-button {
+    color: black;
+    text-decoration: none;
+}
+
+.profile-button::before {
+    content: url('/assets/images/profile.png');
+    margin-right: 10px;
+}
+
+.setting-button {
+    color: black;
+}
+
+.setting-button {
+    content: url('/assets/images/settings.png');
+
+    margin-right: 10px;
+}
+
+.tweet-button {
+    width: 172px;
+    height: 39px;
+    border-radius: 20px;
+    background: #E27D27;
+    color: white;
+    border: 2px solid #E27D27;
+}
+
+.logout-button {
+    color: black;
+    text-decoration: none;
+}
+
+.logout-container {
+    position: absolute;
+    bottom: 0;
+    padding: 25px;
+}
+
+.logout-button::before {}
