@@ -1,13 +1,28 @@
+/* トップ画面表示エリア */
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+}
+
+
 /* サイドバー表示エリア */
 .side_area {
-    width: 25%;
+    width: 30%;
     height: 100%;
 }
 
-/* サイドテキストエリア */
+/* サイドバーテキスト表示エリア */
 .side-text {
     height: 100%;
-    width: 40%;
+    width: 50%;
     float: right;
     margin-right: 10%;
 }
@@ -41,7 +56,7 @@ li {
 
 /* リンクテキスト */
 .link-text {
-    font-size: 21px;
+    font-size: 18px;
     color: black;
     white-space: nowrap;
     text-decoration: none;
@@ -58,14 +73,17 @@ li {
 
 }
 
+/* ホームボタン */
 .home_button {
     text-decoration: none;
 }
 
+/* プロフィールボタン */
 .profile_button {
     text-decoration: none;
 }
 
+/* 設定ボタン */
 .setting_buttn {
     text-decoration: none;
 }
@@ -76,7 +94,7 @@ li {
     text-decoration: none;
 }
 
-/* ログアウトコンテナ */
+/* ログアウトボタン表示エリア */
 .logout-container {
     position: absolute;
     bottom: 0;
