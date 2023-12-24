@@ -1,12 +1,24 @@
 <div class="side-text">
   <img src="/assets/prum_logo.png"  class="logo">
     <ul class="channel-list">
-      <li><%= link_to 'ホーム', '#', class: 'home-button' %></li>
-      <li><%= link_to 'プロフィール', '#', class: 'profile-button' %></li>
-      <li><%= link_to '設定', '#', class: 'profile-button' %></li>
+      <li><%= link_to '#', class: 'home_button' do %>
+        <span class="icon"><%= image_tag('home.png', alt: 'Icon') %></span> 
+        <span class="link-text">ホーム</span>
+      <% end %></li>
+      <li><%= link_to '#', class: 'profile_button' do %>
+        <span class="icon"><%= image_tag('profile.png', alt: 'Icon') %></span>
+        <span class="link-text">プロフィール</span>
+      <% end %></li>
+      <li><%= link_to '#', class: 'setting_button' do %>
+        <span class="icon"><%= image_tag('setting.png', alt: 'Icon') %></span>
+        <span class="link-text">設定</span>
+      <% end %></li>
     </ul>
     <%= button_to 'ツイートする', '#', method: :get, class: "tweet-button" %>
     <div class="logout-container">
-      <%= link_to 'ログアウト', '#', class: 'logout-button' %>
+      <%= link_to '#', class: 'logout_button' do %>
+        <span class="icon"><%= image_tag('logout.png', alt: 'Icon') %></span>
+        <span class="link-text">ログアウト</span>
+      <% end %>
     </div>
 </div>
