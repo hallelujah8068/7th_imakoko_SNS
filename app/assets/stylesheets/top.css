@@ -1,102 +1,102 @@
 /* トップ画面表示エリア */
 html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
 }
 
 
 /* サイドバー表示エリア */
 .side_area {
-    width: 30%;
-    height: 100%;
+  width: 30%;
+  height: 100%;
 }
 
 /* サイドバーテキスト表示エリア */
 .side-text {
-    height: 100%;
-    width: 50%;
-    float: right;
-    margin-right: 10%;
+  height: 100%;
+  width: 50%;
+  float: right;
+  margin-right: 10%;
 }
 
 /* ロゴ */
 .logo {
-    width: 158px;
-    height: 74px;
-    display: block;
+  width: 158px;
+  height: 74px;
+  display: block;
 }
 
 /* アイコン */
 .icon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* チャンネルリスト */
 .channel-list {
-    list-style-type: none;
-    padding: 20px;
-    margin: 0;
-    text-align: left;
+  list-style-type: none;
+  padding: 20px;
+  margin: 0;
+  text-align: left;
 }
 
 /* リストアイテム */
 li {
-    padding: 10px;
-    width: 170px;
-    text-decoration: none;
+  padding: 10px;
+  width: 170px;
+  text-decoration: none;
 }
 
 /* リンクテキスト */
 .link-text {
-    font-size: 18px;
-    color: black;
-    white-space: nowrap;
-    text-decoration: none;
+  font-size: 18px;
+  color: black;
+  white-space: nowrap;
+  text-decoration: none;
 }
 
 /* ツイートボタン */
 .tweet-button {
-    width: 172px;
-    height: 39px;
-    border-radius: 20px;
-    background: #E27D27;
-    color: white;
-    border: 2px solid #E27D27;
+  width: 172px;
+  height: 39px;
+  border-radius: 20px;
+  background: #E27D27;
+  color: white;
+  border: 2px solid #E27D27;
 
 }
 
 /* ホームボタン */
 .home_button {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* プロフィールボタン */
 .profile_button {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* 設定ボタン */
 .setting_buttn {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* ログアウトボタン */
 .logout_button {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 /* ログアウトボタン表示エリア */
 .logout-container {
-    position: absolute;
-    bottom: 0;
-    padding: 25px;
+  position: absolute;
+  bottom: 0;
+  padding: 25px;
 }
