@@ -1,29 +1,75 @@
-<h2>Sign up</h2>
+<div class="devise-wrapper">
+  <div class="registrations-title">ユーザー登録</div>
+  <div class="registrations-wrapper">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanaka.tarou@prum.jp" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "田中太郎" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :user_name %>
+        <%= f.text_field :user_name, placeholder: "@tanaka.0101" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :user_icon %>
+        <%= f.file_field :user_icon, id: "user_icon_input" %>
+        <div id="user_icon_preview_container" style="max-width: 32px; max-height: 33px; display: none;">
+          <img id="user_icon_preview" src="" alt="User Icon Preview" style="max-width: 32px; max-height: 33px;">
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "●●●●●●" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "登録" %>
+      </div>
+
+      <hr>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+<script>
+  function previewFile() {
+    var previewContainer = document.getElementById('user_icon_preview_container'); // プレビューを包むコンテナを取得
+    var preview = document.getElementById('user_icon_preview'); // プレビューを表示する要素を取得
+    var fileInput = document.getElementById('user_icon_input'); // ファイルのinput要素を取得
+    var file = fileInput.files[0]; // 選択されたファイルを取得
+    var reader = new FileReader(); // FileReaderオブジェクトを作成
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    // 読み込みが完了したときのイベントハンドラ
+    reader.onloadend = function () {
+      // ファイルが選択されている場合のみプレビューを表示
+      if (file) {
+        preview.src = reader.result; // プレビューのsrcにデータURLを設定
+        previewContainer.style.display = "block"; // プレビューを表示するコンテナを表示
+      } else {
+        preview.src = ""; // ファイルが選択されていない場合はプレビューをクリア
+        previewContainer.style.display = "none"; // プレビューを表示するコンテナを非表示
+      }
+    };
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    if (file) {
+      reader.readAsDataURL(file); // ファイルを読み込む
+    }
+  }
 
-<%= render "devise/shared/links" %>
+  // ファイルが選択されたときにpreviewFile関数を実行するように設定
+  document.getElementById('user_icon_input').addEventListener('change', previewFile);
+</script>
+
