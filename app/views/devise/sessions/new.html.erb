@@ -4,8 +4,8 @@
     <div class="login-title">ログイン</div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "tanakatarou.prum.jp" %>
+        <%= f.label :login %>
+        <%= f.text_field :login, autofocus: true, autocomplete: "email", placeholder: "ユーザー名またはメールアドレス" %>
       </div>
 
       <div class="field">

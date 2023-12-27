@@ -28,6 +28,7 @@ ja:
         name: フルネーム
         user_name: ユーザーネーム
         user_icon: アイコン
+        login: "ユーザー名またはメールアドレス"
     models:
       user: ユーザー
   devise:
