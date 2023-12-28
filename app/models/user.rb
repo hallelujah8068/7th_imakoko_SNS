@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         authentication_keys: [:login]
+         authentication_keys: [:login] 
   
          attr_accessor :login
 
@@ -18,4 +18,5 @@ class User < ApplicationRecord
 
   #ユーザーアイコンをuser_iconとしてモデルに紐付け
   has_one_attached :user_icon
+
 end
