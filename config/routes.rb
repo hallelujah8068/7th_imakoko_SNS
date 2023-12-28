@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "users#top"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  root to: "users#top"
   # Defines the root path route ("/")
   # root "articles#index"
 end
