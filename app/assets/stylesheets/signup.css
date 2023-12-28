@@ -1,1 +1,143 @@
-/* ユーザー新規登録ページ */
+/* ユーザー新規登録・ログインページ */
+.devise-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #F0F0F2;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+.registrations-title {
+  margin-left: 220px;
+  margin-top: 164px;
+  margin-bottom: 20px;
+  color: #0E1838;
+  font-family: Hiragino Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.login-title {
+  margin-bottom: 41px;
+  color: #0E1838;
+  font-family: Noto Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.registrations-wrapper {
+  /* height: 100vh; */
+  text-align: center;
+  background: #FAFAFA;
+  margin: 0px 220px 149px 220px;
+  border: 1px solid #777;
+  padding: 85px 223px 100px 223px;;
+}
+
+.login-wrapper {
+  /* height: 100vh; */
+  text-align: center;
+  background: #FAFAFA;
+  margin: 0px 220px 149px 220px;
+  border: 1px solid #777;
+  padding: 36px 223px 100px 223px;;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #0E1838;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+input {
+  width: 100%;
+  height: 54px;
+  margin: 0px;
+  border: none;
+  font-family: Noto Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.field input::placeholder {
+  color: #EEE;
+  font-family: Noto Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.field input[type="file"] {
+  padding: 10px;
+  background: #FFF;
+  border: none;
+  padding-top: 12px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.actions {
+  margin-top: 64px;
+}
+
+input[type="submit" i] {
+  display: inline-flex;
+  height: 37px;
+  /* padding: 10px 261px; */
+  align-items: center;
+  display: block;
+  gap: 6px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #0E1838;
+  color: #FFF;
+  font-family: Noto Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5px;
+  border-bottom: #0E1838;
+}
+
+hr {
+  margin-top: 80px;
+  border: 1px solid #777;
+  margin-bottom: 24px;
+}
+
+.custom-registrations-button {
+  display: inline-flex;
+  height: 37px;
+  /* padding: 10px 261px; */
+  align-items: center;
+  display: block;
+  gap: 6px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid #707070;
+  color: #707070;
+  font-family: Noto Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 54px;
+}
