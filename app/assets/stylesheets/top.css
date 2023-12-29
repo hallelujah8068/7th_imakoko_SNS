@@ -125,3 +125,12 @@ li {
   height: 20%;
   background-color: aqua;
 }
+
+.user_information {}
+
+.user_information p2 {
+  margin-top: 10px;
+  /* 適切な値を設定してください */
+  margin-bottom: 10px;
+  /* 適切な値を設定してください */
+}

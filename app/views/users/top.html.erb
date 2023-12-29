@@ -8,8 +8,16 @@
       <%= image_tag('profile_top.png') %>
     </div>
     <div class="thumbnail_area">
+      <%= image_tag @user.user_icon %>
     </div>
     <dic class= "user_information">
+      <h1><%= @user.name %></h1>
+      <p1><%= @user.email %></p>
+      <% if @user.description.present? %>
+        <p2><%= @user.description %></p>
+      <% else %>
+        <p2>メッセージを設定していません</p2>
+      <% end %>
     </div>
   </div>
 </div>
