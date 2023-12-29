@@ -15,17 +15,18 @@ body {
 
 /* サイドバー表示エリア */
 .side_area {
-  width: 30%;
+  width: 40%;
   height: 100%;
 }
 
 .main_area {
   width: 50%;
   height: 100%;
+  background-color: #E27D27;
 }
 
 .right_area {
-  width: 20%;
+  width: 15%;
   height: 100%;
 }
 
@@ -109,4 +110,18 @@ li {
   position: absolute;
   bottom: 0;
   padding: 25px;
+}
+
+
+.user_area {
+  width: 100%;
+  height: 45%;
+  background: burlywood;
+}
+
+
+.profile_area {
+  width: 100%;
+  height: 20%;
+  background-color: aqua;
 }
