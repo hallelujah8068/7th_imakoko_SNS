@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def top
+  def show
     @user = User.find(current_user.id)
   end
 
