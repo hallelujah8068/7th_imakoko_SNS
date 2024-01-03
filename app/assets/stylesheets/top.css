@@ -19,12 +19,21 @@ body {
   height: 100%;
 }
 
+/* メインコンテンツ表示エリア */
+.main_area {
+  width: 40%;
+  height: 100%;
+}
+
+.right_area {
+  width: 25%;
+}
+
 /* サイドバーテキスト表示エリア */
 .side-text {
   height: 100%;
   width: 50%;
   float: right;
-  margin-right: 10%;
 }
 
 /* ロゴ */
@@ -99,4 +108,64 @@ li {
   position: absolute;
   bottom: 0;
   padding: 25px;
+}
+
+/* user情報表示エリア */
+.user_area {
+  width: 100%;
+  height: 50%;
+}
+
+/* 画像表示エリア */
+.profile_area {
+  width: 100%;
+  height: 20%;
+}
+
+/* ユーザーnameから下のエリア */
+.user_information {
+  width: 95%;
+  margin-left: 20px;
+
+}
+
+/* テキスト表示エリア */
+.user_description {
+  margin-top: 20px;
+}
+
+/* サムネイル表示エリア */
+.thumbnail_area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* サムネイル画像 */
+.thumbnail_area img {
+  margin-left: 40px;
+  margin-top: -20px;
+}
+
+/* 編集ボタン表示エリア */
+.edit_button {
+  margin-top: 40px;
+}
+
+/* 編集ボタン */
+.profile_edit_button {
+  width: 200px;
+  height: 36px;
+  border-radius: 20px;
+  font-weight: bold;
+  background: white;
+  color: black;
+  border: 1px solid black;
+
+}
+
+/* フォロワー　フォロー表示エリア */
+.follow_ollower_area {
+  margin-top: 30px;
 }
