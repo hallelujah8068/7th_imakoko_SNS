@@ -1,37 +1,39 @@
+/* ユーザー投稿一覧表示エリア */
 .post_area {
     width: 100%;
     margin-left: 20px;
 }
 
+/* 単体の投稿表示エリア */
 .post-container {
     border: 1px solid #EEEEEE;
     padding: 10px;
+    width: 95%;
 }
 
+/* サムネイル画像 */
 .post-img {
     display: flex;
 }
 
+/* テーブル */
 .post-table {
-    width: 100%;
+    width: 95%;
 }
 
 
 td {
-
     align-items: center;
     padding: 10px;
     width: 100%;
 }
 
-td img {
-    margin-right: 4%;
-}
-
-.user_name {
-    color: #3366cc;
-}
-
+/* 位置情報画像 */
 .post-image {
     width: 100%;
+}
+
+/* ユーザーのname */
+.name {
+    font-weight: bold
 }
