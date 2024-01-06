@@ -1,0 +1,29 @@
+<div class="post-img">
+    <% if post.user && post.user.user_icon.attached? %>
+      <%= image_tag post.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+    <% else %>
+      <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+    <% end %>
+    <table class="post-table">
+      <tbody>
+        <tr>
+          <td>
+            <span class="name"><%= post.user.name %></span>
+            <span class="user_name"><%= post.user.user_name %></span>
+            <span class="timestamp"><%= time_ago_in_japanese_words(post.created_at) %></span>
+          </td>
+        </tr>
+        <tr>
+          <td><%= post.body %></td>
+        </tr>
+        <tr>
+          <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
+        </tr>
+        <tr>
+          <td>コメント、いいね表示エリア</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+<% end %>
