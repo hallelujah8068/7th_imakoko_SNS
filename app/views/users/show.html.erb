@@ -8,7 +8,11 @@
       <%= image_tag('profile_top.png') %>
     </div>
     <div class="thumbnail_area">
-      <%= image_tag @user.user_icon %>
+      <% if @user && @user.user_icon.attached? %>
+        <%= image_tag @user.user_icon %>
+      <% else %>
+        <%= image_tag('prum.png') %>
+      <% end %>
       <div class ="edit_button">
         <%= button_to 'プロフィールを編集', '#', method: :get, class: "profile_edit_button" %>
       </div>
@@ -30,6 +34,9 @@
       <div class="follow_ollower_area">
       </div>
     </div>
+  </div>
+  <div class="post_area">
+    <%= render 'posts/index' %>
   </div>
 </div>
 
