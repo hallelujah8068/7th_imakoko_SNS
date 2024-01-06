@@ -100,3 +100,12 @@ li {
   bottom: 0;
   padding: 25px;
 }
+
+.main_area {
+  height: max-content;
+  width: 40%;
+}
+
+.right_area {
+  width: 30%;
+}

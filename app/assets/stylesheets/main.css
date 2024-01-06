@@ -1,0 +1,171 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  /* padding-left: 18px; */
+  border: solid #EEE;
+}
+
+.top-area {
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: solid #EEE;
+  padding-bottom: 20px;
+  width: 39.8%;
+}
+
+.tweet-area {
+  display: flex;
+  padding-left: 18px;
+}
+
+.top-title {
+  padding-top: 12px;
+  margin-bottom: 20px;
+  color: #0E1838;
+  font-family: Hiragino Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding-left: 18px;
+}
+
+.author-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.tweet-form {
+  margin-left: 39px;
+  margin-right: 20px;
+  width: 100%;
+}
+
+textarea#tweet {
+  min-height: 90px;
+  max-height: 90px;
+  min-width: 100%;
+  max-width: 100%;
+  border: none;
+  outline: none; /* フォーカス時の青い縁を無効にする */
+  resize: none; 
+}
+
+input[type="submit"].top-tweet {
+  width: 118px;
+  height: 27px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #E27D27;
+  margin-left: auto;
+}
+
+.relord-tweets {
+  margin-top: 206px;
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: solid #EEEEEE;
+  border-bottom: solid #EEEEEE; 
+}
+
+.tweet-wrapper {
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 63px;
+  border-bottom: solid #EEEEEE;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+}
+
+.author-name {
+  margin-left: 8px;
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.author-user_name {
+  margin-left: 8px;
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.posted-at {
+  margin-left: 8px;
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.tweet-text {
+  padding-left: 55px;
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.map-area {
+  padding-left: 55px;
+  margin-top: 16px;
+}
+
+.map-img {
+  width: 100%;
+}
+
+.tweet-reaction {
+  display: flex;
+  padding-left: 55px;
+  margin-bottom: 12px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+.comment-count {
+  margin-left: 2px;
+  margin-right: 34px;
+  color: #0E1838;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.like-count {
+  margin-left: 2px;
+  color: #0E1838;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.delete-img {
+  margin-left: auto;
+}
