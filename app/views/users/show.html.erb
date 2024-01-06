@@ -36,6 +36,10 @@
       </div>
     </div>
   </div>
+  <div class ="transition">
+    <%= link_to "ツイート", destroy_user_session_path, data: { turbo_method: :delete } ,class: "tweet_link" %>
+    <%= link_to "ツイートと返信", destroy_user_session_path, data: { turbo_method: :delete }, class:"reply" %>
+  </div>
   <div class="post_area">
     <%= render 'posts/index' %>
   </div>
