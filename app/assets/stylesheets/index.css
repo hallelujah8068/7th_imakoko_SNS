@@ -37,3 +37,16 @@ td {
 .name {
     font-weight: bold
 }
+
+.transition {
+    margin-left: 20px;
+}
+
+.tweet_link {
+    margin-right: 10%;
+    font-weight: bold
+}
+
+.reply_link {
+    font-weight: bold
+}
