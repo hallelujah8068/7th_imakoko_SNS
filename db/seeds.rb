@@ -14,7 +14,7 @@ end
 # ポストの作成
 posts = []
 users.each do |user|
-  5.times do
+  2.times do
     posts << Post.create!(
       user: user,
       body: "デフォルト投稿",
@@ -25,9 +25,9 @@ users.each do |user|
 end
 
 # コメントの作成
-posts.each do |post|
-  users.each do |user|
-    3.times do
+users.each do |user|
+  posts.each do |post|
+    1.times do
       Comment.create!(
         user: user,
         post: post,
