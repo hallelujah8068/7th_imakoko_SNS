@@ -4,3 +4,7 @@
  *= require top
  *= require index
 */
+
+a:hover {
+    text-decoration: none;
+}
