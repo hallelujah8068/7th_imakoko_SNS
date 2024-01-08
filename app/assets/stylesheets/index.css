@@ -1,5 +1,6 @@
 /* ユーザー投稿一覧表示エリア */
 .post_area {
+    height: 100%;
     width: 100%;
     margin-left: 20px;
 }
@@ -19,6 +20,7 @@
 /* テーブル */
 .post-table {
     width: 95%;
+    height: 100px;
 }
 
 
@@ -49,4 +51,52 @@ td {
 
 .reply_link {
     font-weight: bold
+}
+
+.scroll {
+    height: 100%;
+    overflow: scroll;
+}
+
+.tweet_link {
+    margin-bottom: 4px;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    /* 親要素に対して相対的な位置に配置するために必要 */
+}
+
+
+.tweet_link.active:after {
+    content: "";
+    width: 80%;
+    /* 要素全体の幅に対する割合 */
+    bottom: -15%;
+    left: 10%;
+    /* 要素の左端に配置 */
+    position: absolute;
+    /* 相対的な位置指定を利用して、親要素に対して絶対的な位置に配置 */
+    border-bottom: 8px solid #E27D27;
+}
+
+.reply_link {
+    margin-bottom: 4px;
+    color: #777777;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+}
+
+.reply_link.active:after {
+    content: "";
+    color: black;
+    width: 160%;
+    bottom: -15%;
+    left: -25%;
+    position: absolute;
+    border-bottom: 8px solid #E27D27;
+}
+
+a:hover {
+    text-decoration: none;
 }
