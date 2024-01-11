@@ -30,11 +30,14 @@
             <tr>
               <td>
                 <%= link_to '#', class: 'comments_icon' do %>
-                  <span class="icon"><%= image_tag('comment.png', alt: 'Icon') %></span>
+                  <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
                   <span class="comment-count"><%= post.comment.count %></span>
                 <% end %>
                 <%= link_to '#', class: 'nice_icon' do %>
                   <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                <% end %>
+                <%= link_to '#', class: 'destroy_icon' do %>
+                  <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
                 <% end %>
               </td>
             </tr>

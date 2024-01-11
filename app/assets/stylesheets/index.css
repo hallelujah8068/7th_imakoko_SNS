@@ -97,6 +97,6 @@ td {
     border-bottom: 8px solid #E27D27;
 }
 
-a:hover {
-    text-decoration: none;
+.comments_icon {
+    margin-right: 20px;
 }
