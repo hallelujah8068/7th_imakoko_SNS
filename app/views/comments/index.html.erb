@@ -1,7 +1,7 @@
 <turbo-frame id="post_1">
   <div class="transition">
     <%= link_to "ツイート", root_path,style: "color: #777777;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
-    <%= link_to "返信", comments_path,style: "color: black;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
+    <%= link_to "ツイートと返信", comments_path,style: "color: black;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
   </div>
   <div class="scroll">
     <% @activities.each do |activity| %>
@@ -18,7 +18,7 @@
                 <tr>
                   <td>
                     <span class="name"><%= activity.user.name %></span>
-                    <span class="user_name"><%= activity.user.user_name %></span>
+                    <span class="user_name">＠<%= activity.user.user_name %></span>
                     <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
                   </td>
                 </tr>
@@ -62,7 +62,7 @@
                 <tr>
                   <td>
                     <span class="name"><%= activity.user.name %></span>
-                    <span class="user_name"><%= activity.user.user_name %></span>
+                    <span class="user_name">＠<%= activity.user.user_name %></span>
                     <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
                   </td>
                 </tr>
