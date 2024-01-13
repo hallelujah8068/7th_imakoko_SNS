@@ -18,6 +18,7 @@ body {
   width: 30%;
   height: 100%;
   position: fixed;
+  top: 0px;
 
 }
 
@@ -26,6 +27,7 @@ body {
   width: 40%;
   height: 100%;
   margin-left: 30%;
+  position: relative;
 }
 
 .right_area {
@@ -96,7 +98,7 @@ li {
 }
 
 /* 設定ボタン */
-.setting_buttn {
+.setting_button {
   text-decoration: none;
 }
 
@@ -116,10 +118,13 @@ li {
 /* user情報表示エリア */
 .user_area {
   width: 100%;
-  height: 50%;
-
-
+  height: auto;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 2;
 }
+
 
 /* 画像表示エリア */
 .profile_area {
@@ -176,6 +181,6 @@ li {
 }
 
 /* フォロワー　フォロー表示エリア */
-.follow_ollower_area {
+.follow_follower_area {
   margin-top: 30px;
 }

@@ -30,7 +30,18 @@
                 </tr>
                 <tr>
                   <td>
-                    コメント、いいね表示エリア
+                    <div class="posts_icon_area">
+                      <%= link_to '#', class: 'comments_icon' do %>
+                        <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                        <span class="comment-count"><%= activity.comments.count %></span>
+                      <% end %>
+                      <%= link_to '#', class: 'nice_icon' do %>
+                        <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                      <% end %>
+                        <%= link_to '#', class: 'destroy_icon' do %>
+                        <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                      <% end %>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -60,7 +71,18 @@
                 </tr>
                 <tr>
                   <td>
-                    コメント、いいね表示エリア
+                    <div class="posts_icon_area">
+                      <%= link_to '#', class: 'comments_icon' do %>
+                        <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                        <span class="comment-count"><%=  %></span>
+                      <% end %>
+                        <%= link_to '#', class: 'nice_icon' do %>
+                        <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                      <% end %>
+                        <%= link_to '#', class: 'destroy_icon' do %>
+                        <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                      <% end %>
+                    </div>
                   </td>
                 </tr>
               </tbody>
