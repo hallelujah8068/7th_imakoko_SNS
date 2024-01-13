@@ -62,7 +62,7 @@ td {
 }
 
 .tweet_link {
-    margin-bottom: 4px;
+    margin-bottom: 7px;
     display: inline-block;
     text-decoration: none;
     position: relative;
@@ -74,7 +74,7 @@ td {
     content: "";
     width: 80%;
     /* 要素全体の幅に対する割合 */
-    bottom: -15%;
+    bottom: -28%;
     left: 10%;
     /* 要素の左端に配置 */
     position: absolute;
@@ -83,7 +83,7 @@ td {
 }
 
 .reply_link {
-    margin-bottom: 4px;
+    margin-bottom: 7px;
     color: #777777;
     display: inline-block;
     text-decoration: none;
@@ -94,7 +94,7 @@ td {
     content: "";
     color: black;
     width: 80%;
-    bottom: -15%;
+    bottom: -28%;
     left: 8%;
     position: absolute;
     border-bottom: 8px solid #E27D27;
