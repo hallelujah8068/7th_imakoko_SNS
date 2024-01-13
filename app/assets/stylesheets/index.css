@@ -93,9 +93,9 @@ td {
 .reply_link.active:after {
     content: "";
     color: black;
-    width: 160%;
+    width: 80%;
     bottom: -15%;
-    left: -25%;
+    left: 8%;
     position: absolute;
     border-bottom: 8px solid #E27D27;
 }
