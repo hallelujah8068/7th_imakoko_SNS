@@ -26,19 +26,16 @@ class CommentsController < ApplicationController
     def create
       @comment = current_user.comments.new(comment_params)
       @comment.post_id = params[:comment][:post_id]
-      
-
-      # if @comment.save
-        # redirect_to post_path(@comment.post_id), notice: 'コメントが作成されました。'
-      # else
-        # Rails.logger.error(@comment.errors.full_messages.join(', '))
-        # redirect_to post_path(@comment.post_id), notice: 'コメントの作成に失敗しました。'
-      # end
 
       if @comment.save
-        redirect_to comment_path(@comment.parent.id), notice: 'コメントが作成されました'
+        if @comment.parent
+          redirect_to comment_path(@comment.parent.id)
+        else
+          redirect_to post_path(@comment.post_id)
+        end
       else
-        redirect_to comment_path(@comment.parent.id), notice: 'コメントが作成されませんでした。'
+        Rails.logger.error("Failed to save comment: #{@comment.errors.full_messages}")
+        redirect_to comment_path(@comment.parent.id), notice: 'コメントの作成に失敗しました。'
       end
 
     end
