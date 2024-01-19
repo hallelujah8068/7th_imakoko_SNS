@@ -127,19 +127,21 @@ td {
 
 }
 
-.form {
-    display: flex;
+form {
     align-items: center;
     width: 95%;
-    padding: 10px;
     border: 1px solid #EEEEEE;
 }
 
-.aaa {
-    align-items: flex-end
-}
 
 .inline-elements {
-    width: 90%;
+    width: 100%;
     padding: 10px;
 }
+
+td.submit_area {
+    display: flex;
+    width: 145%;
+}
+
+.aaa {}

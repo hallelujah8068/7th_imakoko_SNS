@@ -7,7 +7,7 @@ before_action :authenticate_user!
     def show
       @post = Post.find(params[:id])
       @user = User.find(current_user.id)
-      @comment = @post.comments
+      @comment = @post.comments.order(created_at: :desc)
     end
 
 

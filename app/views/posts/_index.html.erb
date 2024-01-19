@@ -24,7 +24,7 @@
               </td>
             </tr>
             <td>
-              <%= link_to post.body, post,data: { turbo_frame: 'main_area' } %>
+              <%= link_to post.body, post_path(post.id) %>
             </td>
             <tr>
               <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
