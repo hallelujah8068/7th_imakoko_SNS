@@ -1,0 +1,21 @@
+
+<table>
+  <tr>
+    <%= form_with(model: Comment.new, local: true) do |form| %>
+      <div class="form">
+        <% if @user && @user.user_icon.attached? %>
+          <%= image_tag @user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+        <% else %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
+        
+        <div class="inline-elements">
+          <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
+        </div>
+        <div class="aaa ">
+          <%= form.submit '返信', class: 'reply_button' %>
+        </div>
+      </div>
+    <% end %>
+  </tr>
+</table>
