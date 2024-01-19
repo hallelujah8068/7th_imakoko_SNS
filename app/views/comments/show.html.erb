@@ -89,6 +89,7 @@
               <div class="posts_icon_area">
                 <%= link_to '#', class: 'comments_icon' do %>
                   <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                  <span class="comment-count"><%= comment.replies.count %></span>
                 <% end %>
                 <%= link_to '#', class: 'nice_icon' do %>
                   <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
