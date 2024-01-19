@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
         end
       else
         Rails.logger.error("Failed to save comment: #{@comment.errors.full_messages}")
-        redirect_to comment_path(@comment.parent.id), notice: 'コメントの作成に失敗しました。'
+        redirect_to root_path
       end
 
     end
