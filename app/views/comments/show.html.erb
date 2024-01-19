@@ -64,7 +64,7 @@
 <% end %>
 
 <div class="scroll">
-  <% @comment.replies.each do |comment| %>
+  <% @comments.each do |comment| %>
     <div class="post-container">
     <div class="post-img">
       <% if comment.user && comment.user.user_icon.attached? %>
