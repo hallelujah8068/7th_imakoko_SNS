@@ -124,6 +124,7 @@ td {
 .reply_body {
     width: 80%;
     height: 21px;
+    outline: none;
 
 }
 
