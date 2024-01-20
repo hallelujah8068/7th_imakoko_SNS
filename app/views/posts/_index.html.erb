@@ -23,9 +23,9 @@
                 <span class="timestamp"><%= time_ago_in_japanese_words(post.created_at) %></span>
               </td>
             </tr>
-            <tr>
-              <td><%= post.body %></td>
-            </tr>
+            <td>
+              <%= link_to post.body, post_path(post.id) %>
+            </td>
             <tr>
               <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
             </tr>
