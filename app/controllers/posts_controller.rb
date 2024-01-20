@@ -3,6 +3,7 @@ class PostsController < ApplicationController
       @posts = Post.where(user_id: current_user.id)
     end
 
+
     private
 
   def post_params
