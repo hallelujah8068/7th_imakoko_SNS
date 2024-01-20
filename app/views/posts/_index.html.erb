@@ -1,31 +1,54 @@
-<% @posts.each do |post| %>
-  <div class="post-container">
-  <div class="post-img">
-    <% if post.user && post.user.user_icon.attached? %>
-      <%= image_tag post.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-    <% else %>
-      <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+<turbo-frame id="post_1">
+  <header>
+    <div class="transition">
+      <%= link_to "ツイート", root_path,style: "color: black;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
+      <%= link_to "ツイートと返信", comments_path,style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
+    </div>
+  </header>
+  <div class="scroll">
+    <% @posts.each do |post| %>
+      <div class="post-container">
+      <div class="post-img">
+        <% if post.user && post.user.user_icon.attached? %>
+          <%= image_tag post.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+        <% else %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
+        <table class="post-table">
+          <tbody>
+            <tr>
+              <td>
+                <span class="name"><%= post.user.name %></span>
+                <span class="user_name">@<%= post.user.user_name %></span>
+                <span class="timestamp"><%= time_ago_in_japanese_words(post.created_at) %></span>
+              </td>
+            </tr>
+            <tr>
+              <td><%= post.body %></td>
+            </tr>
+            <tr>
+              <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="posts_icon_area">
+                  <%= link_to '#', class: 'comments_icon' do %>
+                    <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                    <span class="comment-count"><%= post.comments.count %></span>
+                  <% end %>
+                  <%= link_to '#', class: 'nice_icon' do %>
+                    <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                  <% end %>
+                    <%= link_to '#', class: 'destroy_icon' do %>
+                      <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                    <% end %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
     <% end %>
-    <table class="post-table">
-      <tbody>
-        <tr>
-          <td>
-            <span class="name"><%= post.user.name %></span>
-            <span class="user_name"><%= post.user.user_name %></span>
-            <span class="timestamp"><%= time_ago_in_japanese_words(post.created_at) %></span>
-          </td>
-        </tr>
-        <tr>
-          <td><%= post.body %></td>
-        </tr>
-        <tr>
-          <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
-        </tr>
-        <tr>
-          <td>コメント、いいね表示エリア</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-  </div>
-<% end %>
+</turbo-frame>

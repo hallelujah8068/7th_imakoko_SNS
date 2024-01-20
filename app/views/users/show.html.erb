@@ -22,7 +22,7 @@
         <h1><%= @user.name %></h1>
       </div>
       <div class ="email_name">
-        <p1><%= @user.user_name %></p1>
+        <p1>@<%= @user.user_name %></p1>
       </div>
       <div class ="user_description">
         <p2><% if @user.description.present? %>
@@ -31,12 +31,12 @@
           <p2>メッセージを設定していません</p2>
         <% end %>
       </div>
-      <div class="follow_ollower_area">
+      <div class="follow_follower_area">
       </div>
     </div>
   </div>
   <div class="post_area">
-    <%= render 'posts/index' %>
+      <%= render 'posts/index' %>
   </div>
 </div>
 
