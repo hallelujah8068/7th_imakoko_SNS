@@ -15,7 +15,11 @@
         <%= image_tag('prum.png') %>
       <% end %>
       <div class ="edit_button">
-        <%= button_to 'プロフィールを編集', '#', method: :get, class: "profile_edit_button" %>
+        <% if @user.id == current_user.id? %>
+          <%= button_to 'プロフィールを編集', '#', method: :get, class: "profile_edit_button" %>
+        <% else %>  
+          <%= button_to 'フォロー', '#', method: :get, class: "profile_edit_button" %>
+        <% end %>  
       </div>
     </div>
     <div class= "user_information">
