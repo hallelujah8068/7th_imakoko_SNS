@@ -15,16 +15,22 @@
         <%= image_tag('prum.png') %>
       <% end %>
       <div class ="edit_button">
-        <% if @user.id == current_user.id? %>
-          <%= button_to 'プロフィールを編集', '#', method: :get, class: "profile_edit_button" %>
-        <% else %>  
-          <%= button_to 'フォロー', '#', method: :get, class: "profile_edit_button" %>
-        <% end %>  
+      <% if @user.id.to_s == current_user.id.to_s %>
+        <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
+      <% else %>  
+        <% if current_user.following?(@user) %>
+          <%= button_to 'フォロー解除', unfollow_user_path(@user), method: :delete, class: 'unfollow-button' %>
+        <% else %>
+          <%= button_to 'フォローする', follow_user_path(@user), method: :post, class: 'follow-button' %>
+        <% end %>
+      <% end %>
       </div>
     </div>
     <div class= "user_information">
       <div class ="name_area">
         <h1><%= @user.name %></h1>
+        <h1><%= @user.id %></h1>
+        <h1><%= current_user.id %></h1>
       </div>
       <div class ="email_name">
         <p1>@<%= @user.user_name %></p1>
