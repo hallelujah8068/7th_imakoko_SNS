@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(current_user.id)
-    @posts = current_user.posts
-    @comments = current_user.comments
+    @user = User.find(params[:id])
+    @posts = @user.posts
+    @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse
   end
 
