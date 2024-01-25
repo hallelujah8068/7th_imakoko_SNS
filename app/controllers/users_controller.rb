@@ -1,26 +1,32 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user_to_follow, only: [:follow, :unfollow]
+
+  def index
+    @user = User.find(current_user.id)
+    @users = current_user.following
+    @posts = @user.posts
+    @comments = @user.comments
+    @activities = (@posts + @comments).sort_by(&:created_at).reverse
+  end
+
 
   def show
-    @user = User.find(current_user.id)
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    
     @posts = @user.posts
     @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse
   end
 
   def follow
-    @user_to_follow = User.find(params[:id])
     current_user.follow(@user_to_follow)
-
-    redirect_to root_path, notice: 'ユーザーをフォローしました'
+    redirect_to user_path(@user_to_follow)
   end
 
   def unfollow
-    @user_to_unfollow = User.find(params[:id])
-    current_user.unfollow(@user_to_unfollow)
-
-    redirect_to root_path, notice: 'ユーザーのフォローを解除しました'
+    current_user.unfollow(@user_to_follow)
+    redirect_to user_path(@user_to_follow)
   end
 
 
@@ -31,5 +37,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, password_digest,:name,:user_name,:description)
   end
 
+  def set_user_to_follow
+    @user_to_follow = User.find(params[:id])
+  end
 
 end

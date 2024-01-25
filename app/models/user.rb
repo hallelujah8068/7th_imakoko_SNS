@@ -44,6 +44,7 @@ class User < ApplicationRecord
 
 
   # current_user.following
+  # current_user.follower
 
 
 end
