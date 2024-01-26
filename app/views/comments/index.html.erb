@@ -1,59 +1,71 @@
-<% @activities.each do |activity| %>
-    <% if activity.is_a?(Post) %>
-      <div class="post-img">
-        <% if activity.user && activity.user.user_icon.attached? %>
-          <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-        <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-        <% end %>
-        <table class="post-table">
-          <tbody>
-            <tr>
-              <td>
-                <span class="name"><%= activity.user.name %></span>
-                <span class="user_name"><%= activity.user.user_name %></span>
-                <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
-              </td>
-            </tr>
-            <tr>
-              <td><%= activity.body %></td>
-            </tr>
-            <tr>
-              <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
-            </tr>
-            <tr>
-              <td>
-                コメント、いいね表示エリア
-              </td>
-            </tr>
-        </tbody>
-      </table>
-    <% elsif activity.is_a?(Comment) %>
-      <div class="post-img">
-          <% if activity.user && activity.user.user_icon.attached? %>
-            <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-          <% else %>
-            <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-          <% end %>
-          <table class="post-table">
-            <tbody>
-              <tr>
-                <td>
-                  <span class="name"><%= activity.user.name %></span>
-                  <span class="user_name"><%= activity.user.user_name %></span>
-                  <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
-                </td>
-              </tr>
-              <tr>
-                <td><%= activity.body %></td>
-              </tr>
-              <tr>
-                <td>
-                  コメント、いいね表示エリア
-                </td>
-              </tr>
-            </tbody>
+<turbo-frame id="post_1">
+  <div class="transition">
+      <%= link_to "ツイート", root_path, class: "tweet_link" %>
+      <%= link_to "ツイートと返信", comments_path, class: "reply_link" %>
+  </div>
+  <% @activities.each do |activity| %>
+      <% if activity.is_a?(Post) %>
+        <div class="post-container">
+          <div class="post-img">
+            <% if activity.user && activity.user.user_icon.attached? %>
+              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+            <% else %>
+              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+            <% end %>
+            <table class="post-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="name"><%= activity.user.name %></span>
+                    <span class="user_name"><%= activity.user.user_name %></span>
+                    <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= activity.body %></td>
+                </tr>
+                <tr>
+                  <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
+                </tr>
+                <tr>
+                  <td>
+                    コメント、いいね表示エリア
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         </table>
+      <% elsif activity.is_a?(Comment) %>
+        <div class="post-container">
+          <div class="post-img">
+            <% if activity.user && activity.user.user_icon.attached? %>
+              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+            <% else %>
+              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+            <% end %>
+            <table class="post-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="name"><%= activity.user.name %></span>
+                    <span class="user_name"><%= activity.user.user_name %></span>
+                    <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= activity.body %></td>
+                </tr>
+                <tr>
+                  <td>
+                    コメント、いいね表示エリア
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-    </div>
-  <% end %>
+</turbo-frame>
