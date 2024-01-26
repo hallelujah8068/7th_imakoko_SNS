@@ -19,6 +19,16 @@ body {
   height: 100%;
 }
 
+.main_area {
+  width: 50%;
+  height: 100%;
+}
+
+.right_area {
+  width: 20%;
+  height: 100%;
+}
+
 /* サイドバーテキスト表示エリア */
 .side-text {
   height: 100%;
