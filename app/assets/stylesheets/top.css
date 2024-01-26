@@ -15,17 +15,18 @@ body {
 
 /* サイドバー表示エリア */
 .side_area {
-  width: 30%;
+  width: 40%;
   height: 100%;
 }
 
 .main_area {
   width: 50%;
   height: 100%;
+  background-color: #E27D27;
 }
 
 .right_area {
-  width: 20%;
+  width: 15%;
   height: 100%;
 }
 
@@ -110,6 +111,8 @@ li {
   bottom: 0;
   padding: 25px;
 }
+
+
 
 .main_area {
   height: max-content;
