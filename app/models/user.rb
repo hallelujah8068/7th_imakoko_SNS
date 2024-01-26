@@ -19,8 +19,6 @@ class User < ApplicationRecord
   #ユーザーアイコンをuser_iconとしてモデルに紐付け
   has_one_attached :user_icon
   has_many :posts
-<<<<<<< HEAD
-=======
+  has_many :comments
 
->>>>>>> 7949f11 (add:post機能)
 end

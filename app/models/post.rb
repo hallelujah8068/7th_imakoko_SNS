@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-<<<<<<< HEAD
   belongs_to :user
+  has_many :comment
   validates :body, presence: true
 
   geocoded_by :ip_address,
@@ -30,3 +30,4 @@ class Post < ApplicationRecord
     belongs_to :user
 >>>>>>> 7949f11 (add:post機能)
 end
+
