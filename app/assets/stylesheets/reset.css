@@ -1,17 +1,28 @@
 /*! Destyle.css v1.0.3 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 
 /* Box model border-box everywhere */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 /* Remove default margin */
-body, h1, h2, h3, p, figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
 }
 
 /* Remove list styles on ul, ol elements */
-ul, ol {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }

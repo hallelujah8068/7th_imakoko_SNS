@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   root to: "posts#top"
   get 'comments', to: 'comments#index'
+  resources :comments
+  resources :posts
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
