@@ -11,10 +11,8 @@ class Post < ApplicationRecord
   attr_accessor :map_image_url
 
   def ip_address
-    # ActionDispatch::Request.new(Rails.application.env_config.merge({ 'REMOTE_ADDR' => '127.0.0.1' })).ip
     request.remote_ip if defined?(request)
   end
-
 
   def map_image_url
     api_key = ENV['GOOGLE_MAPS_STATIC_API_KEY']
@@ -27,6 +25,5 @@ class Post < ApplicationRecord
 
     url
   end
-
 end
 

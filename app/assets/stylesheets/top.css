@@ -115,6 +115,7 @@ li {
   padding: 25px;
 }
 
+/* user情報表示エリア */
 .user_area {
   width: 100%;
   height: auto;
@@ -124,7 +125,7 @@ li {
   z-index: 2;
 }
 
-
+/*  画像表示エリア  */
 .profile_area {
   width: 100%;
   height: 20%;
@@ -146,7 +147,7 @@ li {
   margin-top: 20px;
 }
 
-
+/* サムネイル表示エリア */
 .thumbnail_area {
   width: 100%;
   display: flex;
