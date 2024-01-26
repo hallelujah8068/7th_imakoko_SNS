@@ -39,6 +39,7 @@ body {
   height: 100%;
   width: 50%;
   float: right;
+  margin-right: 10%
 }
 
 /* ロゴ */
@@ -98,7 +99,7 @@ li {
 }
 
 /* 設定ボタン */
-.setting_button {
+.setting_buttoon {
   text-decoration: none;
 }
 
@@ -125,8 +126,7 @@ li {
   z-index: 2;
 }
 
-
-/* 画像表示エリア */
+/*  画像表示エリア  */
 .profile_area {
   width: 100%;
   height: 20%;

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "users#show"
+  
+  # 開発者によって選択されたルートへの変更を適用
+  # この例では、開発者が "posts#top" を選択
+  root to: "posts#top"
+  
   get 'comments', to: 'comments#index'
   resources :comments
   resources :posts
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
