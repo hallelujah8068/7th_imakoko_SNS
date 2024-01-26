@@ -1,1 +1,167 @@
-/* フォロー、フォロワーページ */
+.followers-wrapper {
+  width: 50%;
+  height: 100vh;
+  margin: 0 auto;
+  border-left: 2px #EEE solid;
+  border-right: 2px #EEE solid;
+}
+
+.followers-container {
+  position: fixed;
+  width: 50%;
+}
+
+.followers-top {
+  display: flex;
+  padding-left: 16px;
+  padding-top: 9px;
+}
+
+.return-button {
+  cursor: pointer;
+  color: #777;
+  height: min-content;
+}
+
+.return-button:hover {
+  text-decoration: none; 
+}
+
+.user-info {
+  margin-left: 16px;
+  margin-bottom: 11px;
+}
+
+.followers-user-name {
+  color: #333;
+  font-family: Hiragino Sans;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.followers-user-user_name {
+  color: #777;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.follow-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px #EEE solid;
+}
+
+.followers-tab-text {
+  color: #0E1838;
+  text-align: center;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-bottom: 5px;
+  border-bottom: 5px #E27D27 solid;
+}
+
+.followings-tab-text {
+  color: #777;
+  text-align: center;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-bottom: 5px;
+}
+
+.followers-info {
+  margin-top: 156px;
+}
+
+.follower-info {
+  display: flex;
+  align-items: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.follower-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  margin-left: 16px;
+}
+
+.follower-names {
+  margin-left: 5px;
+}
+
+.follower-name {
+  color: #333;
+  font-family: "Hiragino Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.follower-user_name {
+  color: #0E1838;
+  font-family: "Hiragino Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.unfollow-btn-container {
+  margin-left: auto;
+  margin-right: 16px;
+  width: 90px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid #0E1838;
+  background: #0E1838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unfollow-btn {
+  color: #FFF;
+  font-family: "Hiragino Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.follow-btn-container {
+  margin-left: auto;
+  margin-right: 16px;
+  width: 90px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid #0E1838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-btn {
+  color: #0E1838;
+  font-family: "Hiragino Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text-center {
+  text-align: center;
+}
