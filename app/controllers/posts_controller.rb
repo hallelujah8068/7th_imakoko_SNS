@@ -3,12 +3,8 @@ before_action :authenticate_user!
     def index
       @posts = Post.where(user_id: current_user.id)
     end
-    def top
-      @posts = Post.all.order(created_at: :desc)
-      @post = Post.new
-      @user = @post.user
-    end
-  
+
+
     def create
       @post = current_user.posts.build(post_params)
   
@@ -25,7 +21,6 @@ before_action :authenticate_user!
         render 'top'
       end
     end
-  
     private
   
     def post_params
