@@ -52,13 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_073213) do
   end
 
   create_table "follows", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "following_id_id", null: false
-    t.bigint "follower_id_id", null: false
+    t.bigint "following_id", null: false
+    t.bigint "follower_id", null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id_id"], name: "index_follows_on_follower_id_id"
-    t.index ["following_id_id"], name: "index_follows_on_following_id_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "likes", charset: "utf8mb4", force: :cascade do |t|
@@ -105,8 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_073213) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "follows", "users", column: "follower_id_id"
-  add_foreign_key "follows", "users", column: "following_id_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "following_id"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
