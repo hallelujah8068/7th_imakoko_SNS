@@ -39,6 +39,7 @@ body {
   height: 100%;
   width: 50%;
   float: right;
+  margin-right: 10%
 }
 
 /* ロゴ */
@@ -98,7 +99,7 @@ li {
 }
 
 /* 設定ボタン */
-.setting_button {
+.setting_buttoon {
   text-decoration: none;
 }
 
