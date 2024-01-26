@@ -127,9 +127,15 @@ li {
   background-color: aqua;
 }
 
+.user_information {
+  width: 95%;
+  margin-left: 20px;
 
+}
 
-.user_information {}
+.user_description {
+  margin-top: 20px;
+}
 
 .user_information p2 {
   margin-top: 10px;
@@ -138,16 +144,25 @@ li {
   /* 適切な値を設定してください */
 }
 
+
+
+
+
 .thumbnail_area {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.thumbnail_area img {
+  margin-left: 40px;
+  margin-top: -20px;
+}
+
 
 .edit_button {
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-right: 30px;
 }
 
