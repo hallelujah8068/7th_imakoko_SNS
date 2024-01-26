@@ -143,3 +143,9 @@ td.submit_area {
     display: flex;
     width: 145%;
 }
+
+.comment-count {
+    font-size: 18px;
+    color: #777777;
+
+}

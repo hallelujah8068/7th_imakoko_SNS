@@ -135,7 +135,7 @@ li {
 .follow-button {
   border-radius: 30px;
   background-color: #ffffff;
-  padding: 10%;
+  width: 120%;
 
 }
 
