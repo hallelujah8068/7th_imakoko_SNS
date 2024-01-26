@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+<<<<<<< HEAD
   belongs_to :user
   validates :body, presence: true
 
@@ -25,4 +26,7 @@ class Post < ApplicationRecord
 
     url
   end
+=======
+    belongs_to :user
+>>>>>>> 7949f11 (add:post機能)
 end

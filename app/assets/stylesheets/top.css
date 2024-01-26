@@ -120,6 +120,10 @@ li {
   height: 20%;
 }
 
+.profile_area img {
+  width: 100%;
+}
+
 /* ユーザーnameから下のエリア */
 .user_information {
   width: 95%;
@@ -139,6 +143,7 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+
 
 /* サムネイル画像 */
 .thumbnail_area img {
