@@ -21,8 +21,8 @@ body {
 
 .main_area {
   width: 50%;
-  height: 100%;
-  background-color: #E27D27;
+  height: max-content;
+  width: 40%;
 }
 
 .right_area {
@@ -114,9 +114,10 @@ li {
 
 
 
-.main_area {
-  height: max-content;
-  width: 40%;
+.user_area {
+  width: 100%;
+  height: 45%;
+  background: burlywood;
 }
 
 
@@ -175,4 +176,8 @@ li {
   color: black;
   border: 2px solid white;
 
+}
+
+.follow_ollower_area {
+  margin-top: 30px;
 }
