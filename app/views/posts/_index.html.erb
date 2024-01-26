@@ -1,8 +1,10 @@
 <turbo-frame id="post_1">
-  <div class="transition">
-    <%= link_to "ツイート", root_path,style: "color: black;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
-    <%= link_to "ツイートと返信", comments_path,style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
-  </div>
+  <header>
+    <div class="transition">
+      <%= link_to "ツイート", root_path,style: "color: black;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
+      <%= link_to "ツイートと返信", comments_path,style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
+    </div>
+  </header>
   <div class="scroll">
     <% @posts.each do |post| %>
       <div class="post-container">
@@ -29,16 +31,18 @@
             </tr>
             <tr>
               <td>
-                <%= link_to '#', class: 'comments_icon' do %>
-                  <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                  <span class="comment-count"><%= post.comment.count %></span>
-                <% end %>
-                <%= link_to '#', class: 'nice_icon' do %>
-                  <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                <% end %>
-                <%= link_to '#', class: 'destroy_icon' do %>
-                  <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                <% end %>
+                <div class="posts_icon_area">
+                  <%= link_to '#', class: 'comments_icon' do %>
+                    <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                    <span class="comment-count"><%= post.comments.count %></span>
+                  <% end %>
+                  <%= link_to '#', class: 'nice_icon' do %>
+                    <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                  <% end %>
+                    <%= link_to '#', class: 'destroy_icon' do %>
+                      <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                    <% end %>
+                </div>
               </td>
             </tr>
           </tbody>

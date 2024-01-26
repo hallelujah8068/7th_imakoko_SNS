@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comment
+  has_many :comments
   validates :body, presence: true
 
   geocoded_by :ip_address,
@@ -15,6 +15,7 @@ class Post < ApplicationRecord
     request.remote_ip if defined?(request)
   end
 
+
   def map_image_url
     api_key = ENV['GOOGLE_MAPS_STATIC_API_KEY']
     url = "https://maps.googleapis.com/maps/api/staticmap"
@@ -26,8 +27,6 @@ class Post < ApplicationRecord
 
     url
   end
-=======
-    belongs_to :user
->>>>>>> 7949f11 (add:post機能)
+
 end
 
