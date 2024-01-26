@@ -41,27 +41,22 @@ td {
     font-weight: bold
 }
 
+/* 投稿上のツイート及びツイート送信エリア */
 .transition {
     margin-left: 20px;
-
-
 }
 
-.tweet_link {
-    margin-right: 10%;
-    font-weight: bold
-}
 
-.reply_link {
-    font-weight: bold
-}
-
+/* 投稿、コメントのスクロールエリア */
 .scroll {
     height: 80%;
     overflow-y: scroll;
 }
 
+/* ツイートリンク */
 .tweet_link {
+    margin-right: 10%;
+    font-weight: bold;
     margin-bottom: 7px;
     display: inline-block;
     text-decoration: none;
@@ -82,12 +77,15 @@ td {
     border-bottom: 8px solid #E27D27;
 }
 
+/* ツイートと送信リンク */
+
 .reply_link {
     margin-bottom: 7px;
     color: #777777;
     display: inline-block;
     text-decoration: none;
     position: relative;
+    font-weight: bold
 }
 
 .reply_link.active:after {
@@ -100,14 +98,17 @@ td {
     border-bottom: 8px solid #E27D27;
 }
 
+/* コメントアイコン */
 .comments_icon {
     margin-right: 20px;
 }
 
+/* 投稿、コメント下部のアイコン表示エリア */
 .posts_icon_area {
     display: flex;
 }
 
+/* ゴミ箱アイコン */
 .destroy_icon {
     margin-left: auto;
 }
@@ -121,6 +122,7 @@ td {
     border-radius: 30px !important;
 }
 
+/* 返信ボタン */
 .reply_body {
     width: 80%;
     height: 21px;
@@ -128,6 +130,7 @@ td {
 
 }
 
+/* 返信内容フォーム入力エリア */
 form {
     align-items: center;
     border: 1px solid #EEEEEE;
@@ -139,11 +142,14 @@ form {
     padding: 10px;
 }
 
+
+/* 送信ボタン表示エリア */
 td.submit_area {
     display: flex;
     width: 145%;
 }
 
+/* コメントアイコン位置調整 */
 .comment-count {
     font-size: 18px;
     color: #777777;
