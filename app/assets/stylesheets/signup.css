@@ -35,7 +35,8 @@
   background: #FAFAFA;
   margin: 0px 220px 149px 220px;
   border: 1px solid #777;
-  padding: 85px 223px 100px 223px;;
+  padding: 85px 223px 100px 223px;
+  ;
 }
 
 .login-wrapper {
@@ -44,7 +45,8 @@
   background: #FAFAFA;
   margin: 0px 220px 149px 220px;
   border: 1px solid #777;
-  padding: 36px 223px 100px 223px;;
+  padding: 36px 223px 100px 223px;
+  ;
 }
 
 label {
