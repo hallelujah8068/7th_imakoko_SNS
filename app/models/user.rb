@@ -23,4 +23,12 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: "follower_id_id", class_name: "Follow"
   has_many :following, through: :following_relationships, source: :following
   has_many :comments
+
+  # ユーザーがフォローしているユーザー
+  has_many :active_relationships, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :followings, through: :active_relationships
+
+  # ユーザーをフォローしているユーザー
+  has_many :passive_relationships, class_name: "Follow", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships
 end
