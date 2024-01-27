@@ -37,6 +37,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, password_digest,:name,:user_name,:description)
   end
 
+
+
+
+
+
+
+
+  
   def set_user_to_follow
     @user_to_follow = User.find(params[:id])
   end
