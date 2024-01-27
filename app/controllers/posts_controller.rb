@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
-    def index
+    def top
       @posts = Post.where(user_id: current_user.id)
     end
 
@@ -45,6 +45,5 @@ before_action :authenticate_user!
   
       url
     end
-  end
 end
   

@@ -1,5 +1,4 @@
 module ApplicationHelper
-<<<<<<< HEAD
   def time_ago_in_words(time)
     distance_in_minutes = ((Time.current - time) / 60).round
 

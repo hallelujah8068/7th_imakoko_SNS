@@ -2,7 +2,11 @@
   <div class="top-area">
     <div class="top-title">ホーム</div>
     <div class="tweet-area">
+    <% if current_user.user_icon.attached? %>
       <%= image_tag current_user.user_icon, class: "author-icon" %>
+    <% else %>
+      <%= image_tag 'prum.png', class: "author-icon" %>
+    <% end %>
       <%= form_with(model: @post, url: posts_path, class: "tweet-form", id: "normal-tweet-form", local: true) do |form| %>
         <%= form.text_area :body, id: "tweet", placeholder: "いまどうしてる？" %>
         <br>

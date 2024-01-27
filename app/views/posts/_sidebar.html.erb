@@ -27,9 +27,13 @@
   <div class="modal-content" id="tweetContent">
     <span class="close"><%= image_tag('close.svg', alt: "Close", class: "closeButton", onclick: "closeModal()") %></span>
     <div class="author-info">
-      <%= image_tag current_user.user_icon, class: "author-icon" %>
+      <% if current_user.user_icon.attached? %>
+        <%= image_tag current_user.user_icon, class: "author-icon" %>
+      <% else %>
+        <%= image_tag 'prum.png', class: "author-icon" %>
+      <% end %>
       <p class="author-name"><%= current_user.name %></p>
-      <p class="author-user_name"><%= current_user.user_name %></p>
+       <p class="author-user_name"><%= current_user.user_name %></p>
     </div>
     <div class="tweet-area">
       <%= form_with(model: @post, url: posts_path, class: "tweet-form", id: "modal-tweet-form", local: true) do |form| %>
