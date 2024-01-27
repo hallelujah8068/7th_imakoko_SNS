@@ -40,5 +40,4 @@ class UsersController < ApplicationController
   def set_user_to_follow
     @user_to_follow = User.find(params[:id])
   end
-
 end
