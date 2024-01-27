@@ -91,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_064822) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "user_name", null: false
+    t.string "profile_picture_path"
     t.string "thumbnail_path"
     t.text "description"
     t.datetime "discarded_at"
@@ -100,8 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_064822) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "follows", "users", column: "follower_id_id"

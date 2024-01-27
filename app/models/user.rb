@@ -16,5 +16,11 @@ class User < ApplicationRecord
 
   has_one_attached :user_icon
   has_many :posts
+
+  has_many :follower_relationships, foreign_key: "following_id_id", class_name: "Follow"
+  has_many :followers, through: :follower_relationships, source: :follower
+
+  has_many :following_relationships, foreign_key: "follower_id_id", class_name: "Follow"
+  has_many :following, through: :following_relationships, source: :following
   has_many :comments
 end
