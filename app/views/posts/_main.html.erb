@@ -24,7 +24,11 @@
   <% @posts.each do |post| %>
     <div class="tweet-wrapper">
       <div class="author-info">
-        <%= image_tag post.user.user_icon, class: "author-icon" %>
+        <% if post.user.user_icon.attached? %>
+          <%= image_tag post.user.user_icon, class: "author-icon" %>
+        <% else %>
+          <%= image_tag 'prum.png', class: "author-icon" %>
+        <% end %>
         <p class="author-name"><%= post.user.name %></p>
         <p class="author-user_name"><%= post.user.user_name %></p>
         <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>

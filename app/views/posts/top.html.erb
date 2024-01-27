@@ -4,43 +4,6 @@
 
 <div class="main_area">
   <%= render 'posts/main' %>
-<turbo-frame id="main_area">
-  <div class ="user_area">
-    <div class="profile_area">  
-      <%= image_tag('profile_top.png') %>
-    </div>
-    <div class="thumbnail_area">
-      <% if @user && @user.user_icon.attached? %>
-        <%= image_tag @user.user_icon %>
-      <% else %>
-        <%= image_tag('prum.png') %>
-      <% end %>
-      <div class ="edit_button">
-        <%= button_to 'プロフィールを編集', '#', method: :get, class: "profile_edit_button" %>
-      </div>
-    </div>
-    <div class= "user_information">
-      <div class ="name_area">
-        <h1><%= @user.name %></h1>
-      </div>
-      <div class ="email_name">
-        <p1>@<%= @user.user_name %></p1>
-      </div>
-      <div class ="user_description">
-        <p2><% if @user.description.present? %>
-          <%= @user.description %></p2>
-        <% else %>
-          <p2>メッセージを設定していません</p2>
-        <% end %>
-      </div>
-      <div class="follow_follower_area">
-      </div>
-    </div>
-  </div>
-  <div class="post_area">
-      <%= render 'posts/index' %>
-  </div>
-  </turbo-frame>
 </div>
 
 
