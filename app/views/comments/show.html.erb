@@ -67,10 +67,12 @@
   <% @comments.each do |comment| %>
     <div class="post-container">
     <div class="post-img">
-      <% if comment.user && comment.user.user_icon.attached? %>
-        <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-      <% else %>
-        <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+      <%= link_to user_path(comment.user.id) do %>
+        <% if comment.user && comment.user.user_icon.attached? %>
+          <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+        <% else %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
       <% end %>
       <table class="post-table">
         <tbody>

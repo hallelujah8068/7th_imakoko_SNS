@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   get 'comments', to: 'comments#index'
   resources :comments
   resources :posts
+  resources :users do
+    member do
+      post 'follow'
+      delete 'unfollow'
+    end
+  end
 end

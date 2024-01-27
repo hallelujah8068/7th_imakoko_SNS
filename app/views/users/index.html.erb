@@ -1,13 +1,13 @@
 <div class="side_area">
-  <%= render 'posts/sidebar' %>
+  <%= render 'users/sidebar' %>
 </div>
 
 <div class="main_area">
-<<<<<<<< HEAD:app/views/posts/top.html.erb
-  <%= render 'posts/main' %>
-========
 <turbo-frame id="main_area">
   <div class ="user_area">
+    <h1><%= "デバック用" %></h1>
+    <h1><%= "topページマージ後コントローラー、view削除、ルーティング削除" %></h1>
+
     <div class="profile_area">  
       <%= image_tag('profile_top.png') %>
     </div>
@@ -22,9 +22,9 @@
         <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
       <% else %>  
         <% if current_user.following?(@user) %>
-          <%= render 'users/follow_madal'%>
+          <%= button_to 'フォロー解除', unfollow_user_path(@user.id), method: :delete, class: 'unfollow-button' %>
         <% else %>
-          <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
+          <%= button_to 'フォローする', follow_user_path(@user.id), method: :post, class: 'follow-button' %>
         <% end %>
       <% end %>
       </div>
@@ -32,6 +32,9 @@
     <div class= "user_information">
       <div class ="name_area">
         <h1><%= @user.name %></h1>
+        <h1><%= @user.id %></h1>
+        <h1><%= current_user.id %></h1>
+        <h1><%= @users.count %></h1>
       </div>
       <div class ="email_name">
         <p1>@<%= @user.user_name %></p1>
@@ -51,7 +54,6 @@
       <%= render 'posts/index' %>
   </div>
   </turbo-frame>
->>>>>>>> develop:app/views/users/show.html.erb
 </div>
 
 
@@ -95,4 +97,3 @@
     }
   };
 </script>
-

@@ -132,6 +132,17 @@ li {
   height: 20%;
 }
 
+/* フォローボタン */
+
+.follow-button {
+  border-radius: 30px;
+  background-color: #ffffff;
+  width: 120%;
+
+}
+
+/* プロフィールエリアの画像 */
+
 .profile_area img {
   width: 100%;
 }
@@ -154,6 +165,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 5%;
 }
 
 

@@ -10,6 +10,7 @@ before_action :authenticate_user!
       @post = Post.find(params[:id])
       @user = User.find(current_user.id)
       @comment = @post.comments.order(created_at: :desc)
+      @users = current_user.following
     end
 
 
