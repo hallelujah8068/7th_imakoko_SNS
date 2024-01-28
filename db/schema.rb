@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_28_174431) do
-  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_173342) do
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -35,13 +24,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_174431) do
   end
 
   create_table "follows", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "following_id", null: false
-    t.bigint "follower_id", null: false
+    t.bigint "following_id_id", null: false
+    t.bigint "follower_id_id", null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id"], name: "index_follows_on_following_id"
+    t.index ["follower_id_id"], name: "index_follows_on_follower_id_id"
+    t.index ["following_id_id"], name: "index_follows_on_following_id_id"
   end
 
   create_table "likes", charset: "utf8mb4", force: :cascade do |t|
@@ -59,8 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_174431) do
   create_table "posts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "body", null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -86,8 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_174431) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "follows", "users", column: "follower_id"
-  add_foreign_key "follows", "users", column: "following_id"
+  add_foreign_key "follows", "users", column: "follower_id_id"
+  add_foreign_key "follows", "users", column: "following_id_id"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"

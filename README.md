@@ -187,5 +187,3 @@ GitFlowを採用する
   color: red;
 }
 ```
-
-test
