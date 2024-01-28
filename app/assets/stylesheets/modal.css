@@ -1,0 +1,126 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(177, 177, 177, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 29vh auto;
+  padding: 64px 40px 64px 40px;
+  border-radius: 4px;
+  width: 324px;
+  height: 376px;
+  text-align: center;
+}
+
+.text-confirm {
+  color: #000;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.text-guide {
+  color: #707070;
+  font-family: Hiragino Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+#logoutButton {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #0E1838;
+  color: #FFF;
+  margin-bottom: 12px;
+  border: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#cancelLogout {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #FFF;
+  border: 1px solid #707070;
+  color: #707070;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+/* フォロー解除モーダル  */
+
+#unfollowButton {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #0E1838;
+  color: #FFF;
+  margin-bottom: 12px;
+  border: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+
+#tweetModal {
+  background: rgba(0, 0, 0, 0.50);
+}
+
+#tweetContent {
+  background-color: #fefefe;
+  margin: 94px auto;
+  padding: 16px 16px;
+  border-radius: 4px;
+  width: 40%;
+  height: 31%;
+  text-align: center;
+}
+
+#modal-tweet-form {
+  margin-left: 39px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.close {
+  display: block;
+  text-align: left;
+}
