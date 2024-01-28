@@ -83,3 +83,5 @@ group :test do
   gem "rspec-rails"
 end
 
+# FontAwesome 
+# gem 'font-awesome-sass', '~> 5.0'

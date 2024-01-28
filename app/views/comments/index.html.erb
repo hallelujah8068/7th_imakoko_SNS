@@ -19,7 +19,7 @@
                   <td>
                     <span class="name"><%= activity.user.name %></span>
                     <span class="user_name">＠<%= activity.user.user_name %></span>
-                    <span class="timestamp"><%= time_ago_in_words(activity.created_at) %></span>
+                    <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
                   </td>
                 </tr>
                 <tr>
@@ -63,7 +63,7 @@
                   <td>
                     <span class="name"><%= activity.user.name %></span>
                     <span class="user_name">@<%= activity.user.user_name %></span>
-                    <span class="timestamp"><%= time_ago_in_words(activity.created_at) %></span>
+                    <span class="timestamp"><%= time_ago_in_japanese_words(activity.created_at) %></span>
                   </td>
                 </tr>
                 <tr>

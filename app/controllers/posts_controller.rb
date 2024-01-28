@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
       @posts = Post.all.order(created_at: :desc)
-      @post = Post.new
+      @post =Post.new
+      @user = @post.user
     end
 
     def show
