@@ -3,6 +3,7 @@ before_action :authenticate_user!
     def top
       @posts = Post.all.order(created_at: :desc)
       @post = Post.new
+      @user = current_user
     end
 
     def show
