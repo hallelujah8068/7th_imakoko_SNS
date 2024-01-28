@@ -1,0 +1,67 @@
+<div class="main-container">
+  <div class="top-area">
+    <div class="top-title">ホーム</div>
+    <div class="tweet-area">
+      <%= image_tag @user.user_icon, class: "author-icon" %>
+      <%= form_with(model: @post, url: posts_path, class: "tweet-form", local: true) do |form| %>
+      <%= form.text_area :body, id: "tweet", placeholder: "いまどうしてる？" %>
+      <br>
+      <%= form.submit "ツイートをする", class: "top-tweet" %>
+      <% end %>
+
+      <%# <form action="/submit" method="post", class="tweet-form">
+        <textarea id="tweet" placeholder="いまどうしてる？"></textarea>
+        <br>
+        <input type="submit" value="ツイートをする" class="top-tweet">
+      </form> %>
+    </div>
+  </div>
+
+  <div class="relord-tweets">
+    <p>100件のツイートを表示</p>
+  </div>
+
+  <div class="tweet-wrapper">
+    <div class="author-info">
+      <%= image_tag @user.user_icon, class: "author-icon" %>
+      <p class="author-name"><%= @user.name %></p>
+      <p class="author-user_name"><%= @user.user_name %></p>
+      <p class="posted-at">3時間</p>
+    </div>
+    <div class="tweet-text">
+      ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+    </div>
+    <div class="map-area">
+      <%= image_tag('googlemap.png', alt: 'Icon', class: 'map-img') %>
+    </div>
+    <div class="tweet-reaction">
+      <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+      <p class="comment-count">6</p>
+      <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+      <p class="like-count">10</p>
+      <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+    </div>
+  </div>
+
+  <div class="tweet-wrapper">
+    <div class="author-info">
+      <%= image_tag @user.user_icon, class: "author-icon" %>
+      <p class="author-name"><%= @user.name %></p>
+      <p class="author-user_name"><%= @user.user_name %></p>
+      <p class="posted-at">3時間</p>
+    </div>
+    <div class="tweet-text">
+      ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+    </div>
+    <div class="map-area">
+      <%= image_tag('googlemap.png', alt: 'Icon', class: 'map-img') %>
+    </div>
+    <div class="tweet-reaction">
+      <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+      <p class="comment-count">6</p>
+      <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+      <p class="like-count">10</p>
+      <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+    </div>
+  </div>
+</div>
