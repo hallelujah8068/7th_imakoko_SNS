@@ -1,7 +1,7 @@
 
 5.times do |n|
   user = User.create!(
-    email: "user#{n + 1}_#{SecureRandom.hex(4)}@example.com",
+    email: "user#{n + 1}@example.com",
     password: 'password',
     name: "User#{n + 1}",
     user_name: "user#{n + 1}",
