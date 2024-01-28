@@ -5,7 +5,7 @@
         <span class="icon"><%= image_tag('home.png', alt: 'Icon') %></span> 
         <span class="link-text">ホーム</span>
       <% end %></li>
-      <li><%= link_to '#', class: 'profile_button' do %>
+      <li><%= link_to 'show_users_path(@user.id)', class: 'profile_button' do %>
         <span class="icon"><%= image_tag('profile.png', alt: 'Icon') %></span>
         <span class="link-text">プロフィール</span>
       <% end %></li>

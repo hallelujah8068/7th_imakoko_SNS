@@ -2,12 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_to_follow, only: [:follow, :unfollow]
 
-  def index
-    @user = User.find(current_user.id)
-    @users = current_user.following
-    @posts = @user.posts
-    @comments = @user.comments
-    @activities = (@posts + @comments).sort_by(&:created_at).reverse
+  def top
+    @posts = Post.all.order(created_at: :desc)
+    @post = Post.new
   end
 
 
@@ -18,6 +15,8 @@ class UsersController < ApplicationController
     @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse
   end
+
+
 
   def follow
     current_user.follow(@user_to_follow)
