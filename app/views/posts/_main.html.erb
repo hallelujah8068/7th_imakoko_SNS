@@ -1,0 +1,78 @@
+<div class="main-container">
+  <div class="top-area">
+    <div class="top-title">ホーム</div>
+    <div class="tweet-area">
+    <% if current_user.user_icon.attached? %>
+      <%= image_tag current_user.user_icon, class: "author-icon" %>
+    <% else %>
+      <%= image_tag 'prum.png', class: "author-icon" %>
+    <% end %>
+      <%= form_with(model: @post, url: posts_path, class: "tweet-form", id: "normal-tweet-form", local: true) do |form| %>
+        <%= form.text_area :body, id: "tweet", placeholder: "いまどうしてる？" %>
+        <br>
+        <%= form.hidden_field :latitude, id: "post_latitude" %>
+        <%= form.hidden_field :longitude, id: "post_longitude" %>
+        <%= form.submit "ツイートをする", class: "top-tweet", onclick: "updateLocation(event, 'normal-tweet-form')" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="relord-tweets">
+    <p>100件のツイートを表示</p>
+  </div>
+
+  <% @posts.each do |post| %>
+    <div class="tweet-wrapper">
+      <div class="author-info">
+        <% if post.user.user_icon.attached? %>
+          <%= image_tag post.user.user_icon, class: "author-icon" %>
+        <% else %>
+          <%= image_tag 'prum.png', class: "author-icon" %>
+        <% end %>
+        <p class="author-name"><%= post.user.name %></p>
+        <p class="author-user_name"><%= post.user.user_name %></p>
+        <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
+      </div>
+      <div class="tweet-text">
+        <%= post.body %>
+      </div>
+      <div class="map-area">
+        <%= image_tag post.map_image_url, alt: 'Map Image', class: 'map-img' if post.latitude.present? && post.longitude.present? %>
+      </div>
+      <div class="tweet-reaction">
+        <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+        <p class="comment-count">6</p>
+        <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+        <p class="like-count">10</p>
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  function updateLocation(event, formSelector) {
+    event.preventDefault(); // フォームのデフォルトの動作を防ぐ
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          // フォームのセレクタに基づいて対象のフォームを取得
+          var form = document.querySelector("#" + formSelector);
+
+          // 取得したフォームに緯度・経度を設定
+          form.querySelector("#post_latitude").value = position.coords.latitude;
+          form.querySelector("#post_longitude").value = position.coords.longitude;
+
+          // フォームを手動でサブミット
+          form.submit();
+        },
+        function(error) {
+          console.error("Error getting geolocation:", error.message);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+</script>

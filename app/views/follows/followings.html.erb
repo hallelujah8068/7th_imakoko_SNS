@@ -1,0 +1,99 @@
+<div class="side_area">
+  <%= render 'users/sidebar' %>
+</div>
+
+<div class="main_area follow_main">
+    <div class="follow_user_area">
+      <div class="flexbox">
+        <%= link_to user_path(@user), class: "back-to-user-button" do %>
+          <i class="fa fa-arrow-left"></i>
+        <% end %>
+
+        <div class="info_container">
+            <div class="follow_name">
+              <p><%= @user.name %></p>
+            </div>
+          
+            <div class="follow_user_name">
+              <p>@<%= @user.user_name %></p>
+            </div>
+        </div>
+      </div> 
+
+      <div class="toggle-buttons">
+          <%= link_to 'フォロワー', followers_user_path(current_user), class: "follower-link" %>
+
+          <div class="following-button">
+              <%= link_to 'フォロー中', followings_user_path(current_user), class: "following-link" %>
+              <div class="underline"></div>
+          </div>
+     </div>
+
+     <div class="follow_area">
+     <div class="follow-list flexbox" id="following-list">
+       <ul>
+         <% @following_users.each do |following_user| %>
+           <div class="flexbox followings_user">
+             <div class="follow-date-icon">
+               <% if following_user && following_user.user_icon.attached? %>
+                 <%= image_tag following_user.user_icon %>
+               <% else %>
+                 <%= image_tag('prum.png') %>
+               <% end %>
+             </div>
+   
+             <div class="follow-date-name">
+               <li class="following-name"><%= following_user.name %></li>
+               <li class="following-user-name">@<%= following_user.user_name %></li>
+             </div>
+
+             <button class="followings-follow-button">フォロー中</button>
+
+           </div>
+         <% end %>
+       </ul>
+     </div>
+   </div>
+   
+  </div>
+
+
+<!-- ログアウトモーダル -->
+<div id="logoutModal" class="modal">
+  <div class="modal-content">
+    <p class="text-confirm">PRUMアカデミーからログアウトしますか？</p>
+    <p class="text-guide">いつでもログインし直すことができます。アカウントを切り替える場合は、既存のアカウントを追加すると切り替えることができます。</p>
+    <%# <button id="confirmLogout">ログアウト</button> %>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, id: "logoutButton" %>
+    <button id="cancelLogout">キャンセル</button>
+  </div>
+</div>
+
+<script>
+  // ログアウトボタンがクリックされたときにモーダルを表示
+  document.getElementById('logoutIcon').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('logoutModal').style.display = 'block';
+  });
+
+  // ログアウトモーダル内のログアウトボタンがクリックされたときの処理
+  document.getElementById('logoutButton').addEventListener('click', function() {
+    // ここに実際のログアウト処理を追加する
+    
+    // モーダルを閉じる
+    document.getElementById('logoutModal').style.display = 'none';
+  });
+
+  // ログアウトモーダル内のキャンセルボタンがクリックされたときの処理
+  document.getElementById('cancelLogout').addEventListener('click', function() {
+    // モーダルを閉じる
+    document.getElementById('logoutModal').style.display = 'none';
+  });
+
+  // モーダル外をクリックしたら閉じる
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('logoutModal')) {
+      document.getElementById('logoutModal').style.display = 'none';
+    }
+  };
+</script>
