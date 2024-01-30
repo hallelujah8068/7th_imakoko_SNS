@@ -1,9 +1,14 @@
-class RemoveDiscardedAtAndChangeCoordinatesConstraints < ActiveRecord::Migration[7.0]
+class CreateActiveStorageAttachments < ActiveRecord::Migration[7.0]
   def change
-    remove_column :posts, :discarded_at, :datetime
+    create_table :active_storage_attachments do |t|
+      t.string :name, null: false
+      t.string :record_type, null: false
+      t.bigint :record_id, null: false
+      t.bigint :blob_id, null: false
 
-    # Allow null values for latitude and longitude
-    change_column :posts, :latitude, :float, null: true
-    change_column :posts, :longitude, :float, null: true
+
+      t.index [:blob_id], name: "index_active_storage_attachments_on_blob_id"
+      t.index [:record_type, :record_id, :name, :blob_id], name: "index_active_storage_attachments_uniqueness", unique: true
+    end
   end
 end
