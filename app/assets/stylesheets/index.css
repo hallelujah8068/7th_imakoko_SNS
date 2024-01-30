@@ -155,3 +155,23 @@ td.submit_area {
     color: #777777;
 
 }
+
+/* フォロー、フォロワー表示エリア */
+.follow_follower_area {
+    margin-bottom: 30px;
+}
+
+/* フォロワーリンク */
+.follower-count {
+    margin-left: 30px;
+    color: #777777;
+
+}
+
+.follow-count {
+    color: #777777;
+}
+
+.follow-count-number {
+    color: #777777;
+}

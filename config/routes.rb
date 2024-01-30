@@ -13,5 +13,6 @@ Rails.application.routes.draw do
       post 'follow'
       delete 'unfollow'
     end
+    resources :follows, only: [:index], controller: 'follows'
   end
 end
