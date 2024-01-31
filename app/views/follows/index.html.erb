@@ -21,10 +21,10 @@
       </div> 
 
       <div class="toggle-buttons">
-          <%= link_to 'フォロワー', followers_user_path(current_user), class: "follower-link" %>
+          <%= link_to 'フォロワー', followers_user_path(@user), class: "follower-link" %>
 
           <div class="following-button">
-              <%= link_to 'フォロー中', followings_user_path(current_user), class: "following-link" %>
+              <%= link_to 'フォロー中', follows_user_path(@user), class: "following-link" %>
               <div class="underline"></div>
           </div>
      </div>

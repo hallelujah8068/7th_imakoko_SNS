@@ -41,7 +41,7 @@
         <% end %>
       </div>
       <div class="follow_follower_area">
-        <%= link_to "フォロー中", follow_user_path(@user), method: :post, class: "follow-count" %>
+        <%= link_to "フォロー中", follows_user_path(@user), class: "follow-count" %>
         <span class="follow-count-number"><%= @user.following.count %></span>
         <%= link_to "フォロワー", followers_user_path(@user), class: "follower-count" %>
         <span class="follow-count-number"><%= @user.followers.count %></span>
