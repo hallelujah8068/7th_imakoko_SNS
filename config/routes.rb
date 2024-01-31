@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post 'follow'
       delete 'unfollow'
       get 'followers', to: 'followers#index'
+      get '/follows', to: 'follows#index' 
     end
     resources :follows, only: [:index], controller: 'follows'
   end
