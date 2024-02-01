@@ -1,0 +1,119 @@
+
+<div class="side_area">
+<%= render 'posts/sidebar' %>
+</div>
+
+<div class="main_area">
+<div class="post-container">
+  <div class="post-img">
+    <% if @post.user && @post.user.user_icon.attached? %>
+      <%= image_tag @post.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+    <% else %>
+      <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+    <% end %>
+    <table class="post-table">
+      <tbody>
+        <tr>
+          <td>
+            <span class="name"><%= @post.user.name %></span>
+            <span class="user_name">@<%= @post.user.user_name %></span>
+            <span class="timestamp"><%= time_ago_in_words(@post.created_at) %></span>
+          </td>
+        </tr>
+        <td>
+          <%= link_to @post.body %>
+        </td>
+        <tr>
+          <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="posts_icon_area">
+              <%= link_to '#', class: 'comments_icon' do %>
+                <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                <span class="comment-count"><%= @post.comments.count %></span>
+              <% end %>
+              <%= link_to '#', class: 'nice_icon' do %>
+                <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+              <% end %>
+                <%= link_to '#', class: 'destroy_icon' do %>
+                  <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= form_with(model: Comment.new, local: true ) do |form| %>
+  <table>
+      <td class="submit_area">
+        <% if @user && @user.user_icon.attached? %>
+          <%= image_tag @user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+        <% else %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
+        <div class="inline-elements">
+          <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
+          <%= form.hidden_field :post_id, value: @post.id %>
+          <%= form.hidden_field :user_id, value: @user.id %>
+        </div>
+        <div class="reply ">
+          <%= form.submit '返信', class: 'reply_button' %>
+        </div>
+      </td>
+  </table>
+<% end %>
+  
+<div class="scroll">
+    <% @comment.each do |comment| %>
+      <div class="post-container">
+        <%= link_to user_path(comment.user.id) do %>
+        <div class="post-img">
+          <% if comment.user && comment.user.user_icon.attached? %>
+            <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+          <% else %>
+            <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+          <% end %>
+        <% end %>
+        <table class="post-table">
+          <tbody>
+            <tr>
+              <td>
+                <span class="name"><%= comment.user.name %></span>
+                <span class="user_name">@<%= comment.user.user_name %></span>
+                <span class="timestamp"><%= time_ago_in_words(comment.created_at) %></span>
+              </td>
+            </tr>
+            <td>
+              <%= link_to comment.body%>
+            </td>
+            <tr>
+              <td>
+                <div class="posts_icon_area">
+                  <%= link_to '#', class: 'comments_icon' do %>
+                    <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
+                    <span class="comment-count"><%= comment.replies.count %></span>
+                  <% end %>
+                  <%= link_to '#', class: 'nice_icon' do %>
+                    <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+                  <% end %>
+                    <%= link_to '#', class: 'destroy_icon' do %>
+                      <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                    <% end %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    <% end %>
+  </div>
+<table>
+</table>
+
+
+</div>
+

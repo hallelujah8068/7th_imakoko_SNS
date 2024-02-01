@@ -1,0 +1,43 @@
+
+<div class = "unfollow_area">
+  <%= button_to 'フォロー中', '#', method: :get, class: 'follow-button', id: 'unfollow_modal' %>
+</div>
+
+
+<div id="unfollowModal" class="modal">
+  <div class="modal-content">
+    <p class="text-confirm"><%= "@#{@user.name} さんをフォロー解除しますか？" %></p>
+    <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
+    <%= button_to 'フォロー解除', unfollow_user_path(@user), method: :delete, class: 'follow-madal-button', id: 'unfollowButton' %>
+    <button id="cancelUnfollow">キャンセル</button>
+  </div>
+</div>
+
+<script>
+  // フォローボタンがクリックされたときにモーダルを表示
+  document.getElementById('unfollow_modal').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('unfollowModal').style.display = 'block';
+  });
+
+  // モーダル内の「フォロー解除」ボタンがクリックされたときの処理
+  document.getElementById('unfollowButton').addEventListener('click', function() {
+    // フォロー解除の実際の処理をここに追加する
+
+    // モーダルを閉じる
+    document.getElementById('unfollowModal').style.display = 'none';
+  });
+
+  // モーダル内のキャンセルボタンがクリックされたときの処理
+  document.getElementById('cancelUnfollow').addEventListener('click', function() {
+    // モーダルを閉じる
+    document.getElementById('unfollowModal').style.display = 'none';
+  });
+
+  // モーダル外をクリックしたら閉じる
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('unfollowModal')) {
+      document.getElementById('unfollowModal').style.display = 'none';
+    }
+  };
+</script>
