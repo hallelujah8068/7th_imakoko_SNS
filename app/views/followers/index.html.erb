@@ -32,15 +32,15 @@
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= follower.user_name %></p>
         </div>
-        <% if @following.include?(follower) %>
-          <div class="unfollow-btn-container">
-            <%= link_to "フォロー中", "#", class: "unfollow-btn text-center", disabled: true %>
-          </div>
-        <% else %>
-          <div class="follow-btn-container">
-            <%= link_to "フォロー", "#", class: "follow-btn text-center" %>
-          </div>
-        <% end %>
+          <% if @following.include?(follower) %>
+            <div class="unfollow-btn-container">
+              <%= button_to "フォロー中", unfollow_user_path(follower), method: :delete, class: "unfollow-btn text-center" %>
+            </div>
+          <% else %>
+            <div class="follow-btn-container">
+              <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
+            </div>
+          <% end %>
       </div>
     <% end %>
   </div>
