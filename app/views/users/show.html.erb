@@ -3,9 +3,6 @@
 </div>
 
 <div class="main_area">
-<<<<<<<< HEAD:app/views/posts/top.html.erb
-  <%= render 'posts/main' %>
-========
 <turbo-frame id="main_area">
   <div class ="user_area">
     <div class="profile_area">  
@@ -21,11 +18,11 @@
       <% if @user.id.to_s == current_user.id.to_s %>
         <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
       <% else %>  
-        <% if current_user.following?(@user) %>
-          <%= render 'users/follow_madal'%>
-        <% else %>
-          <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
-        <% end %>
+      <% if current_user.following?(@user) %>
+      <%= render 'users/follow_madal'%>
+    <% else %>
+      <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
+    <% end %>
       <% end %>
       </div>
     </div>
@@ -51,7 +48,6 @@
       <%= render 'posts/index' %>
   </div>
   </turbo-frame>
->>>>>>>> develop:app/views/users/show.html.erb
 </div>
 
 
