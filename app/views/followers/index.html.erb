@@ -15,9 +15,9 @@
       <div class="followers-tab">
         <p class="followers-tab-text">フォロワー</p>
       </div>
-      <div class="followings_tab">
-        <p class="followings-tab-text">フォロー中</p>
-      </div>
+    <div class="followings_tab">
+      <%= link_to "フォロー中", follows_user_path(@user), class: "followings-tab-text" %>
+    </div>
     </div>
   </div>
   <div class="followers-info">
