@@ -49,3 +49,84 @@
     }
   };
 </script>
+
+
+
+<div id="tweetModal" class="modal">
+  <div class="modal-content" id="tweetContent">
+    <span class="close"><%= image_tag('close.svg', alt: "Close", class: "closeButton", onclick: "closeModal()") %></span>
+    <div class="author-info">
+      <% if current_user.user_icon.attached? %>
+        <%= image_tag current_user.user_icon, class: "author-icon" %>
+      <% else %>
+        <%= image_tag 'prum.png', class: "author-icon" %>
+      <% end %>
+      <p class="author-name"><%= current_user.name %></p>
+       <p class="author-user_name"><%= current_user.user_name %></p>
+    </div>
+    <div class="tweet-area">
+      <%= form_with(model: @post, url: posts_path, class: "tweet-form", id: "modal-tweet-form", local: true) do |form| %>
+        <%= form.text_area :body, id: "tweet", placeholder: "いまどうしてる？" %>
+        <br>
+        <%= form.hidden_field :latitude, id: "post_latitude" %>
+        <%= form.hidden_field :longitude, id: "post_longitude" %>
+        <%= form.submit "ツイートをする", class: "top-tweet", onclick: "updateLocationInModal(event, 'modal-tweet-form')" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- モーダルフォーム用のスクリプト -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var tweetButton = document.querySelector(".tweet-button");
+    var tweetModal = document.getElementById("tweetModal");
+    var tweetForm = document.querySelector("#modal-tweet-form");
+    var closeButton = document.querySelector(".close");
+
+    tweetButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      tweetModal.style.display = "block";
+    });
+
+    tweetForm.addEventListener("submit", function() {
+      tweetModal.style.display = "none";
+    });
+
+    // closeModal 関数を定義
+    window.closeModal = function() {
+      tweetModal.style.display = "none";
+    };
+
+    closeButton.addEventListener("click", function() {
+      closeModal(); // 閉じるボタンがクリックされたら closeModal を呼び出す
+    });
+  });
+
+  function updateLocationInModal(event, formSelector) {
+    event.preventDefault(); // フォームのデフォルトの動作を防ぐ
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          // フォームのセレクタに基づいて対象のフォームを取得
+          var form = document.querySelector("#" + formSelector);
+
+          // 取得したフォームに緯度・経度を設定
+          form.querySelector("#post_latitude").value = position.coords.latitude;
+          form.querySelector("#post_longitude").value = position.coords.longitude;
+
+          // フォームを手動でサブミット
+          form.submit();
+        },
+        function(error) {
+          console.error("Error getting geolocation:", error.message);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+</script>
+

@@ -42,7 +42,7 @@
   </table>
 </div>
 </div>
-<%= form_with(model: Comment.new, local: true ) do |form| %>
+<%= form_with(model: Comment.new, local: true,class: "comment-form" ) do |form| %>
 <table>
     <td class="submit_area">
       <% if @user && @user.user_icon.attached? %>

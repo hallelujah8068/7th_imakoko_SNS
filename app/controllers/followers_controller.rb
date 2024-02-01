@@ -7,4 +7,6 @@ class FollowersController < ApplicationController
     @following = @user.following
   end
 
+  
+
 end

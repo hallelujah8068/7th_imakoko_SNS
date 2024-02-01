@@ -1,3 +1,7 @@
+<div class="side_area">
+  <%= render 'users/sidebar' %>
+</div>
+
 <div class="followers-wrapper">
   <div class="followers-container">
     <div class="followers-top">
@@ -19,7 +23,11 @@
   <div class="followers-info">
     <% @followers.each do |follower| %>
       <div class="follower-info">
-        <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
+        <% if follower.user_icon.present? %>
+          <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
+        <% else %>
+        <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+      <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= follower.user_name %></p>

@@ -23,6 +23,7 @@
 
   <% @posts.each do |post| %>
     <div class="tweet-wrapper">
+      <%= link_to user_path(post.user.id) do %>
       <div class="author-info">
         <% if post.user.user_icon.attached? %>
           <%= image_tag post.user.user_icon, class: "author-icon" %>
@@ -33,8 +34,9 @@
         <p class="author-user_name"><%= post.user.user_name %></p>
         <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
       </div>
+      <% end %>
       <div class="tweet-text">
-        <%= post.body %>
+        <%= link_to post.body,post_path(post.id) %>
       </div>
       <div class="map-area">
         <%= image_tag post.map_image_url, alt: 'Map Image', class: 'map-img' if post.latitude.present? && post.longitude.present? %>

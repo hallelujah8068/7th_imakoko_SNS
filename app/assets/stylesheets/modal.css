@@ -77,6 +77,37 @@
   line-height: normal;
 }
 
+#tweetModal {
+  background: rgba(0, 0, 0, 0.50);
+}
+
+#tweetContent {
+  background-color: #fefefe;
+  margin: 94px auto;
+  padding: 16px 16px;
+  border-radius: 4px;
+  width: 40%;
+  height: 31%;
+  text-align: center;
+}
+
+#modal-tweet-form {
+  margin-left: 39px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.close {
+  display: block;
+  text-align: left;
+}
+
+.closeButton {
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+}
+
 
 /* フォロー解除モーダル  */
 
@@ -120,7 +151,7 @@
   width: 100%;
 }
 
-.close {
+cancelUnfollow .close {
   display: block;
   text-align: left;
 }

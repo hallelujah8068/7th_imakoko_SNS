@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # 開発者によって選択されたルートへの変更を適用
   # この例では、開発者が "posts#top" を選択
   root to: "posts#top"
+  get 'users', to: 'users#show'
   
   get 'comments', to: 'comments#index'
   resources :comments
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
     member do
       post 'follow'
       delete 'unfollow'
+      get 'followers', to: 'followers#index'
+      get '/follows', to: 'follows#index' 
     end
+    resources :follows, only: [:index], controller: 'follows'
   end
 end

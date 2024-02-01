@@ -32,6 +32,15 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "following_id_id", dependent: :destroy
   has_many :followers, through: :passive_relationships
 
+  def follow(user)
+    active_relationships.create(following_id_id: user.id)
+  end
+
+  # ユーザーのフォローを解除するメソッド
+  def unfollow(user)
+    active_relationships.find_by(following_id_id: user.id).destroy
+  end
+
   #ユーザーがドローしているユーザー
   def following?(user)
     followings.include?(user)

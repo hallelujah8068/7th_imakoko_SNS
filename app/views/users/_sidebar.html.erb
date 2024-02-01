@@ -1,24 +1,35 @@
 <div class="side-text">
-  <img src="/assets/prum_logo.png"  class="logo">
-    <ul class="channel-list">
-      <li><%= link_to root_path, class: 'home_button' do %>
-        <span class="icon"><%= image_tag('home.png', alt: 'Icon') %></span> 
+  <img src="/assets/prum_logo.png" class="logo">
+  <ul class="channel-list">
+    <li>
+      <%= link_to root_path, class: 'home_button' do %>
+        <span class="icon"><%= image_tag('home.png', alt: 'Icon') %></span>
         <span class="link-text">ホーム</span>
-      <% end %></li>
-      <li><%= link_to '#', class: 'profile_button' do %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to user_path(current_user), class: 'profile_button' do %>
         <span class="icon"><%= image_tag('profile.png', alt: 'Icon') %></span>
         <span class="link-text">プロフィール</span>
-      <% end %></li>
-      <li><%= link_to '#', class: 'setting_button' do %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'setting_button' do %>
         <span class="icon"><%= image_tag('setting.png', alt: 'Icon') %></span>
         <span class="link-text">設定</span>
-      <% end %></li>
-    </ul>
-    <%= button_to 'ツイートする', '#', method: :get, class: "tweet-button" %>
-    <div class="logout-container">
-      <a href="#" class="logout_button" id="logoutIcon">
-        <%= image_tag('logout.png', alt: 'Icon') %>
-        <span class="link-text">ログアウト</span> 
-      </a> 
-    </div>
+      <% end %>
+    </li>
+  </ul>
+  <%= button_to 'ここはユーザーする', '#', method: :get, class: "tweet-button" %>
+  <div class="logout-container">
+    <a href="#" class="logout_button" id="logoutIcon">
+      <%= image_tag('logout.png', alt: 'Icon') %>
+      <span class="link-text">ログアウト</span>
+    </a>
+  </div>
 </div>
+
+
+
+
+

@@ -131,7 +131,7 @@ td {
 }
 
 /* 返信内容フォーム入力エリア */
-form {
+.comment-form {
     align-items: center;
     border: 1px solid #EEEEEE;
 }
@@ -146,7 +146,8 @@ form {
 /* 送信ボタン表示エリア */
 td.submit_area {
     display: flex;
-    width: 145%;
+    width: 150%;
+    border: 1px solid #EEEEEE;
 }
 
 /* コメントアイコン位置調整 */
@@ -154,4 +155,20 @@ td.submit_area {
     font-size: 18px;
     color: #777777;
 
+}
+
+/* フォロー、フォロワー表示エリア */
+.follow_follower_area {
+    margin-bottom: 30px;
+}
+
+/* フォロワーリンク */
+.follower-count {
+    margin-left: 30px;
+    color: #777777;
+
+}
+
+.follow-count {
+    color: #777777;
 }
