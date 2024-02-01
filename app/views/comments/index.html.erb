@@ -1,6 +1,6 @@
 <turbo-frame id="post_1">
   <div class="transition">
-    <%= link_to "ツイート", root_path,style: "color: #777777;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
+    <%= link_to "ツイート", user_path(current_user),style: "color: #777777;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
     <%= link_to "ツイートと返信", comments_path,style: "color: black;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
   </div>
   <div class="scroll">
