@@ -131,7 +131,7 @@ td {
 }
 
 /* 返信内容フォーム入力エリア */
-form {
+.comment-form {
     align-items: center;
     border: 1px solid #EEEEEE;
 }
@@ -146,7 +146,8 @@ form {
 /* 送信ボタン表示エリア */
 td.submit_area {
     display: flex;
-    width: 145%;
+    width: 150%;
+    border: 1px solid #EEEEEE;
 }
 
 /* コメントアイコン位置調整 */
