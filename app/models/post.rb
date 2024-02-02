@@ -7,11 +7,17 @@ class Post < ApplicationRecord
     :latitude => :latitude, :longitude => :longitude
 
   after_validation :geocode
+  # before_validation :geocode
+
 
   attr_accessor :map_image_url
 
   def ip_address
-    request.remote_ip if defined?(request)
+    if defined?(request)
+      request.remote_ip
+    else
+      ENV['REMOTE_ADDR']
+    end
   end
 
   def map_image_url

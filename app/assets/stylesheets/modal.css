@@ -87,7 +87,7 @@
   padding: 16px 16px;
   border-radius: 4px;
   width: 40%;
-  height: 31%;
+  height: auto;
   text-align: center;
 }
 
@@ -127,28 +127,6 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-}
-
-
-
-#tweetModal {
-  background: rgba(0, 0, 0, 0.50);
-}
-
-#tweetContent {
-  background-color: #fefefe;
-  margin: 94px auto;
-  padding: 16px 16px;
-  border-radius: 4px;
-  width: 40%;
-  height: 31%;
-  text-align: center;
-}
-
-#modal-tweet-form {
-  margin-left: 39px;
-  margin-right: 0px;
-  width: 100%;
 }
 
 cancelUnfollow .close {
