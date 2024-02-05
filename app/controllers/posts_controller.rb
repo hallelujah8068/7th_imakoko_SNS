@@ -2,12 +2,14 @@ class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
       @posts = Post.all.order(created_at: :desc)
-      @post =Post.new
-      @user = @post.user
+      # ツイート作成
+      @post_new =Post.new
+      @user = @post_new.user
     end
 
     def show
       @post = Post.find(params[:id])
+      @post_new =Post.new
       @user = User.find(current_user.id)
       @comment = @post.comments.order(created_at: :desc)
       @users = current_user.following

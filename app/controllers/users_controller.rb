@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+    # サイドバーからのツイート機能
+    @post_new =Post.new
     @posts = @user.posts
     @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse

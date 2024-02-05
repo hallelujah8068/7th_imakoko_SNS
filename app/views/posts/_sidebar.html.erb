@@ -1,7 +1,7 @@
 <div class="side-text">
   <img src="/assets/prum_logo.png"  class="logo">
     <ul class="channel-list">
-      <li><%= link_to root_path, class: 'home_button' do %>
+      <li><%= link_to root_path, class: 'home_button',data: {"turbolinks" => false} do %>
         <span class="icon"><%= image_tag('home.png', alt: 'Icon') %></span> 
         <span class="link-text">ホーム</span>
       <% end %></li>
