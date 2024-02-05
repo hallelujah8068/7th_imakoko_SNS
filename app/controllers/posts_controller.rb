@@ -18,10 +18,10 @@ before_action :authenticate_user!
     def create
       @post = current_user.posts.build(post_params)
   
-      # フォームから送信された緯度・経度が空でない場合にはそれを使い、空の場合はIPアドレスから取得
-      if @post.latitude.blank? || @post.longitude.blank?
-        @post.geocode
-      end
+      # # フォームから送信された緯度・経度が空でない場合にはそれを使い、空の場合はIPアドレスから取得
+      # if @post.latitude.blank? || @post.longitude.blank?
+      #   @post.geocode
+      # end
   
       if @post.save
         @post.update(map_image_url: generate_map_image_url(@post.latitude, @post.longitude))

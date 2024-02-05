@@ -1,5 +1,5 @@
 .followers-wrapper {
-  width: 50%;
+  width: 40%;
   height: 100vh;
   margin: 0 auto;
   border-left: 2px #EEE solid;
@@ -8,7 +8,7 @@
 
 .followers-container {
   position: fixed;
-  width: 50%;
+  width: 40%;
 }
 
 .followers-top {
@@ -139,6 +139,9 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  display: inline-block;
+  background: #0E1838;
+  border: none;
 }
 
 .unfollow-btn-container {
@@ -156,10 +159,12 @@
 .unfollow-btn {
   color: #0E1838;
   font-family: "Hiragino Sans";
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  background: #FFF;
+  border: none;
 }
 
 .text-center {
