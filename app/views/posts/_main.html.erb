@@ -31,7 +31,7 @@
           <%= image_tag 'prum.png', class: "author-icon" %>
         <% end %>
         <p class="author-name"><%= post.user.name %></p>
-        <p class="author-user_name"><%= post.user.user_name %></p>
+        <p class="author-user_name"><%= "@" + post.user.user_name %></p>
         <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
       </div>
       <% end %>
