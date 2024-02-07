@@ -1,96 +1,61 @@
-<turbo-frame id="post_1">
-  <div class="transition">
-    <%= link_to "ツイート", user_path(current_user),style: "color: #777777;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
-    <%= link_to "ツイートと返信", comments_path,style: "color: black;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
-  </div>
-  <div class="scroll">
-    <% @activities.each do |activity| %>
-      <% if activity.is_a?(Post) %>
-        <div class="post-container">
-          <div class="post-img">
-            <% if activity.user && activity.user.user_icon.attached? %>
-              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-            <% else %>
-              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-            <% end %>
-            <table class="post-table">
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="name"><%= activity.user.name %></span>
-                    <span class="user_name">＠<%= activity.user.user_name %></span>
-                    <span class="timestamp"><%= time_ago_in_words(activity.created_at) %></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td><%= link_to activity.body,post_path(activity.id) %></td>
-                </tr>
-                <tr>
-                  <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="posts_icon_area">
-                      <%= link_to '#', class: 'comments_icon' do %>
-                        <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                        <span class="comment-count"><%= activity.comments.count %></span>
-                      <% end %>
-                      <%= link_to '#', class: 'nice_icon' do %>
-                        <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                      <% end %>
-                        <%= link_to '#', class: 'destroy_icon' do %>
-                        <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                      <% end %>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        </table>
-      <% elsif activity.is_a?(Comment) %>
-        <div class="post-container">
-          <div class="post-img">
-            <% if activity.user && activity.user.user_icon.attached? %>
-              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-            <% else %>
-              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-            <% end %>
-            <table class="post-table">
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="name"><%= activity.user.name %></span>
-                    <span class="user_name">@<%= activity.user.user_name %></span>
-                    <span class="timestamp"><%= time_ago_in_words(activity.created_at) %></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td><%= link_to activity.body,comment_path(activity.id) %></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="posts_icon_area">
-                      <%= link_to '#', class: 'comments_icon' do %>
-                        <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                        <span class="comment-count"><%=  %></span>
-                        <span class="comment-count"><%= activity.replies.count %></span>
-                      <% end %>
-                        <%= link_to '#', class: 'nice_icon' do %>
-                        <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                      <% end %>
-                        <%= link_to '#', class: 'destroy_icon' do %>
-                        <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                      <% end %>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+<div class="side_area">
+  <%= render 'posts/sidebar' %>
+</div>
+
+<div class="main_area">
+  <div class ="user_area">
+    <div class="profile_area">  
+      <%= image_tag('profile_top.png') %>
+    </div>
+    <div class="thumbnail_area">
+      <% if @user && @user.user_icon.attached? %>
+        <%= image_tag @user.user_icon %>
+      <% else %>
+        <%= image_tag('prum.png') %>
       <% end %>
+      <div class ="edit_button">
+      <% if @user.id.to_s == current_user.id.to_s %>
+        <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
+      <% else %>  
+      <% if current_user.following?(@user) %>
+      <%= render 'users/follow_madal'%>
+    <% else %>
+      <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
     <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class= "user_information">
+      <div class ="name_area">
+        <h1><%= @user.name %></h1>
+      </div>
+      <div class ="email_name">
+        <p1>@<%= @user.user_name %></p1>
+      </div>
+      <div class ="user_description">
+        <p2><% if @user.description.present? %>
+          <%= @user.description %></p2>
+        <% else %>
+          <p2>メッセージを設定していません</p2>
+        <% end %>
+      </div>
+      <div class="follow_follower_area">
+        <%= link_to "フォロー中", follows_user_path(@user), class: "follow-count" %>
+        <span class="follow-count-number"><%= @user.following.count %></span>
+        <%= link_to "フォロワー", followers_user_path(@user), class: "follower-count" %>
+        <span class="follow-count-number"><%= @user.followers.count %></span>
+      </div>
+    </div>
   </div>
-</turbo-frame>
+  <div class="transition">
+    <%= link_to "ツイート", user_path(@user),style: "color: black;", class: "tweet_link #{current_page?(root_path) ? 'active' : ''}", aria_current: "page" %>
+    <%= link_to "ツイートと返信", comments_path(user_id: @user),style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
+  </div>
+  <div class="post_area">
+      <%= render 'comments/index' %>
+  </div>
+</div>
+
+<%# モーダル表示%>
+<%= render 'posts/madal' %>
+
