@@ -43,8 +43,8 @@
       <%= form_with(model: Comment.new, local: true ) do |form| %>
         <div class="comment-form-wrapper">
             <td class="submit_area">
-              <% if @post.user.user_icon.attached? %>
-                <%= image_tag @post.user.user_icon, class: "author-icon" %>
+              <% if @user.user_icon.attached? %>
+                <%= image_tag @user.user_icon, class: "author-icon" %>
               <% else %>
                 <%= image_tag 'prum.png', class: "author-icon" %>
               <% end %>
