@@ -3,7 +3,6 @@
 </div>
 
 <div class="main_area">
-<turbo-frame id="main_area">
   <div class ="user_area">
     <div class="profile_area">  
       <%= image_tag('profile_top.png') %>
@@ -48,10 +47,13 @@
       </div>
     </div>
   </div>
+  <div class="transition">
+      <%= link_to "ツイート", user_path(@user),style: "color: black;", class: "tweet_link #{current_page?(user_path) ? 'active' : ''}", aria_current: "page" %>
+      <%= link_to "ツイートと返信", comments_path(user_id: @user),style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
+  </div>
   <div class="post_area">
       <%= render 'posts/index' %>
   </div>
-  </turbo-frame>
 </div>
 
 <%# モーダル表示%>

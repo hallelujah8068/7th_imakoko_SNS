@@ -7,7 +7,7 @@
     <% else %>
       <%= image_tag 'prum.png', class: "author-icon" %>
     <% end %>
-      <%= form_with(model: @post, url: posts_path, class: "tweet-form", id: "normal-tweet-form", local: true) do |form| %>
+      <%= form_with(model: @post_new, url: posts_path, class: "tweet-form", id: "normal-tweet-form", local: true) do |form| %>
         <%= form.text_area :body, id: "tweet", placeholder: "いまどうしてる？" %>
         <br>
         <%= form.hidden_field :latitude, id: "post_latitude" %>
@@ -58,6 +58,8 @@
   </div>
 <% end %>
 </div>
+
+
 
 <%# モーダル記述ファイル %>
 <%= render 'posts/madal' %>
