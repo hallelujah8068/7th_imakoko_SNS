@@ -67,7 +67,7 @@
         <%= link_to user_path(comment.user.id) do %>
         <div class="post-img">
           <% if comment.user && comment.user.user_icon.attached? %>
-            <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+            <%= image_tag comment.user.user_icon, class: 'author-icon' %>
           <% else %>
             <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
           <% end %>
@@ -94,9 +94,6 @@
                   <%= link_to '#', class: 'nice_icon' do %>
                     <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
                   <% end %>
-                    <%= link_to '#', class: 'destroy_icon' do %>
-                      <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                    <% end %>
                 </div>
               </td>
             </tr>
