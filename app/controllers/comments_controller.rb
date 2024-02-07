@@ -4,11 +4,9 @@ class CommentsController < ApplicationController
     def index
       @user = User.find(params[:user_id])
       @posts = current_user.posts
-  
-     
+      # サイドバーからのツイート用
+      @post_new =Post.new
       @comments = current_user.comments
-      
-
       @activities = (@posts + @comments).sort_by(&:created_at).reverse
     end
 

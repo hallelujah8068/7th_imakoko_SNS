@@ -5,6 +5,7 @@ class FollowersController < ApplicationController
     @user = User.find(params[:id])
     @followers = @user.followers
     @following = @user.following
+    @post_new =Post.new
   end
 
   

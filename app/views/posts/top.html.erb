@@ -14,3 +14,29 @@
 <%# モーダル表示 %>
 <%= render 'posts/madal' %>
 
+<script>
+  function updateLocation(event, formSelector) {
+    event.preventDefault(); // フォームのデフォルトの動作を防ぐ
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          // フォームのセレクタに基づいて対象のフォームを取得
+          var form = document.querySelector("#" + formSelector);
+
+          // 取得したフォームに緯度・経度を設定
+          form.querySelector("#post_latitude").value = position.coords.latitude;
+          form.querySelector("#post_longitude").value = position.coords.longitude;
+
+          // フォームを手動でサブミット
+          form.submit();
+        },
+        function(error) {
+          console.error("Error getting geolocation:", error.message);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+</script>

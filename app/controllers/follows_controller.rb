@@ -4,6 +4,7 @@ class FollowsController < ApplicationController
     def index
       @user = User.find(params[:id])
       @following_users = @user.followings
+      @post_new =Post.new
     end
   
     
