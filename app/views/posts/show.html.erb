@@ -4,68 +4,63 @@
 </div>
 
 <div class="main_area">
-<div class="post-container">
-  <div class="post-img">
-    <% if current_user.user_icon.attached? %>
-      <%= image_tag current_user.user_icon, class: "author-icon" %>
-    <% else %>
-      <%= image_tag 'prum.png', class: "author-icon" %>
-    <% end %>
-    <table class="post-table">
-      <tbody>
-        <tr>
-          <td>
-            <span class="name"><%= @post.user.name %></span>
-            <span class="user_name">@<%= @post.user.user_name %></span>
-            <span class="timestamp"><%= time_ago_in_words(@post.created_at) %></span>
-          </td>
-        </tr>
-        <td>
-          <%= link_to @post.body %>
-        </td>
-        <tr>
-          <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="posts_icon_area">
-              <%= link_to '#', class: 'comments_icon' do %>
-                <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                <span class="comment-count"><%= @post.comments.count %></span>
+  <div class="fixed-area">
+    <div class="parent-container">
+      <div class="tweet-wrapper" > 
+          <div class="author-info">
+            <% if @post.user.user_icon.attached? %>
+              <%= link_to user_path(@post.user.id) do %>
+                <%= image_tag @post.user.user_icon, class: "author-icon" %>
               <% end %>
-              <%= link_to '#', class: 'nice_icon' do %>
-                <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
+            <% else %>
+              <%= link_to user_path(@post.user.id) do %>
+                <%= image_tag 'prum.png', class: "author-icon" %>
               <% end %>
-                <%= link_to '#', class: 'destroy_icon' do %>
-                  <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                <% end %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <% end %>
+            <p class="author-name"><%= @post.user.name %></p>
+            <p class="author-user_name"><%= "@" + @post.user.user_name %></p>
+            <p class="posted-at"><%= time_ago_in_words(@post.created_at) %></p>
+          </div>
+
+        <div class="tweet-text">
+          <%= link_to @post.body, post_path(@post.id), class: "tweet-link" %>
+        </div>
+
+        <div class="map-area">
+          <%= image_tag @post.map_image_url, alt: 'Map Image', class: 'map-img' %>
+        </div>
+
+        <div class="tweet-reaction">
+          <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+          <p class="comment-count"><%= @post.comments.count %></p>
+          <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+          <p class="like-count">10</p>
+          <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+        </div>
+      </div>
+    </div>
+    <div class="comment-form">
+      <%= form_with(model: Comment.new, local: true ) do |form| %>
+        <div class="comment-form-wrapper">
+            <td class="submit_area">
+              <% if @post.user.user_icon.attached? %>
+                <%= image_tag @post.user.user_icon, class: "author-icon" %>
+              <% else %>
+                <%= image_tag 'prum.png', class: "author-icon" %>
+              <% end %>
+              <div class="inline-elements">
+                <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
+                <%= form.hidden_field :post_id, value: @post.id %>
+                <%= form.hidden_field :user_id, value: @user.id %>
+              </div>
+              <div class="reply ">
+                <%= form.submit '返信', class: 'reply_button' %>
+              </div>
+            </td>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-<%= form_with(model: Comment.new, local: true ) do |form| %>
-  <table>
-      <td class="submit_area">
-        <% if @user && @user.user_icon.attached? %>
-          <%= image_tag @user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-        <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-        <% end %>
-        <div class="inline-elements">
-          <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
-          <%= form.hidden_field :post_id, value: @post.id %>
-          <%= form.hidden_field :user_id, value: @user.id %>
-        </div>
-        <div class="reply ">
-          <%= form.submit '返信', class: 'reply_button' %>
-        </div>
-      </td>
-  </table>
-<% end %>
-  
 <div class="scroll">
     <% @comment.each do |comment| %>
       <div class="post-container">
@@ -136,6 +131,7 @@
         <%= form.submit "ツイートをする", class: "top-tweet", onclick: "updateLocationInModal(event, 'modal-tweet-form')" %>
       <% end %>
     </div>
+  </div>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
 .post-container {
     border: 1px solid #EEEEEE;
     padding: 10px;
-    width: 95%;
+    /* width: 95%; */
 }
 
 /* サムネイル画像 */
@@ -49,8 +49,9 @@ td {
 
 /* 投稿、コメントのスクロールエリア */
 .scroll {
-    height: 80%;
-    overflow-y: scroll;
+    height: 100%;
+    /* overflow-y: scroll; */
+    margin-top: 396px;
 }
 
 /* ツイートリンク */
@@ -134,6 +135,7 @@ td {
 .comment-form {
     align-items: center;
     border: 1px solid #EEEEEE;
+    border-top: none;
 }
 
 
@@ -171,4 +173,28 @@ td.submit_area {
 
 .follow-count {
     color: #777777;
+}
+
+.parent-container {
+    width: 100%;
+     /* height: 100%; */
+    /* padding-left: 18px; */
+    border: solid #EEE;
+    border-bottom: none;
+  }
+
+.comment-form-wrapper {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    padding-left: 11px;
+    padding-right: 12px;
+}
+
+.fixed-area {
+    position: fixed;
+    width: 40%;
+    z-index: 1000;
+    background-color: #FFF;
+    /* margin-bottom: 1px; */
 }
