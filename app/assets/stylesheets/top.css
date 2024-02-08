@@ -177,10 +177,17 @@ li {
 }
 
 
-/* サムネイル画像 */
+/* サムネイル画像位置調整 */
 .thumbnail_area img {
   margin-left: 40px;
-  margin-top: -20px;
+  margin-top: -90px;
+  border-radius: 50px;
+}
+
+/* 画像サイズ */
+.thumbnail-icon {
+  width: 120px;
+  height: 120px;
 }
 
 /* 編集ボタン表示エリア */
