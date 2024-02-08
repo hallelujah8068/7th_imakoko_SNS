@@ -5,9 +5,9 @@
         <div class="post-container">
           <div class="post-img">
             <% if activity.user && activity.user.user_icon.attached? %>
-              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+              <%= image_tag activity.user.user_icon, class: 'author-icon' %>
             <% else %>
-              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+              <%= image_tag('prum.png', class: 'author-icon') %>
             <% end %>
             <table class="post-table">
               <tbody>
@@ -49,9 +49,9 @@
         <div class="post-container">
           <div class="post-img">
             <% if activity.user && activity.user.user_icon.attached? %>
-              <%= image_tag activity.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+              <%= image_tag activity.user.user_icon, class: 'author-icon' %>
             <% else %>
-              <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+              <%= image_tag('prum.png', class: 'author-icon') %>
             <% end %>
             <table class="post-table">
               <tbody>
