@@ -51,7 +51,7 @@ td {
 .scroll {
     height: 100%;
     /* overflow-y: scroll; */
-    margin-top: 396px;
+    /* margin-top: 396px; */
 }
 
 /* ツイートリンク */
@@ -197,4 +197,9 @@ td.submit_area {
     z-index: 1000;
     background-color: #FFF;
     /* margin-bottom: 1px; */
+}
+
+.scroll-show-post {
+    height: 100%;
+    margin-top: 396px;
 }
