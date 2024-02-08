@@ -1,48 +1,60 @@
 
-  <div class="scroll">
-    <% @posts.each do |post| %>
-      <div class="post-container">
-      <div class="post-img">
-        <% if post.user && post.user.user_icon.attached? %>
-          <%= image_tag post.user.user_icon, class: 'author-icon' %>
+  <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
+  <% @posts.each do |post| %>
+  <div class="tweet-wrapper" data-post-id="<%= post.id %>"> 
+    <%= link_to post_path(post.id), class: "tweet-link" do %>
+      <div class="author-info">
+        <% if post.user.user_icon.attached? %>
+          <%= link_to user_path(post.user.id) do %>
+            <%= image_tag post.user.user_icon, class: "author-icon" %>
+          <% end %>
         <% else %>
-          <%= image_tag('prum.png', class: 'author-icon') %>
+          <%= link_to user_path(post.user.id) do %>
+            <%= image_tag 'prum.png', class: "author-icon" %>
+          <% end %>
         <% end %>
-        <table class="post-table">
-          <tbody>
-            <tr>
-              <td>
-                <span class="name"><%= post.user.name %></span>
-                <span class="user_name">@<%= post.user.user_name %></span>
-                <span class="timestamp"><%= time_ago_in_words(post.created_at) %></span>
-              </td>
-            </tr>
-            <td>
-              <%= link_to post.body, post_path(post.id) %>
-            </td>
-            <tr>
-              <td><%= image_tag('GPS.png', alt: 'gps', class: 'post-image') %></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="posts_icon_area">
-                  <%= link_to '#', class: 'comments_icon' do %>
-                    <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                    <span class="comment-count"><%= post.comments.count %></span>
-                  <% end %>
-                  <%= link_to '#', class: 'nice_icon' do %>
-                    <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                  <% end %>
-                    <%= link_to '#', class: 'destroy_icon' do %>
-                      <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                    <% end %>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <p class="author-name"><%= post.user.name %></p>
+        <p class="author-user_name"><%= "@" + post.user.user_name %></p>
+        <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
       </div>
     <% end %>
-  </div>
 
+    <div class="tweet-text">
+      <%= link_to post.body, post_path(post.id), class: "tweet-link" %>
+    </div>
+
+    <div class="map-area">
+      <%= image_tag post.map_image_url, alt: 'Map Image', class: 'map-img' if post.latitude.present? && post.longitude.present? %>
+    </div>
+
+    <div class="tweet-reaction">
+      <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+      <p class="comment-count"><%= post.comments.count %></p>
+      <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+      <p class="like-count">10</p>
+      <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%# モーダル記述ファイル %>
+<%= render 'posts/madal' %>
+
+<%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
+        var postId = this.dataset.postId;
+        window.location.href = "/posts/" + postId;
+      });
+
+      wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var userId = this.closest(".tweet-wrapper").dataset.userId;
+        window.location.href = "/users/" + userId;
+      });
+    });
+  });
+</script>
