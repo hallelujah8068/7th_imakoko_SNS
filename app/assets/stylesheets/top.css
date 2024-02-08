@@ -143,10 +143,17 @@ li {
 /* フォローボタン */
 
 .follow-button {
+
+  border-radius: 30px;
+  background-color: black;
+  color: #fff;
+  width: 100px;
+}
+
+.unfollow-button {
   border-radius: 30px;
   background-color: #ffffff;
   width: 120%;
-
 }
 
 /* プロフィールエリアの画像 */
