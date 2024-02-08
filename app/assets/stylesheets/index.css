@@ -152,13 +152,6 @@ td.submit_area {
     border: 1px solid #EEEEEE;
 }
 
-/* コメントアイコン位置調整 */
-.comment-count {
-    font-size: 18px;
-    color: #777777;
-
-}
-
 /* フォロー、フォロワー表示エリア */
 .follow_follower_area {
     margin-bottom: 30px;
@@ -177,11 +170,11 @@ td.submit_area {
 
 .parent-container {
     width: 100%;
-     /* height: 100%; */
+    /* height: 100%; */
     /* padding-left: 18px; */
     border: solid #EEE;
     border-bottom: none;
-  }
+}
 
 .comment-form-wrapper {
     display: flex;
