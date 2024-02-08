@@ -117,13 +117,21 @@ li {
 }
 
 /* user情報表示エリア */
+/* .user_area { */
+/* width: 100%; */
+/* height: auto; */
+/* position: sticky; */
+/* top: 0; */
+/* background-color: #ffffff; */
+/* z-index: 2; */
+/* } */
+
 .user_area {
-  width: 100%;
-  height: auto;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  z-index: 2;
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: solid #EEE;
+  width: 39.8%;
 }
 
 /*  画像表示エリア  */
