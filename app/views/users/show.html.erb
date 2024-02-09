@@ -18,10 +18,10 @@
         <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
       <% else %>  
       <% if current_user.following?(@user) %>
-      <%= render 'users/follow_madal'%>
-    <% else %>
-      <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
-    <% end %>
+        <%= render 'users/follow_madal'%>
+      <% else %>
+        <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
+      <% end %>
       <% end %>
       </div>
     </div>
