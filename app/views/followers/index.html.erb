@@ -15,9 +15,9 @@
       <div class="followers-tab">
         <p class="followers-tab-text">フォロワー</p>
       </div>
-    <div class="followings_tab">
-      <%= link_to "フォロー中", follows_user_path(@user), class: "followings-tab-text" %>
-    </div>
+      <div class="followings_tab">
+        <%= link_to "フォロー中", follows_user_path(@user), class: "followings-tab-text" %>
+      </div>
     </div>
   </div>
   <div class="followers-info">
@@ -26,25 +26,72 @@
         <% if follower.user_icon.present? %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
         <% else %>
-        <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-      <% end %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
         </div>
-          <% if @following.include?(follower) %>
-            <div class="unfollow-btn-container">
-              <%= button_to "フォロー中", unfollow_user_path(follower), method: :delete, class: "unfollow-btn text-center" %>
-            </div>
-          <% else %>
-            <div class="follow-btn-container">
-              <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
-            </div>
-          <% end %>
+        <% if @following.include?(follower) %>
+          <div class="unfollow-btn-container">
+            <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
+          </div>
+        <% else %>
+          <div class="follow-btn-container">
+            <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
+
+<% @followers.each do |follower| %>
+  <div id="unfollowModal_<%= follower.id %>" class="modal">
+    <div class="modal-content">
+      <p class="text-confirm"><%= "#{follower.name} さんをフォロー解除しますか？" %></p>
+      <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
+      <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'follow-madal-button', id: 'unfollowButton' %>
+      <button id="cancelUnfollow">キャンセル</button>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  // フォローボタンがクリックされたときにモーダルを表示
+  <% @followers.each do |follower| %>
+    document.getElementById('unfollow_modal_<%= follower.id %>').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('unfollowModal_<%= follower.id %>').style.display = 'block';
+    });
+  <% end %>
+
+  // モーダル内の「フォロー解除」ボタンがクリックされたときの処理
+  document.querySelectorAll('.follow-madal-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      // フォロー解除の実際の処理をここに追加する
+
+      // モーダルを閉じる
+      this.closest('.modal').style.display = 'none';
+    });
+  });
+
+  // モーダル内のキャンセルボタンがクリックされたときの処理
+  document.getElementById('cancelUnfollow').addEventListener('click', function() {
+    // モーダルを閉じる
+    document.querySelectorAll('.modal').forEach(function(modal) {
+      modal.style.display = 'none';
+    });
+  });
+
+  // モーダル外をクリックしたら閉じる
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none';
+    }
+  };
+</script>
+
 
 <%# モーダル表示 %>
 <%= render 'posts/madal' %>
