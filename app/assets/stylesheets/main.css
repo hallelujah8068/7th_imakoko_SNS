@@ -86,6 +86,13 @@ input[type="submit"].top-tweet {
   border-bottom: solid #EEEEEE;
 }
 
+.tweet-wrapper-comment {
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 63px;
+  border-bottom: solid #EEEEEE;
+}
+
 .author-info {
   display: flex;
   align-items: center;
