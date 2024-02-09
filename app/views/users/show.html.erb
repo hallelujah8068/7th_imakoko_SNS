@@ -9,19 +9,19 @@
     </div>
     <div class="thumbnail_area">
       <% if @user && @user.user_icon.attached? %>
-        <%= image_tag @user.user_icon %>
+        <%= image_tag @user.user_icon, class: "thumbnail-icon"  %>
       <% else %>
-        <%= image_tag('prum.png') %>
+        <%= image_tag('prum.png', class: "thumbnail-icon") %>
       <% end %>
       <div class ="edit_button">
       <% if @user.id.to_s == current_user.id.to_s %>
         <%= button_to 'プロフィールを編集', '#', method: :get, class: 'profile_edit_button' %>
       <% else %>  
       <% if current_user.following?(@user) %>
-      <%= render 'users/follow_madal'%>
-    <% else %>
-      <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
-    <% end %>
+        <%= render 'users/follow_madal'%>
+      <% else %>
+        <%= button_to 'フォロー', follow_user_path(@user), method: :post, class: 'follow-button' %>
+      <% end %>
       <% end %>
       </div>
     </div>
