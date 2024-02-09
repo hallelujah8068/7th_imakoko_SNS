@@ -32,7 +32,7 @@
      <div class="follow_area">
      <div class="follow-list flexbox" id="following-list">
        <ul>
-         <% @following_users.each do |following_user| %>
+         <% @followed_user.each do |following_user| %>
            <div class="flexbox followings_user">
              <div class="follow-date-icon">
                <% if following_user && following_user.user_icon.attached? %>
@@ -47,7 +47,15 @@
                <li class="following-user-name">@<%= following_user.user_name %></li>
              </div>
 
-             <button class="followings-follow-button">フォロー中</button>
+             <% if @following_users.include?(following_user) %>
+             <div class="unfollow-btn-container">
+               <%= button_to "フォロー中", unfollow_user_path(following_user), method: :delete, class: "unfollow-btn text-center" %>
+             </div>
+           <% else %>
+             <div class="follow-btn-container">
+               <%= button_to "フォロー", follow_user_path(following_user), method: :post, class: "follow-btn text-center" %>
+             </div>
+           <% end %>
 
            </div>
          <% end %>
