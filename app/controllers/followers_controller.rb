@@ -4,7 +4,7 @@ class FollowersController < ApplicationController
   def index
     @user = User.find(params[:id])
     @followers = @user.followers
-    @following = @user.following
+    @following = current_user.following
     @post_new =Post.new
   end
 

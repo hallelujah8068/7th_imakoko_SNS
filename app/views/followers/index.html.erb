@@ -32,15 +32,18 @@
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
         </div>
-        <% if @following.include?(follower) %>
-          <div class="unfollow-btn-container">
-            <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
-          </div>
+        <% unless current_user == follower %>
+          <% if @following.include?(follower) %>
+            <di class="unfollow-btn-container">
+              <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
+          </di  v>
         <% else %>
           <div class="follow-btn-container">
             <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
           </div>
         <% end %>
+      <% end %>
+
       </div>
     <% end %>
   </div>
