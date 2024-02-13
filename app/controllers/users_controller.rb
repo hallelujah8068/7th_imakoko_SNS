@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # サイドバーからのツイート機能
     @post_new =Post.new
-    @posts = @user.posts
+    @posts = @user.posts.reverse
     @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse
   end
