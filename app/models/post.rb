@@ -3,6 +3,14 @@ class Post < ApplicationRecord
   has_many :comments
   validates :body, presence: true
 
+  #いいねモデル
+  has_many :likes, dependent: :destroy
+
+  #「いいね」に、ログインしているユーザが含まれているか
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
   geocoded_by :ip_address,
     :latitude => :latitude, :longitude => :longitude
 

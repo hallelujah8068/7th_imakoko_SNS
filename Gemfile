@@ -84,7 +84,7 @@ group :test do
 end
 
 # FontAwesome 
-# gem 'font-awesome-sass', '~> 5.0'
+gem 'font-awesome-sass', '~> 5.0'
 
 #論理削除（フォロー解除）
 gem 'paranoia'

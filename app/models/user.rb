@@ -32,6 +32,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "following_id_id", dependent: :destroy
   has_many :followers, through: :passive_relationships
 
+  #いいねモデル
+  has_many :likes, dependent: :destroy
+
   def follow(user)
     active_relationships.create(following_id_id: user.id)
   end

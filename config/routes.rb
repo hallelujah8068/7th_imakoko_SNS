@@ -6,8 +6,15 @@ Rails.application.routes.draw do
   root to: "posts#top"
   
   get 'comments', to: 'comments#index'
-  resources :comments
-  resources :posts
+
+  resources :comments do
+    resources :likes, only: [:create, :destroy] # コメントに関連付けられたいいね用のルートを追加
+  end
+  
+  resources :posts do
+    resources :likes, only: [:create, :destroy] # 投稿に関連付けられたいいね用のルートを追加
+  end
+
   resources :users, only: [:show] do
     member do
       post 'follow'
