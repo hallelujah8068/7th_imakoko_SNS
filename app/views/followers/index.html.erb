@@ -15,9 +15,9 @@
       <div class="followers-tab">
         <p class="followers-tab-text">フォロワー</p>
       </div>
-    <div class="followings_tab">
-      <%= link_to "フォロー中", follows_user_path(@user), class: "followings-tab-text" %>
-    </div>
+      <div class="followings_tab">
+        <%= link_to "フォロー中", follows_user_path(@user), class: "followings-tab-text" %>
+      </div>
     </div>
   </div>
   <div class="followers-info">
@@ -26,21 +26,21 @@
         <% if follower.user_icon.present? %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
         <% else %>
-        <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-      <% end %>
+          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+        <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
         </div>
-          <% if @following.include?(follower) %>
-            <div class="unfollow-btn-container">
-              <%= button_to "フォロー中", unfollow_user_path(follower), method: :delete, class: "unfollow-btn text-center" %>
-            </div>
-          <% else %>
-            <div class="follow-btn-container">
-              <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
-            </div>
-          <% end %>
+        <% if @following.include?(follower) %>
+          <div class="unfollow-btn-container">
+            <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
+          </div>
+        <% else %>
+          <div class="follow-btn-container">
+            <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -92,9 +92,6 @@
   };
 </script>
 
-
-<%# モーダル表示 %>
-<%= render 'posts/madal' %>
 
 <%# モーダル表示 %>
 <%= render 'posts/madal' %>
