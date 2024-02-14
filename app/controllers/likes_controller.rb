@@ -7,15 +7,21 @@ class LikesController < ApplicationController
         current_user.likes.create!(post: @post)
         redirect_to @post
       elsif params[:comment_id]
-        @comment = Comment.find_by(id: params[:comment_id])
+        @comment = Comment.find(params[:comment_id])
         current_user.likes.create(comment: @comment)
         redirect_to @comment.present? ? @comment.post : root_path
       end
     end
     
       def destroy
-        @like = Like.find(params[:id])
-        @like.destroy if @like.user == current_user
-        redirect_back fallback_location: root_path
+        if params[:post_id]
+          @like = Like.find_by(params[:post_id])
+          @like.destroy
+          redirect_back fallback_location: root_path
+        elsif params[:comment_id] && params[:id]
+          @like = Like.find_by(comment_id: params[:comment_id])
+          @like.destroy
+          redirect_back fallback_location: root_path
+        end
       end
   end

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :comments, class_name: 'Comment' # :class_nameオプションを追加
   validates :body, presence: true
 
   #いいねモデル

@@ -1,0 +1,14 @@
+<% if comment.liked_by?(current_user) %>
+  <p>
+    <%= link_to comment_like_path(comment), method: :delete, data: { "turbo-method": :delete } do %>
+
+      ♥<%= comment.likes.count %>
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to comment_likes_path(comment), data: { "turbo-method": :post} do %>
+      ♡<%= comment.likes.count %>
+    <% end %>
+  </p>
+<% end %>

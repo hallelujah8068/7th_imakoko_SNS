@@ -6,5 +6,10 @@ class Comment < ApplicationRecord
 
     #いいねモデル
     has_many :likes, dependent: :destroy
+
+    #「いいね」に、ログインしているユーザが含まれているか
+    def liked_by?(user)
+        likes.exists?(user_id: user.id)
+    end
      
 end

@@ -33,8 +33,10 @@
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
           <p class="comment-count"><%= @post.comments.count %></p>
-          <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
-          <p class="like-count">10</p>
+          
+          <!-- いいね -->
+          <%= render partial: 'likes/posts_btn' %>
+
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
       </div>
@@ -93,7 +95,9 @@
                   <% end %>
                   
                   <!-- いいね -->
-                  <%= render partial: 'likes/btn' %>
+                  <%= render partial: 'likes/comments_btn', locals: { comment: comment, likes: @likes } %>
+
+
                 </div>
               </td>
             </tr>
