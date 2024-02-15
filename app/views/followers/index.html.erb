@@ -26,20 +26,22 @@
         <% if follower.user_icon.present? %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
         <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+          <%= image_tag('prum.png', size: '48x48', class: 'follower-icon') %>
         <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
         </div>
-        <% if @following.include?(follower) %>
-          <div class="unfollow-btn-container">
-            <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
-          </div>
-        <% else %>
-          <div class="follow-btn-container">
-            <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
-          </div>
+        <% unless current_user == follower %>
+          <% if @following.include?(follower) %>
+            <div class="unfollow-btn-container">
+              <%= button_to "フォロー中", '#', method: :get, class: "unfollow-btn", id: "unfollow_modal_#{follower.id}" %>
+            </div>
+          <% else %>
+            <div class="follow-btn-container">
+              <%= button_to "フォロー", follow_user_path(follower), method: :post, class: "follow-btn text-center" %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
