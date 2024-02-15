@@ -35,7 +35,7 @@
           <p class="comment-count"><%= @post.comments.count %></p>
           
           <!-- いいね -->
-          <%= render partial: 'likes/posts_btn' %>
+          <%= render partial: 'likes/posts_btn', locals: { post: @post } %>
 
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
@@ -95,7 +95,7 @@
                   <% end %>
                   
                   <!-- いいね -->
-                  <%= render partial: 'likes/comments_btn', locals: { comment: comment, likes: @likes } %>
+                  <%= render partial: 'likes/comments_btn', locals: { comment: comment } %>
 
 
                 </div>

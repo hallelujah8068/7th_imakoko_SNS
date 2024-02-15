@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
       @posts = Post.all.order(created_at: :desc)
+      @like = Like.find_by(post_id: @posts.map(&:id))  # 投稿に関連付けられたいいねを取得
+      
       # ツイート作成
       @post_new =Post.new
       @user = @post_new.user
