@@ -120,6 +120,7 @@
 }
 
 .follow-btn-container {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: 16px;
   width: 90px;
@@ -145,6 +146,7 @@
 }
 
 .unfollow-btn-container {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: 16px;
   width: 90px;

@@ -3,9 +3,15 @@ class FollowsController < ApplicationController
   
     def index
       @user = User.find(params[:id])
-      @following_users = @user.followings
       @post_new =Post.new
+      #現在フォローしているユーザー取得
+      @following_users = @user.followings
+
+      #フォローしたことのある全てのユーザー取得
+      follow = Follow.with_deleted.where(follower_id_id: current_user.id)
+      followed_ids = follow.pluck(:following_id_id)
+      @followed_user = User.where(id: followed_ids)
+
     end
   
-    
   end
