@@ -153,6 +153,7 @@ li {
 .unfollow-button {
   border-radius: 30px;
   background-color: #ffffff;
+  color: black;
   width: 120%;
 }
 
