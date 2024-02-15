@@ -26,7 +26,7 @@
         <% if follower.user_icon.present? %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
         <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
+          <%= image_tag('prum.png', size: '48x48', class: 'follower-icon') %>
         <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
