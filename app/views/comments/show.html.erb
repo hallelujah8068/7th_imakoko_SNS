@@ -42,27 +42,28 @@
   </table>
 </div>
 </div>
-<%= form_with(model: Comment.new, local: true,class: "comment-form" ) do |form| %>
-<table>
-    <td class="submit_area">
-      <% if @user && @user.user_icon.attached? %>
-        <%= image_tag @user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-      <% else %>
-        <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-      <% end %>
-      <div class="inline-elements">
-        <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
-        <%= form.hidden_field :post_id, value: @comment.post_id %>
-        <%= form.hidden_field :parent_id, value: @comment.id %>
-        <%= form.hidden_field :user_id, value: @user.id %>
-      </div>
-      <div class="reply ">
-        <%= form.submit '返信', class: 'reply_button' %>
-      </div>
-    </td>
-</table>
-<% end %>
-
+<div class="comment-form">
+  <%= form_with(model: Comment.new, local: true ) do |form| %>
+    <div class="comment-form-wrapper">
+      <td class="submit_area">
+        <% if @user.user_icon.attached? %>
+          <%= image_tag @user.user_icon, class: "author-icon" %>
+         <% else %>
+          <%= image_tag 'prum.png', class: "author-icon" %>
+        <% end %>
+        <div class="inline-elements">
+          <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
+          <%= form.hidden_field :post_id, value: @comment.post_id %>
+          <%= form.hidden_field :parent_id, value: @comment.id %>
+          <%= form.hidden_field :user_id, value: @user.id %>
+        </div>
+        <div class="reply ">
+          <%= form.submit '返信', class: 'reply_button' %>
+        </div>
+      </td>
+    </div>
+  <% end %>
+</div>
 <div class="scroll">
   <% @comments.each do |comment| %>
     <div class="tweet-wrapper-comment" data-comment-id="<%= comment.id %>"> 
