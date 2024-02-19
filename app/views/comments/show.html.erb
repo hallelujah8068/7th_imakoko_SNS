@@ -65,53 +65,56 @@
 
 <div class="scroll">
   <% @comments.each do |comment| %>
-    <div class="post-container">
-    <div class="post-img">
-      <%= link_to user_path(comment.user.id) do %>
-        <% if comment.user && comment.user.user_icon.attached? %>
-          <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-        <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-        <% end %>
+    <div class="tweet-wrapper-comment" data-comment-id="<%= comment.id %>"> 
+      <%= link_to comment_path(comment.id), class: "tweet-link" do %>
+        <div class="author-info">
+          <% if comment.user.user_icon.attached? %>
+            <%= link_to user_path(comment.user.id) do %>
+              <%= image_tag comment.user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(comment.user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= comment.user.name %></p>
+          <p class="author-user_name"><%= "@" + comment.user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(comment.created_at) %></p>
+        </div>
       <% end %>
-      <table class="post-table">
-        <tbody>
-          <tr>
-            <td>
-              <span class="name"><%= comment.user.name %></span>
-              <span class="user_name">@<%= comment.user.user_name %></span>
-              <span class="timestamp"><%= time_ago_in_words(comment.created_at) %></span>
-            </td>
-          </tr>
-          <td>
-            <%= link_to comment.body%>
-          </td>
-          <tr>
-            <td>
-              <div class="posts_icon_area">
-                <%= link_to '#', class: 'comments_icon' do %>
-                  <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                  <span class="comment-count"><%= comment.replies.count %></span>
-                <% end %>
-                <%= link_to '#', class: 'nice_icon' do %>
-                  <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                <% end %>
-                  <%= link_to '#', class: 'destroy_icon' do %>
-                    <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                  <% end %>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="tweet-text">
+        <%= link_to comment.body, comment_path(comment.id), class: "tweet-link" %>
+      </div>
+      <div class="tweet-reaction">
+        <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+        <p class="comment-count"><%= comment.replies.count %></p>
+        <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+        <p class="like-count">10</p>
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      </div>
     </div>
   <% end %>
 </div>
 <table>
 </table>
-
-
 </div>
 
 
+
+<%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
+        var commentId = this.dataset.commentId;
+        window.location.href = "/comments/" + commentId;
+      });
+
+      wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var userId = this.closest(".tweet-wrapper-comment").dataset.userId;
+        window.location.href = "/users/" + userId;
+      });
+    });
+  });
+</script>
