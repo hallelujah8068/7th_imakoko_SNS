@@ -7,29 +7,26 @@
   <div class="fixed-area">
     <div class="parent-container">
       <div class="tweet-wrapper" > 
-          <div class="author-info">
-            <% if @post.user.user_icon.attached? %>
-              <%= link_to user_path(@post.user.id) do %>
-                <%= image_tag @post.user.user_icon, class: "author-icon" %>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(@post.user.id) do %>
-                <%= image_tag 'prum.png', class: "author-icon" %>
-              <% end %>
+        <div class="author-info">
+          <% if @post.user.user_icon.attached? %>
+            <%= link_to user_path(@post.user.id) do %>
+              <%= image_tag @post.user.user_icon, class: "author-icon" %>
             <% end %>
-            <p class="author-name"><%= @post.user.name %></p>
-            <p class="author-user_name"><%= "@" + @post.user.user_name %></p>
-            <p class="posted-at"><%= time_ago_in_words(@post.created_at) %></p>
-          </div>
-
+          <% else %>
+            <%= link_to user_path(@post.user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= @post.user.name %></p>
+          <p class="author-user_name"><%= "@" + @post.user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(@post.created_at) %></p>
+        </div>
         <div class="tweet-text">
           <%= link_to @post.body, post_path(@post.id), class: "tweet-link" %>
         </div>
-
         <div class="map-area">
           <%= image_tag @post.map_image_url, alt: 'Map Image', class: 'map-img' %>
         </div>
-
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
           <p class="comment-count"><%= @post.comments.count %></p>
