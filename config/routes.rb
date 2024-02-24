@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  
-  # 開発者によって選択されたルートへの変更を適用
-  # この例では、開発者が "posts#top" を選択
   root to: "posts#top"
-  
   get 'comments', to: 'comments#index'
-  get 'posts',to'posts#load_more_tweets'
+  get 'posts/load_more_tweets', to: 'posts#load_more_tweets'#100件のツイートを取得用
   resources :comments
   resources :posts
   resources :users, only: [:show] do
