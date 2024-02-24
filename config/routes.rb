@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "posts#top"
   
   get 'comments', to: 'comments#index'
+  get 'posts',to'posts#load_more_tweets'
   resources :comments
   resources :posts
   resources :users, only: [:show] do
