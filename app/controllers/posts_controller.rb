@@ -1,10 +1,18 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all.order(created_at: :desc).limit(30)
       # ツイート作成
       @post_new =Post.new
       @user = @post_new.user
+    end
+
+    #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
+    def load_more_tweets
+      offset = params[:offset].to_i
+      limit = 100
+      @posts = Post.order(created_at: :desc).limit(offset + limit) 
+      render :top
     end
 
     def show
