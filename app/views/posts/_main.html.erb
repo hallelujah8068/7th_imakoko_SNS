@@ -19,7 +19,7 @@
 
 <%# load_more_tweetsを呼び出す%>
 <div class="relord-tweets">
-  <%= button_to "100件のツイートを取得", { action: "load_more_tweets", offset: @posts.size },method: :get, remote: true %>
+  <%= button_to "100件のツイートを取得", { action: "load_more_tweets"},method: :get, remote: true %>
 </div>
 <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
   <% @posts.each do |post| %>
