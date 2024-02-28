@@ -75,7 +75,15 @@ li {
   color: black;
   white-space: nowrap;
   text-decoration: none;
+  position: relative;
+  top: -5px;
 }
+
+/* 設定アイコン */
+.icon-setthing {
+  margin-right: 20px;
+}
+
 
 /* ツイートボタン */
 .tweet-button {
