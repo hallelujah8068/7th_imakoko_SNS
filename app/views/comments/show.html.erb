@@ -1,5 +1,5 @@
 <div class="side_area">
-  <%= render 'users/sidebar' %>
+  <%= render 'posts/sidebar' %>
 </div>
 
 <div class="main_area">
@@ -42,7 +42,7 @@
       </table>
     </div>
   </div>
-  <div class="comment-form">     <%#コメント投稿エリア %>
+  <div class="comment-form">     <%#コメント表示エリア %>
     <%= form_with(model: Comment.new, local: true ) do |form| %>
       <div class="comment-form-wrapper">
         <td class="submit_area">
