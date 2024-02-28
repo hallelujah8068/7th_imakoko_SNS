@@ -27,10 +27,10 @@ before_action :authenticate_user!
   
       if @post.save
         @post.update(map_image_url: generate_map_image_url(@post.latitude, @post.longitude))
-        redirect_to root_path, notice: 'ツイートが投稿されました。'
+        redirect_to root_path
       else
-        flash.now[:alert] = 'ツイートの投稿に失敗しました。'
-        render 'top'
+        flash[:alert] = "ツイートの投稿に失敗しました"
+        redirect_to root_path
       end
     end
     private
