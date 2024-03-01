@@ -47,16 +47,18 @@
                <li class="following-user-name">@<%= following_user.user_name %></li>
              </div>
 
-             <% if current_user.following.include?(following_user) %>
-             <div class="unfollow-btn-container">
-               <%= button_to "フォロー中", unfollow_user_path(following_user), method: :delete, class: "unfollow-btn text-center",id:"unfollow_modal_#{following_user.id}" %>
-             </div>
-           <% else %>
-             <div class="follow-btn-container">
-               <%= button_to "フォロー", follow_user_path(following_user), method: :post, class: "follow-btn text-center" %>
-             </div>
-           <% end %>
-
+            <% unless current_user == following_user%>
+              <% if current_user.following.include?(following_user) %>
+                <div class="unfollow-btn-container">
+                <%= button_to "フォロー中", unfollow_user_path(following_user), method: :delete, class: "unfollow-btn text-center",id:"unfollow_modal_#{following_user.id}" %>
+                </div>
+              <% else %>
+                <div class="follow-btn-container">
+                <%= button_to "フォロー", follow_user_path(following_user), method: :post, class: "follow-btn text-center" %>
+              </div>
+              <% end %>
+            <% end %>
+            
            </div>
          <% end %>
        </ul>

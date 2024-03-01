@@ -293,9 +293,6 @@
   width: 100%;
   height: 64px;
   display: flex;
-  /* Flexbox を使用して要素を並べる */
-  justify-content: space-between;
-  /* 要素を左右に配置 */
   align-items: center;
 }
 
