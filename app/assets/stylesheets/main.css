@@ -177,3 +177,7 @@ input[type="submit"].top-tweet {
 .delete-img {
   margin-left: auto;
 }
+
+.rounded-image {
+  border-radius: 100%;
+}

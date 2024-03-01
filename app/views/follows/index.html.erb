@@ -30,13 +30,13 @@
      </div>
 
      <div class="follow_area">
-     <div class="follow-list flexbox" id="following-list">
+     <div class="follow-list" id="following-list">
        <ul>
          <% @followed_user.each do |following_user| %>
            <div class="flexbox followings_user">
              <div class="follow-date-icon">
                <% if following_user && following_user.user_icon.attached? %>
-                 <%= image_tag following_user.user_icon %>
+                 <%= image_tag following_user.user_icon, class: "rounded-image"%>
                <% else %>
                  <%= image_tag('prum.png') %>
                <% end %>
