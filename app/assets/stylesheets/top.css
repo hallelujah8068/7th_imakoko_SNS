@@ -227,3 +227,11 @@ li {
 .follow_follower_area {
   margin-top: 30px;
 }
+
+/* 100件を表示させるボタン */
+.load-more-tweets-button {
+  border: none;
+  background: none;
+  color: #707070;
+  size: 14px;
+}
