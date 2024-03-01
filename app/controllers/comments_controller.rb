@@ -11,8 +11,9 @@ class CommentsController < ApplicationController
     end
 
     def show
-      @user = User.find(current_user.id)
       @comment = Comment.find(params[:id])
+      @user = @comment.user
+      @user_current = User.find(current_user.id)
       @comments = @comment.replies.order(created_at: :desc)
     end
 
