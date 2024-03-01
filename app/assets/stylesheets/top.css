@@ -25,7 +25,7 @@ body {
 /* メインコンテンツ表示エリア */
 .main_area {
   width: 40%;
-  height: 100%;
+  height: max-content;
   margin-left: 30%;
   position: relative;
 }

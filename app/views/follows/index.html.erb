@@ -32,7 +32,7 @@
      <div class="follow_area">
      <div class="follow-list" id="following-list">
        <ul>
-         <% @followed_user.each do |following_user| %>
+         <% @followed_users.each do |following_user| %>
            <div class="flexbox followings_user">
              <div class="follow-date-icon">
                <% if following_user && following_user.user_icon.attached? %>
@@ -47,7 +47,7 @@
                <li class="following-user-name">@<%= following_user.user_name %></li>
              </div>
 
-             <% if @following_users.include?(following_user) %>
+             <% if current_user.following.include?(following_user) %>
              <div class="unfollow-btn-container">
                <%= button_to "フォロー中", unfollow_user_path(following_user), method: :delete, class: "unfollow-btn text-center",id:"unfollow_modal_#{following_user.id}" %>
              </div>
@@ -69,7 +69,7 @@
 <%= render 'posts/madal' %>
 
 
-<% @following_users.each do |following_user| %>
+<% @followed_users.each do |following_user| %>
   <div id="unfollowModal_<%= following_user.id %>" class="modal">
     <div class="modal-content">
       <p class="text-confirm"><%= "#{following_user.name} さんをフォロー解除しますか？" %></p>
@@ -82,7 +82,7 @@
 
 <script>
   // フォローボタンがクリックされたときにモーダルを表示
-  <% @following_users.each do |following_user| %>
+  <% @followed_users.each do |following_user| %>
     document.getElementById('unfollow_modal_<%= following_user.id %>').addEventListener('click', function(event) {
       event.preventDefault();
       document.getElementById('unfollowModal_<%= following_user.id %>').style.display = 'block';
