@@ -1,11 +1,22 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all.order(created_at: :desc).limit(30)
+      @@posts = Post.all.order(created_at: :desc).limit(30) #load_more_tweetsが呼び出されるたびにプラス100件表示させるためにクラス変数を作成
       # ツイート作成
       @post_new =Post.new
       @user = @post_new.user
     end
+
+    #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
+    def load_more_tweets
+      @posts = @@posts 
+      @@posts += Post.all.order(created_at: :desc).offset(@@posts.count).limit(100)
+      @post_new = Post.new
+      @user = @post_new.user
+      render :top
+    end
+    
 
     def show
       @post = Post.find(params[:id])
@@ -51,4 +62,4 @@ before_action :authenticate_user!
       url
     end
 end
-  
+
