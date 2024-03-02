@@ -3,25 +3,30 @@ class LikesController < ApplicationController
   
     def create
       if params[:post_id]
-        @post = Post.find(params[:post_id])
-        current_user.likes.create!(post: @post)
-        redirect_back fallback_location: root_path
-      elsif params[:comment_id]
-        @comment = Comment.find(params[:comment_id])
-        current_user.likes.create(comment: @comment)
-        redirect_to @comment.present? ? @comment.post : root_path
+        post = Post.find(params[:post_id])
+        like = current_user.likes.new(post_id: post.id)
+        like.save
+        render turbo_stream: turbo_stream.replace("post_#{post.id}-likes",partial: 'likes/likes_btn',locals: { post: post },)
+      else
+        comment = Comment.find(params[:comment_id])
+        like = current_user.likes.new(comment_id: comment.id)
+        like.save
+        render turbo_stream: turbo_stream.replace("comment_#{comment.id}-likes", partial: 'likes/comments_likes_btn', locals: { comment: comment })
       end
     end
     
-      def destroy
-        if params[:post_id]
-          @like = Like.find_by(user_id: current_user.id, post_id: params[:post_id], comment_id: nil)
-          @like.destroy
-          redirect_back fallback_location: root_path
-        elsif params[:comment_id] && params[:id]
-          @like = Like.find_by(comment_id: params[:comment_id])
-          @like.destroy
-          redirect_back fallback_location: root_path
-        end
+    def destroy
+      if params[:post_id]
+        post = Post.find(params[:post_id])
+        like = current_user.likes.find_by(post_id: post.id)
+        like.destroy
+        render turbo_stream: turbo_stream.replace("post_#{post.id}-likes",partial: 'likes/likes_btn',locals: { post: post },)
+      else
+        comment = Comment.find(params[:comment_id])
+        like = current_user.likes.find_by(comment_id: comment.id)
+        like.destroy
+        render turbo_stream: turbo_stream.replace("comment_#{comment.id}-likes", partial: 'likes/comments_likes_btn', locals: { comment: comment })
       end
+    end
+
   end

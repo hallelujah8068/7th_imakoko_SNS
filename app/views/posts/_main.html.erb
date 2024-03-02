@@ -52,9 +52,8 @@
       <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
       <p class="comment-count"><%= post.comments.count %></p>
       
-      <!--- いいね --->
-      <%= render partial: 'likes/posts_top_btn', locals: { post: post, like: @like } %>
-      
+      <!--- いいね   --->
+      <%= render partial: 'likes/likes_btn', locals: { post: post } %>
 
     </div>
   </div>
@@ -86,4 +85,5 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
+
 </script>

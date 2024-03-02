@@ -32,8 +32,7 @@
       <p class="comment-count"><%= post.comments.count %></p>
       
       <!-- いいね -->
-      <%= render partial: 'likes/users_btn', locals: { post: post } %>
-
+      <%= render partial: 'likes/likes_btn', locals: { post: post } %>
 
       <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
     </div>
