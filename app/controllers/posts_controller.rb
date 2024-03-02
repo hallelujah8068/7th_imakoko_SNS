@@ -1,17 +1,28 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
     def top
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all.order(created_at: :desc).limit(30)
+      @@posts = Post.all.order(created_at: :desc).limit(30) #load_more_tweetsが呼び出されるたびにプラス100件表示させるためにクラス変数を作成
       # ツイート作成
       @post_new =Post.new
       @user = @post_new.user
     end
 
+    #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
+    def load_more_tweets
+      @posts = @@posts 
+      @@posts += Post.all.order(created_at: :desc).offset(@@posts.count).limit(100)
+      @post_new = Post.new
+      @user = @post_new.user
+      render :top
+    end
+    
+
     def show
       @post = Post.find(params[:id])
       @post_new =Post.new
       @user = User.find(current_user.id)
-      @comment = @post.comments.order(created_at: :desc)
+      @comments = @post.comments.order(created_at: :desc)
       @users = current_user.following
     end
 
@@ -27,10 +38,10 @@ before_action :authenticate_user!
   
       if @post.save
         @post.update(map_image_url: generate_map_image_url(@post.latitude, @post.longitude))
-        redirect_to root_path, notice: 'ツイートが投稿されました。'
+        redirect_to root_path
       else
-        flash.now[:alert] = 'ツイートの投稿に失敗しました。'
-        render 'top'
+        flash[:alert] = "ツイートの投稿に失敗しました"
+        redirect_to root_path
       end
     end
     private
@@ -51,4 +62,4 @@ before_action :authenticate_user!
       url
     end
 end
-  
+

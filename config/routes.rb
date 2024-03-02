@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
-  # 開発者によって選択されたルートへの変更を適用
-  # この例では、開発者が "posts#top" を選択
   root to: "posts#top"
-  
   get 'comments', to: 'comments#index'
 
   resources :comments do
@@ -15,6 +11,13 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy] # 投稿に関連付けられたいいね用のルートを追加
   end
 
+  get 'posts/load_more_tweets', to: 'posts#load_more_tweets' # 100件のツイートを取得用
+  resources :comments
+  resources :posts do
+    collection do
+      get :load_more_tweets
+    end
+  end
   resources :users, only: [:show] do
     member do
       post 'follow'

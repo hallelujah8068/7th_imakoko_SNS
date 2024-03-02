@@ -1,97 +1,33 @@
 <div class="side_area">
-  <%= render 'users/sidebar' %>
+  <%= render 'posts/sidebar' %>
 </div>
 
 <div class="main_area">
-<div class="post-container">
-<div class="post-img">
-  <% if @comment.user && @comment.user.user_icon.attached? %>
-    <%= image_tag @comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-  <% else %>
-    <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-  <% end %>
-  <table class="post-table">
-    <tbody>
-      <tr>
-        <td>
-          <span class="name"><%= @comment.user.name %></span>
-          <span class="user_name">@<%= @comment.user.user_name %></span>
-          <span class="timestamp"><%= time_ago_in_words(@comment.created_at) %></span>
-        </td>
-      </tr>
-      <td>
-        <%= link_to @comment.body %>
-      </td>
-      <tr>
-        <td>
-          <div class="posts_icon_area">
-            <%= link_to '#', class: 'comments_icon' do %>
-              <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-              <span class="comment-count"><%= @comment.replies.count %></span>
-            <% end %>
-            <%= link_to '#', class: 'nice_icon' do %>
-              <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-            <% end %>
-              <%= link_to '#', class: 'destroy_icon' do %>
-                <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-              <% end %>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
-<%= form_with(model: Comment.new, local: true,class: "comment-form" ) do |form| %>
-<table>
-    <td class="submit_area">
-      <% if @user && @user.user_icon.attached? %>
-        <%= image_tag @user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
+  <div class="post-container">    <%#親コメント表示エリア %>
+    <div class="post-img">
+      <% if @comment.user && @comment.user.user_icon.attached? %>
+        <%= image_tag @comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
       <% else %>
         <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-      <% end %>
-      <div class="inline-elements">
-        <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
-        <%= form.hidden_field :post_id, value: @comment.post_id %>
-        <%= form.hidden_field :parent_id, value: @comment.id %>
-        <%= form.hidden_field :user_id, value: @user.id %>
-      </div>
-      <div class="reply ">
-        <%= form.submit '返信', class: 'reply_button' %>
-      </div>
-    </td>
-</table>
-<% end %>
-
-<div class="scroll">
-  <% @comments.each do |comment| %>
-    <div class="post-container">
-    <div class="post-img">
-      <%= link_to user_path(comment.user.id) do %>
-        <% if comment.user && comment.user.user_icon.attached? %>
-          <%= image_tag comment.user.user_icon.variant(resize: '48x48'), class: 'user-icon' %>
-        <% else %>
-          <%= image_tag('prum.png', size: '48x48', class: 'user-icon') %>
-        <% end %>
       <% end %>
       <table class="post-table">
         <tbody>
           <tr>
             <td>
-              <span class="name"><%= comment.user.name %></span>
-              <span class="user_name">@<%= comment.user.user_name %></span>
-              <span class="timestamp"><%= time_ago_in_words(comment.created_at) %></span>
+              <span class="name"><%= @comment.user.name %></span>
+              <span class="user_name">@<%= @comment.user.user_name %></span>
+              <span class="timestamp"><%= time_ago_in_words(@comment.created_at) %></span>
             </td>
           </tr>
           <td>
-            <%= link_to comment.body%>
+            <%= link_to @comment.body %>
           </td>
           <tr>
             <td>
               <div class="posts_icon_area">
                 <%= link_to '#', class: 'comments_icon' do %>
                   <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                  <span class="comment-count"><%= comment.replies.count %></span>
+                  <span class="comment-count"><%= @comment.replies.count %></span>
                 <% end %>
                 <%= link_to '#', class: 'nice_icon' do %>
                   <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
@@ -100,19 +36,88 @@
                     <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
                   <% end %>
                   <%= render "likes/btn" %>
+                <%= link_to '#', class: 'destroy_icon' do %>
+                  <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
+                <% end %>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    </div>
-  <% end %>
+  </div>
+  <div class="comment-form">     <%#コメント表示エリア %>
+    <%= form_with(model: Comment.new, local: true ) do |form| %>
+      <div class="comment-form-wrapper">
+        <td class="submit_area">
+          <% if @user.user_icon.attached? %>
+            <%= image_tag @user.user_icon, class: "author-icon" %>
+          <% else %>
+            <%= image_tag 'prum.png', class: "author-icon" %>
+          <% end %>
+          <div class="inline-elements">
+            <%= form.text_field :body, class: 'reply_body', placeholder: '返信をツイート' %>
+            <%= form.hidden_field :post_id, value: @comment.post_id %>
+            <%= form.hidden_field :parent_id, value: @comment.id %>
+            <%= form.hidden_field :user_id, value: @user.id %>
+          </div>
+          <div class="reply ">
+            <%= form.submit '返信', class: 'reply_button' %>
+          </div>
+        </td>
+      </div>
+    <% end %>
+  </div>
+  <div class="scroll">  <%#子コメント表示エリア %>
+    <% @comments.each do |comment| %>
+      <div class="tweet-wrapper-comment" data-comment-id="<%= comment.id %>"> 
+        <%= link_to comment_path(comment.id), class: "tweet-link" do %>
+          <div class="author-info">
+            <% if comment.user.user_icon.attached? %>
+              <%= link_to user_path(comment.user.id) do %>
+                <%= image_tag comment.user.user_icon, class: "author-icon" %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(comment.user.id) do %>
+                <%= image_tag 'prum.png', class: "author-icon" %>
+              <% end %>
+            <% end %>
+            <p class="author-name"><%= comment.user.name %></p>
+            <p class="author-user_name"><%= "@" + comment.user.user_name %></p>
+            <p class="posted-at"><%= time_ago_in_words(comment.created_at) %></p>
+          </div>
+        <% end %>
+        <div class="tweet-text">
+          <%= link_to comment.body, comment_path(comment.id), class: "tweet-link" %>
+        </div>
+        <div class="tweet-reaction">
+          <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+          <p class="comment-count"><%= comment.replies.count %></p>
+          <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
+          <p class="like-count">10</p>
+          <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-<table>
-</table>
 
 
-</div>
 
+<%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
+        var commentId = this.dataset.commentId;
+        window.location.href = "/comments/" + commentId;
+      });
 
+      wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var userId = this.closest(".tweet-wrapper-comment").dataset.userId;
+        window.location.href = "/users/" + userId;
+      });
+    });
+  });
+</script>

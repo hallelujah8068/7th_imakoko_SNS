@@ -75,7 +75,15 @@ li {
   color: black;
   white-space: nowrap;
   text-decoration: none;
+  position: relative;
+  top: -5px;
 }
+
+/* 設定アイコン */
+.icon-setthing {
+  margin-right: 20px;
+}
+
 
 /* ツイートボタン */
 .tweet-button {
@@ -153,7 +161,8 @@ li {
 .unfollow-button {
   border-radius: 30px;
   background-color: #ffffff;
-  width: 120%;
+  color: black;
+  width: 100px;
 }
 
 /* プロフィールエリアの画像 */
@@ -217,4 +226,12 @@ li {
 /* フォロワー　フォロー表示エリア */
 .follow_follower_area {
   margin-top: 30px;
+}
+
+/* 100件を表示させるボタン */
+.load-more-tweets-button {
+  border: none;
+  background: none;
+  color: #707070;
+  size: 14px;
 }

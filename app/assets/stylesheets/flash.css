@@ -1,0 +1,6 @@
+.flash-message.alert {
+    background-color: #ffd4d1;
+    color: #930403;
+    border: solid 1px #930403;
+    text-align: center;
+}
