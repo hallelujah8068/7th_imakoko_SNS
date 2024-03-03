@@ -50,7 +50,7 @@
     </div>
   </div>
   <%# フォローボタンがある時とない時で高さ調整%>
-  <div class="post_area" style="<% if @user.id.to_s != current_user.id.to_s %> margin-top: 420px; <% else %> margin-top: 380px; <% end %>">
+  <div class="post_area" style="<% if @user.id.to_s != current_user.id.to_s %> margin-top: 415px; <% else %> margin-top: 380px; <% end %>">
       <%= render 'posts/index' %>
   </div>
 </div>
