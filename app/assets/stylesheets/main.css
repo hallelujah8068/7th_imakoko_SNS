@@ -87,7 +87,7 @@ input[type="submit"].top-tweet {
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 63px;
-  border-bottom: solid #EEEEEE;
+  border: solid #EEEEEE;
 }
 
 .tweet-wrapper-comment {
