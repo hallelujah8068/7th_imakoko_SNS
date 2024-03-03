@@ -21,7 +21,6 @@
 
 .top-title {
   padding-top: 12px;
-  margin-bottom: 20px;
   color: #0E1838;
   font-family: Hiragino Sans;
   font-size: 20px;
@@ -30,6 +29,11 @@
   line-height: normal;
   padding-left: 18px;
 }
+
+.top-flash-area {
+  height: 20px;
+}
+
 
 .author-icon {
   width: 48px;
