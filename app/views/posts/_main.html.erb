@@ -1,6 +1,11 @@
 <div class="main-container">
   <div class="top-area">
     <div class="top-title">ホーム</div>
+    <div class="top-flash-area"><%#ツイート失敗時のフラッシュメッセージ%>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+    </div>
     <div class="tweet-area">
     <% if current_user.user_icon.attached? %>
       <%= image_tag current_user.user_icon, class: "author-icon" %>
@@ -17,9 +22,10 @@
     </div>
   </div>
 
-  <div class="relord-tweets">
-    <p>100件のツイートを表示</p>
-  </div>
+<%# load_more_tweetsを呼び出す%>
+<div class="relord-tweets">
+  <%= button_to "100件のツイートを取得", { action: "load_more_tweets" }, method: :get, remote: true ,class: "load-more-tweets-button" %>
+</div>
 <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
   <% @posts.each do |post| %>
   <div class="tweet-wrapper" data-post-id="<%= post.id %>"> 
@@ -78,6 +84,19 @@
         var userId = this.closest(".tweet-wrapper").dataset.userId;
         window.location.href = "/users/" + userId;
       });
+    });
+  });
+</script>
+
+<%# フラッシュメッセージを5秒後に削除%>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var flashMessages = document.querySelectorAll('.flash-message');
+  
+    flashMessages.forEach(function(flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+      }, 5000);
     });
   });
 </script>

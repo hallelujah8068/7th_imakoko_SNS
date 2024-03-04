@@ -3,10 +3,6 @@
 </div>
 
 <div class="main_area">
-  <%#ツイート失敗時のフラッシュメッセージ%>
-  <% flash.each do |message_type, message| %>
-    <div class="flash-message <%= message_type %>"><%= message %></div>
-  <% end %>
   <%= render 'posts/main' %>
 </div>
 
@@ -44,3 +40,4 @@
     }
   }
 </script>
+

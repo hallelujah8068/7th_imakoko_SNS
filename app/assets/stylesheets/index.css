@@ -1,9 +1,8 @@
 /* ユーザー投稿一覧表示エリア */
 .post_area {
     height: 100%;
-    width: 100%;
+    width: 99.5%;
     position: relative;
-    margin-top: 400px;
 }
 
 /* 単体の投稿表示エリア */
@@ -194,5 +193,5 @@ td.submit_area {
 
 .scroll-show-post {
     height: 100%;
-    margin-top: 396px;
+    margin-top: 408px;
 }
