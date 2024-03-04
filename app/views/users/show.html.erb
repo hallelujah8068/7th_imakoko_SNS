@@ -49,7 +49,8 @@
       <%= link_to "ツイートと返信", comments_path(user_id: @user),style: "color: #777777;", class: "reply_link #{current_page?(comments_path) ? 'active' : ''}", aria_current: "page" %>
     </div>
   </div>
-  <div class="post_area">
+  <%# フォローボタンがある時とない時で高さ調整%>
+  <div class="post_area" style="<% if @user.id.to_s != current_user.id.to_s %> margin-top: 425px; <% else %> margin-top: 400px; <% end %>">
       <%= render 'posts/index' %>
   </div>
 </div>
