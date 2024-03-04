@@ -33,10 +33,14 @@ class CommentsController < ApplicationController
           redirect_to post_path(@comment.post_id)
         end
       else
-        Rails.logger.error("Failed to save comment: #{@comment.errors.full_messages}")
-        redirect_to root_path
+        if @comment.parent
+          flash[:alert] = "返信の投稿に失敗しました"
+          redirect_to comment_path(@comment.parent.id)
+        else
+          flash[:alert] = "返信の投稿に失敗しました"
+          redirect_to post_path(@comment.post_id)
+        end
       end
-
     end
 
     private

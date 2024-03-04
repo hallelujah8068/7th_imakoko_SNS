@@ -4,6 +4,11 @@
 
 <div class="main_area">
   <div class="post-container">    <%#親コメント表示エリア %>
+    <div class="top-flash-area">  <%#返信失敗時のフラッシュメッセージ%>
+      <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>  
     <div class="post-img">
       <% if @user.user_icon.attached? %>
         <%= image_tag @user.user_icon, class: "author-icon" %>
@@ -43,7 +48,7 @@
     </div>
   </div>
   <div class="comment-form">     <%#コメント表示エリア %>
-    <%= form_with(model: Comment.new, local: true ) do |form| %>
+  <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
       <div class="comment-form-wrapper">
         <td class="submit_area">
           <% if @user_current.user_icon.attached? %>
@@ -114,6 +119,19 @@
         var userId = this.closest(".tweet-wrapper-comment").dataset.userId;
         window.location.href = "/users/" + userId;
       });
+    });
+  });
+</script>
+
+<%# フラッシュメッセージを5秒後に削除%>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var flashMessages = document.querySelectorAll('.flash-message');
+  
+    flashMessages.forEach(function(flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+      }, 5000);
     });
   });
 </script>
