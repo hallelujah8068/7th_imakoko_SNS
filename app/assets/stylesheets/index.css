@@ -1,7 +1,7 @@
 /* ユーザー投稿一覧表示エリア */
 .post_area {
     height: 100%;
-    width: 100%;
+    width: 99.5%;
     position: relative;
 }
 
