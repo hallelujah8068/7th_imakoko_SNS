@@ -1,4 +1,6 @@
 .flash-message.alert {
+    height: 20px;
+    font-size: 12px;
     background-color: #ffd4d1;
     color: #930403;
     border: solid 1px #930403;
