@@ -180,9 +180,9 @@ hr {
 }
 
 .notice {
-  background-color: #ffd4d1;
-  color: #930403;
-  border: solid 1px #930403;
+  background-color: rgba(197, 242, 200, 0.988);
+  color: rgba(1, 73, 41, 0.944);
+  height: 100%;
 }
 
 @-webkit-keyframes fade-in-out {
