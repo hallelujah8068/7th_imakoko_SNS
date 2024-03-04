@@ -31,6 +31,32 @@ ja:
         login: "ユーザー名またはメールアドレス"
     models:
       user: ユーザー
+    errors:
+      messages:
+        already_confirmed: は既に登録済みです。ログインしてください。
+        confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
+        expired: の有効期限が切れました。新しくリクエストしてください。
+        not_found: は見つかりませんでした。
+        not_locked: はロックされていません。
+        not_saved:
+          one: エラーが発生したため %{resource} は保存されませんでした。
+          other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+      models:
+        user:
+          attributes:
+            name:
+              blank: "を入力してください"
+            user_name:
+              blank: "を入力してください"
+              taken: "はすでに使用されています"
+              invalid: "は英数字とアンダースコアのみ使用できます"
+            email:
+              blank: "を入力してください"
+              invalid: "が無効です"
+              taken: "は登録済みのアドレスです。"
+            password:
+              blank: "を入力してください"
+              too_short: "は%{count}文字以上で入力してください"
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -135,13 +161,28 @@ ja:
       send_instructions: アカウントのロック解除方法を数分以内にメールでご連絡します。
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
-  errors:
-    messages:
-      already_confirmed: は既に登録済みです。ログインしてください。
-      confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
-      expired: の有効期限が切れました。新しくリクエストしてください。
-      not_found: は見つかりませんでした。
-      not_locked: はロックされていません。
-      not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+    errors:
+      messages:
+        already_confirmed: は既に登録済みです。ログインしてください。
+        confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
+        expired: の有効期限が切れました。新しくリクエストしてください。
+        not_found: は見つかりませんでした。
+        not_locked: はロックされていません。
+        not_saved:
+          one: エラーが発生したため %{resource} は保存されませんでした。
+          other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+      models:
+        user:
+          attributes:
+            name:
+              blank: "フルネームを入力してください"
+            user_name:
+              blank: "ユーザーネームを入力してください"
+              taken: "ユーザーネームはすでに使用されています"
+              invalid: "ユーザーネームは英数字とアンダースコアのみ使用できます"
+            email:
+              blank: "メールアドレスを入力してください"
+              invalid: "メールアドレスが無効です"
+            password:
+              blank: "パスワードを入力してください"
+              too_short: "パスワードは%{count}文字以上で入力してください"

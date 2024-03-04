@@ -6,3 +6,12 @@
     border: solid 1px #930403;
     text-align: center;
 }
+
+.flash-message.notice {
+    height: 20px;
+    font-size: 12px;
+    background-color: rgba(197, 242, 200, 0.988);
+    color: rgba(1, 73, 41, 0.944);
+    border: solid 1px #03934d;
+    text-align: center;
+}
