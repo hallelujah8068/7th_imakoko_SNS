@@ -193,5 +193,5 @@ td.submit_area {
 
 .scroll-show-post {
     height: 100%;
-    margin-top: 408px;
+    overflow-y: auto;
 }
