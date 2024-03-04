@@ -6,6 +6,11 @@
 <div class="main_area">
   <div class="fixed-area">
     <div class="parent-container">
+      <div class="top-flash-area"><%#返信失敗時のフラッシュメッセージ%>
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
       <div class="tweet-wrapper" > 
         <div class="author-info">
           <% if @post.user.user_icon.attached? %>
@@ -37,7 +42,7 @@
       </div>
     </div>
     <div class="comment-form">
-      <%= form_with(model: Comment.new, local: true ) do |form| %>
+    <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
         <div class="comment-form-wrapper">
             <td class="submit_area">
               <% if @user.user_icon.attached? %>
@@ -136,6 +141,19 @@
   </div>
   </div>
 </div>
+
+<%# フラッシュメッセージを5秒後に削除%>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var flashMessages = document.querySelectorAll('.flash-message');
+  
+    flashMessages.forEach(function(flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+      }, 5000);
+    });
+  });
+</script>
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
