@@ -29,13 +29,7 @@
                   <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
                   <span class="comment-count"><%= @comment.replies.count %></span>
                 <% end %>
-                <%= link_to '#', class: 'nice_icon' do %>
-                  <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                <% end %>
-                  <%= link_to '#', class: 'destroy_icon' do %>
-                    <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                  <% end %>
-                  <%= render "likes/btn" %>
+                <%= render partial: 'likes/comments_likes_btn', locals: { comment: @comment } %>
                 <%= link_to '#', class: 'destroy_icon' do %>
                   <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
                 <% end %>
@@ -93,8 +87,7 @@
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
           <p class="comment-count"><%= comment.replies.count %></p>
-          <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
-          <p class="like-count">10</p>
+          <%= render partial: 'likes/comments_likes_btn', locals: { comment: comment } %>
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
       </div>
@@ -106,12 +99,16 @@
 
 <%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
-      wrapper.addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
+    // コメント本文をクリックした場合の処理
+    wrapper.addEventListener("click", function(event) {
+      // クリックした要素がいいねボタンでない場合は、コメントの詳細ページにリダイレクト
+      if (!event.target.classList.contains("like-btn")) {
         var commentId = this.dataset.commentId;
         window.location.href = "/comments/" + commentId;
-      });
+      }
+    });
 
       wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
         e.stopPropagation();

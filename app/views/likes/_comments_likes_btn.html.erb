@@ -2,13 +2,13 @@
   <% if comment.liked_by?(current_user) %>
     <% like = current_user.likes.find_by(comment_id: comment.id) %>
     <p>
-      <%= link_to comment_like_path(comment_id: comment.id, id: like.id), data: { "turbo-method": :delete }, method: :delete do %>
+      <%= link_to comment_like_path(comment_id: comment.id, id: like.id), data: { "turbo-method": :delete }, class: "like-btn" do %>
         ♥<%= comment.likes.count %>
       <% end %>
     </p>
   <% else %>
     <p>
-      <%= link_to comment_likes_path(comment), data: { "turbo-method": :post } do %>
+      <%= link_to comment_likes_path(comment), data: { "turbo-method": :post }, class: "like-btn" do %>
         ♡<%= comment.likes.count %>
       <% end %>
     </p>

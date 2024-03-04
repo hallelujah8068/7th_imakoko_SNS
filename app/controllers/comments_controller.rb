@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_cache_headers
   
     def index
       @user = User.find(params[:user_id])
@@ -44,5 +45,9 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body,:post_id, :parent_id, :user_id)
     end
 
+    def set_cache_headers
+      response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+    end
 
   end
