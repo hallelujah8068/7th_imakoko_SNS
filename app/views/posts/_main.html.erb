@@ -57,10 +57,8 @@
     <div class="tweet-reaction">
       <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
       <p class="comment-count"><%= post.comments.count %></p>
-      <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
-      <p class="like-count">10</p>
+      <%#エラー起きるため一旦保留 <%= render partial: 'likes/posts_btn'  %>
       <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
-      <%= render 'likes/btn', post: @post %>
     </div>
   </div>
 <% end %>
