@@ -1,8 +1,17 @@
 <div class="devise-wrapper">
+  <% if flash.present? %>
+      <div class="flash">
+        <% flash.each do |key, value| %>
+          <div class="<%= key %>">
+            <%= value %>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
 <div class="registrations-title"></div>
   <div class="login-wrapper">
     <div class="login-title">ログイン</div>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
       <div class="field">
         <%= f.label :login %>
         <%= f.text_field :login, autofocus: true, autocomplete: "email", placeholder: "ユーザー名またはメールアドレス" %>
