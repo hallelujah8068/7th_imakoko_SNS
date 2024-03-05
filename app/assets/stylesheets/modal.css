@@ -129,7 +129,7 @@
   line-height: normal;
 }
 
-#cancelUnfollow {
+.cancelUnfollow {
   display: flex;
   width: 239px;
   padding: 9px 37px;
