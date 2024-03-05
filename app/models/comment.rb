@@ -12,6 +12,5 @@ class Comment < ApplicationRecord
         likes.exists?(user_id: user.id)
     end
      
-end
     validates :body, presence: true, length: { minimum: 1 }
 end
