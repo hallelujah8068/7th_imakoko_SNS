@@ -4,19 +4,24 @@ before_action :set_cache_headers
 
     def top
       @posts = Post.all.order(created_at: :desc).limit(30)
-      @@posts = Post.all.order(created_at: :desc).limit(30) #load_more_tweetsが呼び出されるたびにプラス100件表示させるためにクラス変数を作成
       # ツイート作成
       @post_new =Post.new
       @user = @post_new.user
     end
 
     #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
-    def load_more_tweets
-      @posts = @@posts 
-      @@posts += Post.all.order(created_at: :desc).offset(@@posts.count).limit(100)
-      @post_new = Post.new
+    def load_more
+      @posts = Post.all.order(created_at: :desc).limit(100)
+      # ツイート作成
+      @post_new =Post.new
       @user = @post_new.user
-      render :top
+    end
+
+    # 全てのツイートを取得
+    def load_max 
+      @posts = Post.all.order(created_at: :desc)
+      @post_new =Post.new
+      @user = @post_new.user
     end
     
 

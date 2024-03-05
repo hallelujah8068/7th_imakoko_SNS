@@ -1,8 +1,15 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
+         :recoverable, :rememberable,
          authentication_keys: [:login] 
   
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
+  validates :name, presence: true
+  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
+  validates :password, presence: true, length: { minimum: 6 }
+
+
+
   attr_accessor :login
 
   def self.find_first_by_auth_conditions(warden_conditions)

@@ -50,13 +50,21 @@
     </div>
   </div>
   <%# フォローボタンがある時とない時で高さ調整%>
-  <div class="post_area" style="<% if @user.id.to_s != current_user.id.to_s %> margin-top: 415px; <% else %> margin-top: 380px; <% end %>">
+  <div class="post_area">
       <%= render 'comments/index' %>
   </div>
 </div>
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
+
+<%# userareaの高さを取得しマージン設定%>
+<script>
+  var targetHeight = document.querySelector('.user_area').clientHeight;
+  document.querySelector('.post_area').style.marginTop = targetHeight  + 'px';
+</script>
+
+
 
 
 

@@ -3,6 +3,7 @@
 </div>
 
 <div class="main_area">
+<<<<<<< HEAD
   <div class="post-container">    <%#親コメント表示エリア %>
     <div class="top-flash-area">  <%#返信失敗時のフラッシュメッセージ%>
       <% flash.each do |message_type, message| %>
@@ -43,10 +44,43 @@
           </tr>
         </tbody>
       </table>
+=======
+  <div class="fixed-area">
+    <div class="parent-container">
+      <div class="top-flash-area"><%#返信失敗時のフラッシュメッセージ%>
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
+      <div class="tweet-wrapper" > 
+        <div class="author-info">
+          <% if @user.user_icon.attached? %>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag @user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= @user.name %></p>
+          <p class="author-user_name"><%= "@" + @user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(@user.created_at) %></p>
+        </div>
+        <div class="tweet-text">
+          <%= link_to @comment.body, comment_path(@comment.id), class: "tweet-link" %>
+        </div>
+        <div class="tweet-reaction">
+          <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+          <p class="comment-count"><%= @comment.replies.count %></p>
+          <!-- いいね -->
+          <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+        </div>
+      </div>
+>>>>>>> 1175b02622bbcafa929470d7a77bfd8c6c0ea1e4
     </div>
-  </div>
-  <div class="comment-form">     <%#コメント表示エリア %>
-  <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
+    <div class="comment-form">     <%#コメントフォーム表示エリア %>
+     <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
       <div class="comment-form-wrapper">
         <td class="submit_area">
           <% if @user_current.user_icon.attached? %>
@@ -66,6 +100,7 @@
         </td>
       </div>
     <% end %>
+  </div>
   </div>
   <div class="scroll">  <%#子コメント表示エリア %>
     <% @comments.each do |comment| %>
@@ -98,8 +133,8 @@
       </div>
     <% end %>
   </div>
+  </div>
 </div>
-
 
 
 <%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
@@ -139,3 +174,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
+
+<%# fixed-areaの高さを取得しマージン設定%>
+<script>
+  var targetHeight = document.querySelector('.fixed-area').clientHeight;
+  document.querySelector('.scroll').style.marginTop = targetHeight  + 'px';
+</script>

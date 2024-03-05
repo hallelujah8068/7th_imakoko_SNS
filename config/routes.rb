@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/posts/load_more', to: 'posts#load_more', as: 'load_more'
+  get '/posts/load_max', to: 'posts#load_max', as: 'load_max'
   devise_for :users
   root to: "posts#top"
   get 'comments', to: 'comments#index'
@@ -11,13 +13,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy] # 投稿に関連付けられたいいね用のルートを追加
   end
 
-  get 'posts/load_more_tweets', to: 'posts#load_more_tweets' # 100件のツイートを取得用
   resources :comments
-  resources :posts do
-    collection do
-      get :load_more_tweets
-    end
-  end
+  resources :posts 
   resources :users, only: [:show] do
     member do
       post 'follow'
