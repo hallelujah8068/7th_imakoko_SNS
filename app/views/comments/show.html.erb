@@ -3,52 +3,41 @@
 </div>
 
 <div class="main_area">
-  <div class="post-container">    <%#親コメント表示エリア %>
-    <div class="top-flash-area">  <%#返信失敗時のフラッシュメッセージ%>
-      <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-  </div>  
-    <div class="post-img">
-      <% if @user.user_icon.attached? %>
-        <%= image_tag @user.user_icon, class: "author-icon" %>
-      <% else %>
-        <%= image_tag 'prum.png', class: "author-icon" %>
-      <% end %>
-      <table class="post-table">
-        <tbody>
-          <tr>
-            <td>
-              <span class="name"><%= @user.name %></span>
-              <span class="user_name">@<%= @user.user_name %></span>
-              <span class="timestamp"><%= time_ago_in_words(@user.created_at) %></span>
-            </td>
-          </tr>
-          <td>
-            <%= link_to @comment.body %>
-          </td>
-          <tr>
-            <td>
-              <div class="posts_icon_area">
-                <%= link_to '#', class: 'comments_icon' do %>
-                  <%= image_tag('comment.png', alt: 'Icon', size: '16x15') %>
-                  <span class="comment-count"><%= @comment.replies.count %></span>
-                <% end %>
-                <%= link_to '#', class: 'nice_icon' do %>
-                  <span class="icon"><%= image_tag('nice.png', alt: 'Icon') %></span>
-                <% end %>
-                  <%= link_to '#', class: 'destroy_icon' do %>
-                    <span class="icon"><%= image_tag('destroy.png', alt: 'Icon') %></span>
-                  <% end %>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="fixed-area">
+    <div class="parent-container">
+      <div class="top-flash-area"><%#返信失敗時のフラッシュメッセージ%>
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
+      <div class="tweet-wrapper" > 
+        <div class="author-info">
+          <% if @user.user_icon.attached? %>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag @user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= @user.name %></p>
+          <p class="author-user_name"><%= "@" + @user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(@user.created_at) %></p>
+        </div>
+        <div class="tweet-text">
+          <%= link_to @comment.body, comment_path(@comment.id), class: "tweet-link" %>
+        </div>
+        <div class="tweet-reaction">
+          <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+          <p class="comment-count"><%= @comment.replies.count %></p>
+          <!-- いいね -->
+          <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="comment-form">     <%#コメント表示エリア %>
-  <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
+    <div class="comment-form">     <%#コメントフォーム表示エリア %>
+     <%= form_with(model: Comment.new, local: true, data: { turbo: false }) do |form| %>
       <div class="comment-form-wrapper">
         <td class="submit_area">
           <% if @user_current.user_icon.attached? %>
@@ -68,6 +57,7 @@
         </td>
       </div>
     <% end %>
+  </div>
   </div>
   <div class="scroll">  <%#子コメント表示エリア %>
     <% @comments.each do |comment| %>
@@ -101,8 +91,8 @@
       </div>
     <% end %>
   </div>
+  </div>
 </div>
-
 
 
 <%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
@@ -138,3 +128,9 @@
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
+
+<%# fixed-areaの高さを取得しマージン設定%>
+<script>
+  var targetHeight = document.querySelector('.fixed-area').clientHeight;
+  document.querySelector('.scroll').style.marginTop = targetHeight  + 'px';
+</script>
