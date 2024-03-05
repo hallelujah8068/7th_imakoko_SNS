@@ -31,6 +31,7 @@
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
+          <p><%= follower.id %></p>
         </div>
         <% unless current_user == follower %>
           <% if @following.include?(follower) %>
@@ -48,13 +49,16 @@
   </div>
 </div>
 
+<%# モーダル表示 %>
+<%= render 'posts/madal' %>
+
 <% @followers.each do |follower| %>
   <div id="unfollowModal_<%= follower.id %>" class="modal">
     <div class="modal-content">
       <p class="text-confirm"><%= "#{follower.name} さんをフォロー解除しますか？" %></p>
       <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
-      <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'follow-madal-button', id: 'unfollowButton' %>
-      <button id="cancelUnfollow">キャンセル</button>
+      <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'follow-madal-button', id: "unfollowButton_#{follower.id}" %>
+      <button class="cancelUnfollow">キャンセル</button>
     </div>
   </div>
 <% end %>
@@ -62,27 +66,27 @@
 <script>
   // フォローボタンがクリックされたときにモーダルを表示
   <% @followers.each do |follower| %>
-    document.getElementById('unfollow_modal_<%= follower.id %>').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('unfollowModal_<%= follower.id %>').style.display = 'block';
-    });
+    <% if @following.include?(follower) %>
+      document.getElementById('unfollow_modal_<%= follower.id %>').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('unfollowModal_<%= follower.id %>').style.display = 'block';
+      });
+
+      // モーダル内の「フォロー解除」ボタンがクリックされたときの処理
+      document.getElementById('unfollowButton_<%= follower.id %>').addEventListener('click', function() {
+        // フォロー解除の実際の処理をここに追加する
+
+        // モーダルを閉じる
+        this.closest('.modal').style.display = 'none';
+      });
+    <% end %>
   <% end %>
 
-  // モーダル内の「フォロー解除」ボタンがクリックされたときの処理
-  document.querySelectorAll('.follow-madal-button').forEach(function(button) {
+  // モーダル内のキャンセルボタンがクリックされたときの処理
+  document.querySelectorAll('.cancelUnfollow').forEach(function(button) {
     button.addEventListener('click', function() {
-      // フォロー解除の実際の処理をここに追加する
-
       // モーダルを閉じる
       this.closest('.modal').style.display = 'none';
-    });
-  });
-
-  // モーダル内のキャンセルボタンがクリックされたときの処理
-  document.getElementById('cancelUnfollow').addEventListener('click', function() {
-    // モーダルを閉じる
-    document.querySelectorAll('.modal').forEach(function(modal) {
-      modal.style.display = 'none';
     });
   });
 
@@ -94,6 +98,3 @@
   };
 </script>
 
-
-<%# モーダル表示 %>
-<%= render 'posts/madal' %>
