@@ -109,6 +109,9 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
+    ffi (1.16.3)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -233,6 +236,8 @@ GEM
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -288,6 +293,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   factory_bot_rails
+  font-awesome-sass (~> 5.0)
   geocoder
   gmaps4rails
   importmap-rails

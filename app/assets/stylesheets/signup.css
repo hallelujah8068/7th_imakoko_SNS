@@ -143,3 +143,78 @@ hr {
   justify-content: center;
   margin-top: 54px;
 }
+
+#error_explanation {
+  width: 100%;
+}
+
+#error_explanation h2 {
+  font-size: 15px;
+}
+
+#error_explanation ul {
+  font-size: 12px;
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
+
+#error_explanation li {
+  width: 100%;
+}
+
+.flash {
+  width: 100%;
+  height: 30px;
+  z-index: 10001;
+  text-align: center;
+  animation: fade-in-out;
+  animation-duration: 5s;
+  visibility: hidden;
+}
+
+.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
+
+.notice {
+  background-color: rgba(197, 242, 200, 0.988);
+  color: rgba(1, 73, 41, 0.944);
+  height: 100%;
+}
+
+@-webkit-keyframes fade-in-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

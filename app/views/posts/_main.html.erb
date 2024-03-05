@@ -60,6 +60,7 @@
       <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
       <p class="like-count">10</p>
       <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      <%= render 'likes/btn', post: @post %>
     </div>
   </div>
 <% end %>

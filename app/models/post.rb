@@ -1,7 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :comments, class_name: 'Comment' # :class_nameオプションを追加
   validates :body, presence: true, length: { minimum: 1 }
+
+  #いいねモデル
+  has_many :likes, dependent: :destroy
+
+  #「いいね」に、ログインしているユーザが含まれているか
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 
   geocoded_by :ip_address,
     :latitude => :latitude, :longitude => :longitude
