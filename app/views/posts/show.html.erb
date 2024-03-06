@@ -11,6 +11,10 @@
           <div class="flash-message <%= message_type %>"><%= message %></div>
         <% end %>
       </div>
+      <div class="top-name-area">
+        <%= link_to "←", root_path, class: "return-button" %>
+        <div class="tweet-back">ツイート</div>
+      </div>
       <div class="tweet-wrapper" > 
         <div class="author-info">
           <% if @post.user.user_icon.attached? %>
