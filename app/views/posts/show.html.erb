@@ -39,10 +39,7 @@
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
           <p class="comment-count"><%= @post.comments.count %></p>
-          
-          <!-- いいね -->
-          <%= render partial: 'likes/posts_btn' %>
-
+          <%= render partial: 'likes/likes_btn', locals: { post: @post } %>
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
       </div>
@@ -94,8 +91,7 @@
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
           <p class="comment-count"><%= comment.replies.count %></p>
-          <%= image_tag('favorite.svg', alt: 'Icon', class: 'favorite-img') %>
-          <p class="like-count">10</p>
+          <%= render partial: 'likes/comments_likes_btn', locals: { comment: comment } %>
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
       </div>
@@ -107,12 +103,16 @@
 
 <%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
-      wrapper.addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
+    // コメント本文をクリックした場合の処理
+    wrapper.addEventListener("click", function(event) {
+      // クリックした要素がいいねボタンでない場合は、コメントの詳細ページにリダイレクト
+      if (!event.target.classList.contains("like-btn")) {
         var commentId = this.dataset.commentId;
         window.location.href = "/comments/" + commentId;
-      });
+      }
+    });
 
       wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
         e.stopPropagation();
@@ -122,7 +122,6 @@
     });
   });
 </script>
-   
 
 <%# サイドバーからのツイートモーダル投稿フォーム %>
 <div id="tweetModal" class="modal">
@@ -165,6 +164,7 @@
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
+
 
 
 <%# fixed-areaの高さを取得しマージン設定%>
