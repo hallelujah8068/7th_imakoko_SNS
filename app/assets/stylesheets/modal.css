@@ -77,6 +77,23 @@
   line-height: normal;
 }
 
+.cancelLogout {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #FFF;
+  border: 1px solid #707070;
+  color: #707070;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 #tweetModal {
   background: rgba(0, 0, 0, 0.50);
 }
@@ -130,6 +147,23 @@
 }
 
 .cancelUnfollow {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #FFF;
+  border: 1px solid #707070;
+  color: #707070;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#cancelUnfollow {
   display: flex;
   width: 239px;
   padding: 9px 37px;
