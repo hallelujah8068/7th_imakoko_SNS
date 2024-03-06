@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
+before_action :set_cache_headers
+
     def top
       @posts = Post.all.order(created_at: :desc).limit(30)
       # ツイート作成
@@ -65,6 +67,11 @@ before_action :authenticate_user!
       url += "&key=#{api_key}"
   
       url
+    end
+
+    def set_cache_headers
+      response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
     end
 end
 

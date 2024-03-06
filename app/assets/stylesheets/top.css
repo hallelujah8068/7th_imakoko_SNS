@@ -197,7 +197,7 @@ li {
 .thumbnail_area img {
   margin-left: 40px;
   margin-top: -90px;
-  border-radius: 50px;
+  border-radius: 50%;
 }
 
 /* 画像サイズ */

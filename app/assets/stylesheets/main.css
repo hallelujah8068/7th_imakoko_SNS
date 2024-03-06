@@ -36,8 +36,11 @@
 
 
 .author-icon {
+  min-width: 48px;
+  min-width: 48px;
   width: 48px;
   height: 48px;
+  border-radius: 50%;
 }
 
 .tweet-form {
@@ -87,7 +90,7 @@ input[type="submit"].top-tweet {
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 63px;
-  border: solid #EEEEEE;
+  border-bottom: solid #EEEEEE;
   border-top: none;
 }
 
@@ -95,7 +98,7 @@ input[type="submit"].top-tweet {
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 63px;
-  border: solid #EEE;
+  border-bottom: solid #EEE;
   border-top: none;
 }
 
@@ -187,4 +190,8 @@ input[type="submit"].top-tweet {
 
 .rounded-image {
   border-radius: 100%;
+}
+
+.like-btn {
+  font-size: 17px;
 }

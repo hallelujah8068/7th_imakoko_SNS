@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "post_#{post.id}-likes" do %>
+  <% if post.liked_by?(current_user) %>
+    <p>
+      <%= link_to post_like_path(post, id: post.likes.find_by(user_id: current_user.id).id), remote: true, data: { "turbo-method": :delete }, class: "like-btn" do %>
+        ♥<%= post.likes.count %>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_likes_path(post), remote: true, data: { "turbo-method": :post }, class: "like-btn" do %>
+        ♡<%= post.likes.count %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>

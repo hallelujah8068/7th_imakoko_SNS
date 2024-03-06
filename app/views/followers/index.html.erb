@@ -31,7 +31,6 @@
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
           <p class="follower-user_name"><%= "@" + follower.user_name %></p>
-          <p><%= follower.id %></p>
         </div>
         <% unless current_user == follower %>
           <% if @following.include?(follower) %>
