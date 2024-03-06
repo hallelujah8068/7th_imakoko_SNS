@@ -57,7 +57,20 @@
     <div class="tweet-reaction">
       <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
       <p class="comment-count"><%= post.comments.count %></p>
-      <%#エラー起きるため一旦保留 <%= render partial: 'likes/posts_btn'  %>
+      <!-- いいね -->
+      <% if post.liked_by?(current_user) %>
+      <p>
+        <%= link_to post_like_path(post), data: { "turbo-method": :delete} do %>
+         ♥<%= post.likes.count %>
+        <% end %>
+      </p>
+    <% else %>
+    <p>
+      <%= link_to post_likes_path(post), data: { "turbo-method": :post} do %>
+        ♡<%= post.likes.count %>
+      <% end %>
+    </p>
+  <% end %>
       <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
     </div>
   </div>
