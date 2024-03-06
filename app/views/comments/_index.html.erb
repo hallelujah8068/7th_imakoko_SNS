@@ -1,0 +1,107 @@
+<div class="scroll">
+<% @activities.each do |activity| %>
+  <% if activity.is_a?(Post) %>
+    <div class="tweet-wrapper" data-post-id="<%= activity.id %>"> 
+      <%= link_to post_path(activity.id), class: "tweet-link" do %>
+        <div class="author-info">
+          <% if activity.user.user_icon.attached? %>
+            <%= link_to user_path(activity.user.id) do %>
+              <%= image_tag activity.user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(activity.user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= activity.user.name %></p>
+          <p class="author-user_name"><%= "@" + activity.user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(activity.created_at) %></p>
+        </div>
+      <% end %>
+      <div class="tweet-text">
+        <%= link_to activity.body, post_path(activity.id), class: "tweet-link" %>
+      </div>
+      <div class="map-area">
+        <%= image_tag activity.map_image_url, alt: 'Map Image', class: 'map-img' if activity.latitude.present? && activity.longitude.present? %>
+      </div>
+      <div class="tweet-reaction">
+        <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+        <p class="comment-count"><%= activity.comments.count %></p>
+        <%= render partial: 'likes/likes_btn', locals: { post: activity } %>
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      </div>
+    </div>
+  <% elsif activity.is_a?(Comment) %>
+    <div class="tweet-wrapper-comment" data-comment-id="<%= activity.id %>"> 
+      <%= link_to comment_path(activity.id), class: "tweet-link" do %>
+        <div class="author-info">
+          <% if activity.user.user_icon.attached? %>
+            <%= link_to user_path(activity.user.id) do %>
+              <%= image_tag activity.user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(activity.user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
+          <% end %>
+          <p class="author-name"><%= activity.user.name %></p>
+          <p class="author-user_name"><%= "@" + activity.user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(activity.created_at) %></p>
+        </div>
+      <% end %>
+      <div class="tweet-text">
+        <%= link_to activity.body, comment_path(activity.id), class: "tweet-link" %>
+      </div>
+      <div class="tweet-reaction">
+        <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+        <p class="comment-count"><%= activity.replies.count %></p>
+        <%= render partial: 'likes/comments_likes_btn', locals: { comment: activity } %>
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+<%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
+         if (!event.target.classList.contains("like-btn")) {
+        var postId = this.dataset.postId;
+        window.location.href = "/posts/" + postId;
+      }
+      });
+      
+
+
+      wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var userId = this.closest(".tweet-wrapper").dataset.userId;
+        window.location.href = "/users/" + userId;
+      });
+    });
+  });
+</script>
+
+<%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper-comment").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
+        if (!event.target.classList.contains("like-btn")) {
+        var commentId = this.dataset.commentId;
+        window.location.href = "/comments/" + commentId;
+      }
+      });
+
+      wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var userId = this.closest(".tweet-wrapper-comment").dataset.userId;
+        window.location.href = "/users/" + userId;
+      });
+    });
+  });
+</script>
+

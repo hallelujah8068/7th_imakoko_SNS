@@ -25,7 +25,7 @@ body {
 /* メインコンテンツ表示エリア */
 .main_area {
   width: 40%;
-  height: 100%;
+  height: max-content;
   margin-left: 30%;
   position: relative;
 }
@@ -75,7 +75,15 @@ li {
   color: black;
   white-space: nowrap;
   text-decoration: none;
+  position: relative;
+  top: -5px;
 }
+
+/* 設定アイコン */
+.icon-setthing {
+  margin-right: 20px;
+}
+
 
 /* ツイートボタン */
 .tweet-button {
@@ -117,13 +125,21 @@ li {
 }
 
 /* user情報表示エリア */
+/* .user_area { */
+/* width: 100%; */
+/* height: auto; */
+/* position: sticky; */
+/* top: 0; */
+/* background-color: #ffffff; */
+/* z-index: 2; */
+/* } */
+
 .user_area {
-  width: 100%;
-  height: auto;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  z-index: 2;
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  border: solid #EEE;
+  width: 39.8%;
 }
 
 /*  画像表示エリア  */
@@ -135,10 +151,18 @@ li {
 /* フォローボタン */
 
 .follow-button {
+
+  border-radius: 30px;
+  background-color: black;
+  color: #fff;
+  width: 100px;
+}
+
+.unfollow-button {
   border-radius: 30px;
   background-color: #ffffff;
-  width: 120%;
-
+  color: black;
+  width: 100px;
 }
 
 /* プロフィールエリアの画像 */
@@ -169,10 +193,17 @@ li {
 }
 
 
-/* サムネイル画像 */
+/* サムネイル画像位置調整 */
 .thumbnail_area img {
   margin-left: 40px;
-  margin-top: -20px;
+  margin-top: -90px;
+  border-radius: 50%;
+}
+
+/* 画像サイズ */
+.thumbnail-icon {
+  width: 120px;
+  height: 120px;
 }
 
 /* 編集ボタン表示エリア */
@@ -195,4 +226,12 @@ li {
 /* フォロワー　フォロー表示エリア */
 .follow_follower_area {
   margin-top: 30px;
+}
+
+/* 100件を表示させるボタン */
+.load-more-tweets-button {
+  border: none;
+  background: none;
+  color: #707070;
+  size: 14px;
 }

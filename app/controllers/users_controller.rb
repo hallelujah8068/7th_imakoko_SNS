@@ -13,20 +13,28 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
-    @posts = @user.posts
+    # サイドバーからのツイート機能
+    @post_new =Post.new
+    @posts = @user.posts.reverse
     @comments = @user.comments
     @activities = (@posts + @comments).sort_by(&:created_at).reverse
   end
 
   def follow
     current_user.follow(@user_to_follow)
-    redirect_to user_path(@user_to_follow)
+    # redirect_to user_path(@user_to_follow) user_pathにリダイレクトすると、フォロワー一覧画面からフォローした際に画面が遷移してしまうため元の画面に戻すように変更
+    redirect_back(fallback_location: user_path(@user_to_follow))
   end
 
   def unfollow
     current_user.unfollow(@user_to_follow)
-    redirect_to user_path(@user_to_follow)
+
+    # フォローを解除したユーザーのフォロー関係を取得する
+    @followed_user = Follow.with_deleted.find_by(following_id_id: @user_to_follow.id, follower_id_id: current_user.id)
+    session[:followed_user_id] = @followed_user.id
+
+    # redirect_to user_path(@user_to_follow)　上に同じ
+    redirect_back(fallback_location: user_path(@user_to_follow))
   end
 
 
@@ -36,14 +44,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, password_digest,:name,:user_name,:description)
   end
-
-
-
-
-
-
-
-
   
   def set_user_to_follow
     @user_to_follow = User.find(params[:id])

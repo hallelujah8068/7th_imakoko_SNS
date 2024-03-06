@@ -1,5 +1,5 @@
 .followers-wrapper {
-  width: 50%;
+  width: 40%;
   height: 100vh;
   margin: 0 auto;
   border-left: 2px #EEE solid;
@@ -8,7 +8,7 @@
 
 .followers-container {
   position: fixed;
-  width: 50%;
+  width: 40%;
 }
 
 .followers-top {
@@ -120,6 +120,7 @@
 }
 
 .follow-btn-container {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: 16px;
   width: 90px;
@@ -139,9 +140,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  display: inline-block;
+  background: #0E1838;
+  border: none;
 }
 
 .unfollow-btn-container {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: 16px;
   width: 90px;
@@ -156,23 +161,22 @@
 .unfollow-btn {
   color: #0E1838;
   font-family: "Hiragino Sans";
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  background: #FFF;
+  border: none;
 }
 
 .text-center {
   text-align: center;
 }
 
-.follow_main {
-  padding-left: 40px;
-}
-
 .follow_user_area {
-  width: 601px;
-  height: 105px;
+  width: 100%;
+  min-height: 100vh;
+  border: solid 2px #EEEEEE
 }
 
 .back-to-user-button i {
@@ -203,10 +207,10 @@
 
 .toggle-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-bottom: 1px solid#EEE;
   padding-top: 11px;
-  width: 603px;
+  width: 100%;
 }
 
 
@@ -223,7 +227,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-right: 130px;
+  /* padding-right: 130px; */
   text-decoration: none;
   position: relative;
 }
@@ -244,7 +248,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-left: 130px;
+  /* padding-left: 130px; */
 }
 
 .follow_area {
@@ -281,13 +285,15 @@
   flex-direction: row;
 }
 
+.follow-list {
+  width: 100%;
+}
+
 .followings_user {
-  width: 601px;
+  width: 100%;
   height: 64px;
   display: flex;
-  /* Flexbox を使用して要素を並べる */
-  justify-content: space-between;
-  /* 要素を左右に配置 */
+  align-items: center;
 }
 
 .follow-date-name {
@@ -318,4 +324,22 @@
   margin-right: 14px;
   margin-left: auto;
   /* 右側に寄せる */
+}
+
+.follow-madal-button {
+  display: flex;
+  width: 239px;
+  padding: 9px 37px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: #0E1838;
+  color: #FFF;
+  margin-bottom: 12px;
+  border: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }

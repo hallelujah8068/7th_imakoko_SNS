@@ -1,6 +1,6 @@
 .main-container {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   /* padding-left: 18px; */
   border: solid #EEE;
 }
@@ -21,7 +21,6 @@
 
 .top-title {
   padding-top: 12px;
-  margin-bottom: 20px;
   color: #0E1838;
   font-family: Hiragino Sans;
   font-size: 20px;
@@ -31,9 +30,17 @@
   padding-left: 18px;
 }
 
+.top-flash-area {
+  height: 20px;
+}
+
+
 .author-icon {
+  min-width: 48px;
+  min-width: 48px;
   width: 48px;
   height: 48px;
+  border-radius: 50%;
 }
 
 .tweet-form {
@@ -48,8 +55,9 @@ textarea#tweet {
   min-width: 100%;
   max-width: 100%;
   border: none;
-  outline: none; /* フォーカス時の青い縁を無効にする */
-  resize: none; 
+  outline: none;
+  /* フォーカス時の青い縁を無効にする */
+  resize: none;
 }
 
 input[type="submit"].top-tweet {
@@ -75,7 +83,7 @@ input[type="submit"].top-tweet {
   padding-top: 5px;
   padding-bottom: 5px;
   border-top: solid #EEEEEE;
-  border-bottom: solid #EEEEEE; 
+  border-bottom: solid #EEEEEE;
 }
 
 .tweet-wrapper {
@@ -83,6 +91,15 @@ input[type="submit"].top-tweet {
   padding-left: 12px;
   padding-right: 63px;
   border-bottom: solid #EEEEEE;
+  border-top: none;
+}
+
+.tweet-wrapper-comment {
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-right: 63px;
+  border-bottom: solid #EEE;
+  border-top: none;
 }
 
 .author-info {
@@ -128,6 +145,7 @@ input[type="submit"].top-tweet {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  overflow-wrap: break-word;
 }
 
 .map-area {
@@ -151,7 +169,7 @@ input[type="submit"].top-tweet {
   margin-left: 2px;
   margin-right: 34px;
   color: #0E1838;
-  font-size: 12px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -168,4 +186,12 @@ input[type="submit"].top-tweet {
 
 .delete-img {
   margin-left: auto;
+}
+
+.rounded-image {
+  border-radius: 100%;
+}
+
+.like-btn {
+  font-size: 17px;
 }

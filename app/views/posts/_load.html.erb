@@ -24,7 +24,7 @@
 
 <%# load_more_tweetsを呼び出す%>
 <div class="relord-tweets">
-  <%= link_to "100件のツイートを取得",load_more_path, class: "load-more-tweets-button",data: {"turbolinks" => false}  %>
+  <%= link_to "全てのツイートを取得",load_max_path, class: "load-more-tweets-button",data: {"turbolinks" => false}  %>
 </div>
 <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
   <% @posts.each do |post| %>
@@ -57,11 +57,6 @@
     <div class="tweet-reaction">
       <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
       <p class="comment-count"><%= post.comments.count %></p>
-      
-      <!--- いいね   --->
-      <%= render partial: 'likes/likes_btn', locals: { post: post } %>
-
-      <%#エラー起きるため一旦保留 <%= render partial: 'likes/posts_btn' %>  
       <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
     </div>
   </div>
@@ -75,16 +70,12 @@
 
 <%# data-post-idから投稿詳細のリンクを生成、またuserIdを取得しアイコンクリック時はユーザー詳細画面に遷移するよう制御 %>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll(".tweet-wrapper").forEach(function(wrapper) {
-    // ツイートラッパーのクリックイベント
-    wrapper.addEventListener("click", function(event) {
-      // クリックされた要素がいいねボタンでない場合のみ詳細ページにリダイレクト
-      if (!event.target.classList.contains("like-btn")) {
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".tweet-wrapper").forEach(function(wrapper) {
+      wrapper.addEventListener("click", function() {
         var postId = this.dataset.postId;
         window.location.href = "/posts/" + postId;
-      }
-    });
+      });
 
       wrapper.querySelector(".author-icon").addEventListener("click", function(e) {
         e.stopPropagation();
@@ -93,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
-
 </script>
 
 <%# フラッシュメッセージを5秒後に削除%>

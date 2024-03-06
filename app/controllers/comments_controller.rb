@@ -1,20 +1,20 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_cache_headers
   
     def index
-      
-      @posts = current_user.posts
-  
-     
-      @comments = current_user.comments
-      
-
+      @user = User.find(params[:user_id])
+      @posts = @user.posts.reverse
+      @comments = @user.comments
+      # サイドバーからのツイート用
+      @post_new =Post.new
       @activities = (@posts + @comments).sort_by(&:created_at).reverse
     end
 
     def show
-      @user = User.find(current_user.id)
       @comment = Comment.find(params[:id])
+      @user = @comment.user
+      @user_current = User.find(current_user.id)
       @comments = @comment.replies.order(created_at: :desc)
     end
 
@@ -34,10 +34,14 @@ class CommentsController < ApplicationController
           redirect_to post_path(@comment.post_id)
         end
       else
-        Rails.logger.error("Failed to save comment: #{@comment.errors.full_messages}")
-        redirect_to root_path
+        if @comment.parent
+          flash[:alert] = "返信の投稿に失敗しました"
+          redirect_to comment_path(@comment.parent.id)
+        else
+          flash[:alert] = "返信の投稿に失敗しました"
+          redirect_to post_path(@comment.post_id)
+        end
       end
-
     end
 
     private
@@ -46,5 +50,9 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body,:post_id, :parent_id, :user_id)
     end
 
+    def set_cache_headers
+      response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+    end
 
   end

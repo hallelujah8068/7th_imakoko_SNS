@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
+  get '/posts/load_more', to: 'posts#load_more', as: 'load_more'
+  get '/posts/load_max', to: 'posts#load_max', as: 'load_max'
   devise_for :users
-  
-  # 開発者によって選択されたルートへの変更を適用
-  # この例では、開発者が "posts#top" を選択
   root to: "posts#top"
-  get 'users', to: 'users#show'
-  
   get 'comments', to: 'comments#index'
+
+  resources :comments do
+    resources :likes, only: [:create, :destroy] # コメントに関連付けられたいいね用のルートを追加
+  end
+  
+  resources :posts do
+    resources :likes, only: [:create, :destroy] # 投稿に関連付けられたいいね用のルートを追加
+  end
+
   resources :comments
-  resources :posts
+  resources :posts 
   resources :users, only: [:show] do
     member do
       post 'follow'
@@ -18,4 +24,5 @@ Rails.application.routes.draw do
     end
     resources :follows, only: [:index], controller: 'follows'
   end
+  get 'users', to: 'users#show'
 end

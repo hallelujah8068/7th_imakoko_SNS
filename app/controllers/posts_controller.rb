@@ -1,15 +1,35 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
+before_action :set_cache_headers
+
     def top
-      @posts = Post.all.order(created_at: :desc)
-      @post =Post.new
-      @user = @post.user
+      @posts = Post.all.order(created_at: :desc).limit(30)
+      # ツイート作成
+      @post_new =Post.new
+      @user = @post_new.user
     end
+
+    #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
+    def load_more
+      @posts = Post.all.order(created_at: :desc).limit(100)
+      # ツイート作成
+      @post_new =Post.new
+      @user = @post_new.user
+    end
+
+    # 全てのツイートを取得
+    def load_max 
+      @posts = Post.all.order(created_at: :desc)
+      @post_new =Post.new
+      @user = @post_new.user
+    end
+    
 
     def show
       @post = Post.find(params[:id])
+      @post_new =Post.new
       @user = User.find(current_user.id)
-      @comment = @post.comments.order(created_at: :desc)
+      @comments = @post.comments.order(created_at: :desc)
       @users = current_user.following
     end
 
@@ -18,17 +38,17 @@ before_action :authenticate_user!
     def create
       @post = current_user.posts.build(post_params)
   
-      # フォームから送信された緯度・経度が空でない場合にはそれを使い、空の場合はIPアドレスから取得
-      if @post.latitude.blank? || @post.longitude.blank?
-        @post.geocode
-      end
+      # # フォームから送信された緯度・経度が空でない場合にはそれを使い、空の場合はIPアドレスから取得
+      # if @post.latitude.blank? || @post.longitude.blank?
+      #   @post.geocode
+      # end
   
       if @post.save
         @post.update(map_image_url: generate_map_image_url(@post.latitude, @post.longitude))
-        redirect_to root_path, notice: 'ツイートが投稿されました。'
+        redirect_to root_path
       else
-        flash.now[:alert] = 'ツイートの投稿に失敗しました。'
-        render 'top'
+        flash[:alert] = "ツイートの投稿に失敗しました"
+        redirect_to root_path
       end
     end
     private
@@ -48,5 +68,10 @@ before_action :authenticate_user!
   
       url
     end
+
+    def set_cache_headers
+      response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+    end
 end
-  
+
