@@ -142,6 +142,7 @@ input[type="submit"].top-tweet {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  overflow-wrap: break-word;
 }
 
 .map-area {
