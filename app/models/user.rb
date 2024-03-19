@@ -3,9 +3,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable,
          authentication_keys: [:login] 
   
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
-  validates :name, presence: true
-  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :name, presence: true, length: { in: 1..50 }
+  validates :user_name, presence: true, uniqueness: true, length: { in: 5..15 }, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
   validates :password, presence: true, length: { minimum: 6 }
 
 
