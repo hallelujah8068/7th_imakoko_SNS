@@ -185,6 +185,14 @@ hr {
   height: 100%;
 }
 
+.confirm-to-session {
+  text-align: left;
+}
+
+.session-link {
+  font-weight: bold;
+}
+
 @-webkit-keyframes fade-in-out {
   0% {
     visibility: visible;
