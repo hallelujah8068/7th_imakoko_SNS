@@ -71,6 +71,12 @@ input[type="submit"].top-tweet {
   margin-left: auto;
 }
 
+/* ボタン非活性時の色 */
+input[type="submit"].top-tweet:disabled {
+  background-color: #707070;
+  /* グレーなどの適切な色に変更 */
+}
+
 .relord-tweets {
   margin-top: 206px;
   color: #707070;
