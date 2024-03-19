@@ -26,3 +26,23 @@
 
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then(function(permissionStatus) {
+        if (permissionStatus.state === 'granted') {
+          // 位置情報の許可が得られている場合、ボタンを活性化する
+          document.querySelector(".tweet-button").disabled = false;
+        } else {
+          // 位置情報の許可が得られていない場合、ボタンを非活性化する
+          document.querySelector(".tweet-button").disabled = true;
+        }
+      });
+    } else {
+      console.error("navigator.permissions API is not supported by this browser.");
+    }
+  });
+
+</script>
+
+
