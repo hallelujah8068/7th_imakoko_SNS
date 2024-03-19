@@ -29,7 +29,7 @@
 
     <div class="tweet-reaction">
       <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
-      <p class="comment-count"><%= post.comments.where(parent_id: nil).count %>
+      <p class="comment-count"><%= post.comments.where(parent_id: nil).count %><%#孫コメントを表示させない %>
       
       <!-- いいね -->
       <%= render partial: 'likes/likes_btn', locals: { post: post } %>
