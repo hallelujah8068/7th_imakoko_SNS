@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy] # コメントに関連付けられたいいね用のルートを追加
   end
   
-  resources :posts do
+  resources :posts,only: [:index, :show, :edit, :create, :destroy, :update] do
     resources :likes, only: [:create, :destroy] # 投稿に関連付けられたいいね用のルートを追加
   end
 
