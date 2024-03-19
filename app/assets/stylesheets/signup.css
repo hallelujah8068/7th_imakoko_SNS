@@ -71,6 +71,7 @@ input {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  padding-left: 10px;
 }
 
 .field input::placeholder {
