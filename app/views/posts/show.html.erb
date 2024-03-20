@@ -38,7 +38,7 @@
         </div>
         <div class="tweet-reaction">
           <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
-          <p class="comment-count"><%= @post.comments.count %></p>
+          <p class="comment-count"><%= @post.comments.where(parent_id: nil).count %><%#孫コメントを表示させない %>
           <%= render partial: 'likes/likes_btn', locals: { post: @post } %>
           <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
         </div>
@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <%# モーダル表示%>
 <%= render 'posts/madal' %>
+
 
 
 <%# fixed-areaの高さを取得しマージン設定%>

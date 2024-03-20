@@ -29,7 +29,8 @@ before_action :set_cache_headers
       @post = Post.find(params[:id])
       @post_new =Post.new
       @user = User.find(current_user.id)
-      @comments = @post.comments.order(created_at: :desc)
+      # 孫コメントを表示させない
+      @comments = @post.comments.where(parent_id: nil).order(created_at: :desc)
       @users = current_user.following
     end
 
