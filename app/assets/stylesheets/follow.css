@@ -179,9 +179,10 @@
   border: solid 2px #EEEEEE
 }
 
-.back-to-user-button i {
-  margin-left: 18px;
-  /* 右側に5pxの余白を追加 */
+.back-to-user-button {
+  margin-top: 9px;
+  margin-left: 16px;
+  color: #777;
 }
 
 .follow_name {
