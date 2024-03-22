@@ -5,7 +5,7 @@
 <div class="followers-wrapper">
   <div class="followers-container">
     <div class="followers-top">
-      <%= link_to "←", :back, class: "return-button" %>
+      <%= link_to "←", user_path(@user), class: "return-button" %>
       <div class="user-info">
         <p class="followers-user-name"><%= @user.name %></p>
         <p class="followers-user-user_name"><%= "@" + @user.user_name %></p>
@@ -24,9 +24,13 @@
     <% @followers.each do |follower| %>
       <div class="follower-info">
         <% if follower.user_icon.present? %>
+        <%= link_to user_path(follower) do %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
+        <% end %>
         <% else %>
+        <%= link_to user_path(follower) do %>
           <%= image_tag('prum.png', size: '48x48', class: 'follower-icon') %>
+        <% end %>
         <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
