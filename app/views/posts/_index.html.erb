@@ -1,44 +1,48 @@
-
-  <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
+<% if @posts.present? %>
   <% @posts.each do |post| %>
-  <div class="tweet-wrapper" data-post-id="<%= post.id %>"> 
-    <%= link_to post_path(post.id), class: "tweet-link" do %>
-      <div class="author-info">
-        <% if post.user.user_icon.attached? %>
-          <%= link_to user_path(post.user.id) do %>
-            <%= image_tag post.user.user_icon, class: "author-icon" %>
+    <div class="tweet-wrapper" data-post-id="<%= post.id %>"> 
+      <%= link_to post_path(post.id), class: "tweet-link" do %>
+        <div class="author-info">
+          <% if post.user.user_icon.attached? %>
+            <%= link_to user_path(post.user.id) do %>
+              <%= image_tag post.user.user_icon, class: "author-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(post.user.id) do %>
+              <%= image_tag 'prum.png', class: "author-icon" %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to user_path(post.user.id) do %>
-            <%= image_tag 'prum.png', class: "author-icon" %>
-          <% end %>
-        <% end %>
-        <p class="author-name"><%= post.user.name %></p>
-        <p class="author-user_name"><%= "@" + post.user.user_name %></p>
-        <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
+          <p class="author-name"><%= post.user.name %></p>
+          <p class="author-user_name"><%= "@" + post.user.user_name %></p>
+          <p class="posted-at"><%= time_ago_in_words(post.created_at) %></p>
+        </div>
+      <% end %>
+
+      <div class="tweet-text">
+        <%= link_to post.body, post_path(post.id), class: "tweet-link" %>
       </div>
-    <% end %>
 
-    <div class="tweet-text">
-      <%= link_to post.body, post_path(post.id), class: "tweet-link" %>
+      <div class="map-area">
+        <%= image_tag post.map_image_url, alt: 'Map Image', class: 'map-img' if post.latitude.present? && post.longitude.present? %>
+      </div>
+
+      <div class="tweet-reaction">
+        <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
+        <p class="comment-count"><%= post.comments.where(parent_id: nil).count %><%#孫コメントを表示させない %>
+        
+        <!-- いいね -->
+        <%= render partial: 'likes/likes_btn', locals: { post: post } %>
+
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      </div>
     </div>
-
-    <div class="map-area">
-      <%= image_tag post.map_image_url, alt: 'Map Image', class: 'map-img' if post.latitude.present? && post.longitude.present? %>
-    </div>
-
-    <div class="tweet-reaction">
-      <%= image_tag('comment.svg', alt: 'Icon', class: 'comment-img') %>
-      <p class="comment-count"><%= post.comments.where(parent_id: nil).count %><%#孫コメントを表示させない %>
-      
-      <!-- いいね -->
-      <%= render partial: 'likes/likes_btn', locals: { post: post } %>
-
-      <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
-    </div>
+  <% end %>
+<% else %>
+  <div class="tweet-wrapper-noposts"> 
+    <p>投稿がありません。</p>
   </div>
 <% end %>
-</div>
+
 
 <%# モーダル記述ファイル %>
 <%= render 'posts/madal' %>
