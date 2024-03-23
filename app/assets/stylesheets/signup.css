@@ -71,6 +71,7 @@ input {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  padding-left: 10px;
 }
 
 .field input::placeholder {
@@ -183,6 +184,14 @@ hr {
   background-color: rgba(197, 242, 200, 0.988);
   color: rgba(1, 73, 41, 0.944);
   height: 100%;
+}
+
+.confirm-to-session {
+  text-align: left;
+}
+
+.session-link {
+  font-weight: bold;
 }
 
 @-webkit-keyframes fade-in-out {

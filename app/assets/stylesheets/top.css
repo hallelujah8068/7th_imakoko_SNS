@@ -151,6 +151,10 @@ li {
   width: 39.8%;
 }
 
+.name_area {
+  overflow-wrap: break-word;
+}
+
 /*  画像表示エリア  */
 .profile_area {
   width: 100%;

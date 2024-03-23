@@ -125,6 +125,8 @@ input[type="submit"].top-tweet:hover {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  max-width: 50%;
+  overflow: hidden;
 }
 
 .author-user_name {
@@ -135,6 +137,8 @@ input[type="submit"].top-tweet:hover {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  max-width: 20%;
+  overflow: hidden;
 }
 
 .posted-at {

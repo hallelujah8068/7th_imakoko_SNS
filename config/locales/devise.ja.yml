@@ -46,10 +46,14 @@ ja:
           attributes:
             name:
               blank: "を入力してください"
+              too_short: "は%{count}文字以上で入力してください"
+              too_long: "は%{count}文字以内で入力してください"
             user_name:
               blank: "を入力してください"
               taken: "はすでに使用されています"
               invalid: "は英数字とアンダースコアのみ使用できます"
+              too_short: "は%{count}文字以上で入力してください"
+              too_long: "は%{count}文字以内で入力してください"
             email:
               blank: "を入力してください"
               invalid: "が無効です"
