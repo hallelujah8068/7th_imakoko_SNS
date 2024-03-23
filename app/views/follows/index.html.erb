@@ -75,7 +75,7 @@
 <% @followed_users.each do |following_user| %>
   <div id="unfollowModal_<%= following_user.id %>" class="modal">
     <div class="modal-content">
-      <p class="text-confirm"><%= "#{following_user.name} さんをフォロー解除しますか？" %></p>
+      <p class="text-confirm"><%= "@#{following_user.user_name} さんをフォロー解除しますか？" %></p>
       <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
       <%= button_to 'フォロー解除', unfollow_user_path(following_user), method: :delete, class: 'follow-madal-button', id: "unfollowButton_#{following_user.id}" %>
       <button class="cancelUnfollow">キャンセル</button>
