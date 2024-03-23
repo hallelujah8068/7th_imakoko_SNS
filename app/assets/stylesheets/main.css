@@ -107,6 +107,8 @@ input[type="submit"].top-tweet:disabled {
   padding-right: 63px;
   border-bottom: solid #EEE;
   border-top: none;
+  border-right: solid #EEE;
+  border-left: solid #EEE;
 }
 
 .tweet-wrapper-noposts {
