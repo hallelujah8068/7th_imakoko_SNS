@@ -3,27 +3,23 @@ before_action :authenticate_user!
 before_action :set_cache_headers
 
     def top
-      @posts = Post.all.order(created_at: :desc).limit(30)
-      # ツイート作成
-      @post_new =Post.new
+      @posts = current_user.following_posts.order(created_at: :desc).limit(30)
+      @post_new = Post.new
       @user = @post_new.user
     end
 
-    #TOP画面で100件のツイートを取得を押すと以下アクションで変数を再設定
     def load_more
-      @posts = Post.all.order(created_at: :desc).limit(100)
-      # ツイート作成
-      @post_new =Post.new
+      @posts = current_user.following_posts.order(created_at: :desc).limit(100)
+      @post_new = Post.new
       @user = @post_new.user
     end
 
-    # 全てのツイートを取得
     def load_max 
-      @posts = Post.all.order(created_at: :desc)
-      @post_new =Post.new
+      @posts = current_user.following_posts.order(created_at: :desc)
+      @post_new = Post.new
       @user = @post_new.user
     end
-    
+
 
     def show
       @post = Post.find(params[:id])
