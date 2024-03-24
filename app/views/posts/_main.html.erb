@@ -61,7 +61,9 @@
       <!--- いいね   --->
       <%= render partial: 'likes/likes_btn', locals: { post: post } %>
 
-      <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      <% if current_user && post.user == current_user %>
+        <%= image_tag('delete.svg', alt: 'Icon', class: 'delete-img') %>
+      <% end %>
     </div>
   </div>
 <% end %>
