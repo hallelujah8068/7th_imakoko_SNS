@@ -60,7 +60,7 @@ class User < ApplicationRecord
 
   def validate_user_icon_size
     if user_icon.attached? && user_icon.blob.byte_size > 10.megabytes
-      errors.add(:user_icon, "には10MB未満の画像を選択してください")
+      errors.add(:user_icon, "には10MB以下の画像を選択してください")
     end
   end
 end
