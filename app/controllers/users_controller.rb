@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @post_new =Post.new
     @posts = @user.posts
     @comments = @user.comments
-    @activities = (@posts + @comments).sort_by(&:created_at).reverse
+    @activities = (@posts + @comments).sort_by(&:created_at)
   end
 
   def follow
