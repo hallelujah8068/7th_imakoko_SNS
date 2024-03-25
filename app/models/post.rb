@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, class_name: 'Comment' # :class_nameオプションを追加
-  validates :body, presence: true, length: { minimum: 1 }
+  validates :body, presence: true, length: { minimum: 1, maximum: 140 }
 
   #いいねモデル
   has_many :likes, dependent: :destroy

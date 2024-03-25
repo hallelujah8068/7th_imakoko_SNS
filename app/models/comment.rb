@@ -9,5 +9,5 @@ class Comment < ApplicationRecord
     def liked_by?(user)
         likes.exists?(user_id: user.id)
     end
-    validates :body, presence: true, length: { minimum: 1 }
+    validates :body, presence: true, length: { minimum: 1, maximum: 140 }
 end
