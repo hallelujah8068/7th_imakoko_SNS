@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true, length: { in: 5..15 }, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
   validates :password, presence: true, length: { minimum: 6 }
 
+  validate :validate_user_icon_size
 
 
   attr_accessor :login
@@ -54,5 +55,13 @@ class User < ApplicationRecord
   #ユーザーがドローしているユーザー
   def following?(user)
     followings.include?(user)
+  end
+
+  private
+
+  def validate_user_icon_size
+    if user_icon.attached? && user_icon.blob.byte_size > 10.megabytes
+      errors.add(:user_icon, "は10MB未満の画像を選択してください")
+    end
   end
 end
