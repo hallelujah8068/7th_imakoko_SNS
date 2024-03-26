@@ -11,10 +11,25 @@
 </div>
 
 
-<%# モーダル表示 %>
-<%= render 'posts/madal' %>
+
 
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then(function(permissionStatus) {
+        if (permissionStatus.state === 'granted') {
+          // 位置情報の許可が得られている場合、ボタンを活性化する
+          document.querySelector(".top-tweet").disabled = false;
+        } else {
+          // 位置情報の許可が得られていない場合、ボタンを非活性化する
+          document.querySelector(".top-tweet").disabled = true;
+        }
+      });
+    } else {
+      console.error("navigator.permissions API is not supported by this browser.");
+    }
+  });
+
   function updateLocation(event, formSelector) {
     event.preventDefault(); // フォームのデフォルトの動作を防ぐ
 
@@ -33,6 +48,8 @@
         },
         function(error) {
           console.error("Error getting geolocation:", error.message);
+          // 位置情報の取得に失敗した場合、ボタンを非活性にする
+          document.querySelector(".top-tweet").disabled = true;
         }
       );
     } else {

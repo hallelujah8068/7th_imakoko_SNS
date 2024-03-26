@@ -5,7 +5,7 @@
 <div class="followers-wrapper">
   <div class="followers-container">
     <div class="followers-top">
-      <%= link_to "←", :back, class: "return-button" %>
+      <%= link_to "←", user_path(@user), class: "return-button" %>
       <div class="user-info">
         <p class="followers-user-name"><%= @user.name %></p>
         <p class="followers-user-user_name"><%= "@" + @user.user_name %></p>
@@ -24,9 +24,13 @@
     <% @followers.each do |follower| %>
       <div class="follower-info">
         <% if follower.user_icon.present? %>
+        <%= link_to user_path(follower) do %>
           <%= image_tag follower.user_icon, alt: "User Icon", class: "follower-icon" %>
+        <% end %>
         <% else %>
+        <%= link_to user_path(follower) do %>
           <%= image_tag('prum.png', size: '48x48', class: 'follower-icon') %>
+        <% end %>
         <% end %>
         <div class="follower-names">
           <p class="follower-name"><%= follower.name %></p>
@@ -54,7 +58,7 @@
 <% @followers.each do |follower| %>
   <div id="unfollowModal_<%= follower.id %>" class="modal">
     <div class="modal-content">
-      <p class="text-confirm"><%= "#{follower.name} さんをフォロー解除しますか？" %></p>
+      <p class="text-confirm"><%= "＠#{follower.user_name} さんをフォロー解除しますか？" %></p>
       <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
       <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'follow-madal-button', id: "unfollowButton_#{follower.id}" %>
       <button class="cancelUnfollow">キャンセル</button>

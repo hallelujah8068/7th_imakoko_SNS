@@ -2,16 +2,18 @@
   width: 100%;
   /* height: 100%; */
   /* padding-left: 18px; */
-  border: solid #EEE;
+
 }
 
 .top-area {
   position: fixed;
+  top: 0;
   z-index: 1000;
   background: #fff;
-  border-bottom: solid #EEE;
   padding-bottom: 20px;
-  width: 39.8%;
+  width: 40%;
+  border-left: solid #EEE;
+  border-right: solid #EEE;
 }
 
 .tweet-area {
@@ -71,6 +73,16 @@ input[type="submit"].top-tweet {
   margin-left: auto;
 }
 
+/* ボタン非活性時の色 */
+input[type="submit"].top-tweet:disabled {
+  background-color: #707070;
+  /* グレーなどの適切な色に変更 */
+}
+
+input[type="submit"].top-tweet:hover {
+  cursor: pointer;
+}
+
 .relord-tweets {
   margin-top: 206px;
   color: #707070;
@@ -84,6 +96,8 @@ input[type="submit"].top-tweet {
   padding-bottom: 5px;
   border-top: solid #EEEEEE;
   border-bottom: solid #EEEEEE;
+  border-right: solid #EEEEEE;
+  border-left: solid #EEEEEE;
 }
 
 .tweet-wrapper {
@@ -92,6 +106,9 @@ input[type="submit"].top-tweet {
   padding-right: 63px;
   border-bottom: solid #EEEEEE;
   border-top: none;
+  border-right: solid #EEEEEE;
+  border-left: solid #EEEEEE;
+
 }
 
 .tweet-wrapper-comment {
@@ -100,7 +117,24 @@ input[type="submit"].top-tweet {
   padding-right: 63px;
   border-bottom: solid #EEE;
   border-top: none;
+  border-right: solid #EEE;
+  border-left: solid #EEE;
 }
+
+.tweet-wrapper-noposts {
+  height: calc(100vh - var(--user-area-height));
+  /* --user-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
+}
+
+.tweet-wrapper-noposts-top {
+  height: calc(100vh - var(--top-area-height));
+  /* --top-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
+}
+
 
 .author-info {
   display: flex;
@@ -115,6 +149,9 @@ input[type="submit"].top-tweet {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  max-width: 50%;
+  overflow: hidden;
+  word-break: keep-all;
 }
 
 .author-user_name {
@@ -125,6 +162,8 @@ input[type="submit"].top-tweet {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  max-width: 20%;
+  overflow: hidden;
 }
 
 .posted-at {

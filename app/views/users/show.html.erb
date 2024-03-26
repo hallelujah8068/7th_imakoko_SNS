@@ -2,6 +2,7 @@
   <%= render 'posts/sidebar' %>
 </div>
 
+
 <div class="main_area">
   <div class ="user_area">
     <div class="profile_area">  
@@ -63,5 +64,13 @@
 <script>
   var targetHeight = document.querySelector('.user_area').clientHeight;
   document.querySelector('.post_area').style.marginTop = targetHeight  + 'px';
+</script>
+
+<script>
+  // JavaScriptを使ってuser_areaの高さを取得し、CSS変数にセットする
+  document.addEventListener("DOMContentLoaded", function() {
+    var userAreaHeight = document.querySelector('.user_area').clientHeight;
+    document.documentElement.style.setProperty('--user-area-height', userAreaHeight + 'px');
+  });
 </script>
 

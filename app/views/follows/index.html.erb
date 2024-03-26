@@ -5,10 +5,7 @@
 <div class="main_area follow_main">
     <div class="follow_user_area">
       <div class="flexbox">
-        <%= link_to user_path(@user), class: "back-to-user-button" do %>
-          <i class="fa fa-arrow-left"></i>
-        <% end %>
-
+        <%= link_to "←", user_path(@user), class: "back-to-user-button" %>
         <div class="info_container">
             <div class="follow_name">
               <p><%= @user.name %></p>
@@ -36,9 +33,13 @@
            <div class="flexbox followings_user">
              <div class="follow-date-icon">
                <% if following_user && following_user.user_icon.attached? %>
-                 <%= image_tag following_user.user_icon, class: "rounded-image"%>
+                <%= link_to user_path(following_user) do %>
+                  <%= image_tag following_user.user_icon, class: "rounded-image"%>
+                <% end %>
                <% else %>
-                 <%= image_tag('prum.png') %>
+                  <%= link_to user_path(following_user) do %>
+                    <%= image_tag 'prum.png', class: "author-icon" %>
+                  <% end %>
                <% end %>
              </div>
    
@@ -74,7 +75,7 @@
 <% @followed_users.each do |following_user| %>
   <div id="unfollowModal_<%= following_user.id %>" class="modal">
     <div class="modal-content">
-      <p class="text-confirm"><%= "#{following_user.name} さんをフォロー解除しますか？" %></p>
+      <p class="text-confirm"><%= "@#{following_user.user_name} さんをフォロー解除しますか？" %></p>
       <p class="text-guide">このアカウントのツイートはホームタイムラインに表示されなくなります。ツイートが非公開になっている場合を除き、プロフィールを表示することはできます。</p>
       <%= button_to 'フォロー解除', unfollow_user_path(following_user), method: :delete, class: 'follow-madal-button', id: "unfollowButton_#{following_user.id}" %>
       <button class="cancelUnfollow">キャンセル</button>

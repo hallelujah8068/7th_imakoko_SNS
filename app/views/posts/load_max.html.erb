@@ -10,6 +10,26 @@
 <div class="right_area">
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then(function(permissionStatus) {
+        if (permissionStatus.state !== 'granted') {
+          // 位置情報の許可が得られなかった場合
+          disableButton();
+        }
+      });
+    } else {
+      console.error("navigator.permissions API is not supported by this browser.");
+    }
+  });
+
+  function disableButton() {
+    // ボタンを非活性化する処理
+    document.querySelector("#your_button_id").disabled = true;
+  }
+</script>
+
 
 <%# モーダル表示 %>
 <%= render 'posts/madal' %>

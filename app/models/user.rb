@@ -3,11 +3,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable,
          authentication_keys: [:login] 
   
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
-  validates :name, presence: true
-  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :name, presence: true, length: { in: 1..50 }
+  validates :user_name, presence: true, uniqueness: true, length: { in: 5..15 }, format: { with: /\A[\w]+\z/, message: "は英数字とアンダースコアのみ使用できます" }
+  validate :validate_user_icon_size
   validates :password, presence: true, length: { minimum: 6 }
-
 
 
   attr_accessor :login
@@ -54,5 +54,19 @@ class User < ApplicationRecord
   #ユーザーがドローしているユーザー
   def following?(user)
     followings.include?(user)
+  end
+
+  def following_posts
+    following_ids = self.following.pluck(:id)
+    following_ids << self.id  # 自分のIDを追加する
+    Post.where(user_id: following_ids)
+  end
+  
+  private
+
+  def validate_user_icon_size
+    if user_icon.attached? && user_icon.blob.byte_size > 10.megabytes
+      errors.add(:user_icon, "には10MB以下の画像を選択してください")
+    end
   end
 end

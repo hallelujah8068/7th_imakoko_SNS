@@ -54,6 +54,7 @@ gem 'devise-i18n'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'pry-byebug'
+gem 'active_storage_validations'
 
 
 group :development, :test do
@@ -91,3 +92,6 @@ gem 'paranoia'
 
 #ajax
 gem 'jquery-rails'
+
+#seedデータ作成
+gem 'faker'
