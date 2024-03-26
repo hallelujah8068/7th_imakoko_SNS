@@ -3,13 +3,14 @@
   /* height: 100%; */
   /* padding-left: 18px; */
   border: solid #EEE;
+  border-right: none;
 }
 
 .top-area {
   position: fixed;
   z-index: 1000;
   background: #fff;
-  border-bottom: solid #EEE;
+  border-bottom: solid #EEEEEE;
   padding-bottom: 20px;
   width: 39.8%;
 }
@@ -110,6 +111,8 @@ input[type="submit"].top-tweet:hover {
   padding-right: 63px;
   border-bottom: solid #EEE;
   border-top: none;
+  border-right: solid #EEE;
+  border-left: solid #EEE;
 }
 
 .tweet-wrapper-noposts {
