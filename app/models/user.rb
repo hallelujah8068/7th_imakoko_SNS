@@ -60,12 +60,5 @@ class User < ApplicationRecord
     following_ids = self.following.pluck(:id)
     Post.where(user_id: following_ids)
   end
-  
-  private
 
-  def validate_user_icon_size
-    if user_icon.attached? && user_icon.blob.byte_size > 10.megabytes
-      errors.add(:user_icon, "には10MB以下の画像を選択してください")
-    end
-  end
 end
