@@ -151,6 +151,7 @@ input[type="submit"].top-tweet:hover {
   line-height: normal;
   max-width: 50%;
   overflow: hidden;
+  word-break: keep-all;
 }
 
 .author-user_name {
