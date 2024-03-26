@@ -124,7 +124,17 @@ input[type="submit"].top-tweet:hover {
 .tweet-wrapper-noposts {
   height: calc(100vh - var(--user-area-height));
   /* --user-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
 }
+
+.tweet-wrapper-noposts-top {
+  height: calc(100vh - var(--top-area-height));
+  /* --top-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
+}
+
 
 .author-info {
   display: flex;

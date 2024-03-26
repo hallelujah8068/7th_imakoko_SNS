@@ -26,6 +26,7 @@
 <div class="relord-tweets">
   <%= link_to "100件のツイートを取得",load_more_path, class: "load-more-tweets-button",data: {"turbolinks" => false}  %>
 </div>
+<% if @posts.present? %>
 <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
   <% @posts.each do |post| %>
   <div class="tweet-wrapper" data-post-id="<%= post.id %>"> 
@@ -68,6 +69,12 @@
   </div>
 <% end %>
 </div>
+<% else %>
+  <div class="tweet-wrapper-noposts-top"> 
+    <p>投稿がありません。</p>
+  </div>
+<% end %>
+
 
 
 
@@ -107,5 +114,13 @@ document.addEventListener("DOMContentLoaded", function() {
         flashMessage.style.display = 'none';
       }, 5000);
     });
+  });
+</script>
+
+<script>
+  // JavaScriptを使ってuser_areaの高さを取得し、CSS変数にセットする
+  document.addEventListener("DOMContentLoaded", function() {
+    var topAreaHeight = document.querySelector('.top-area').clientHeight;
+    document.documentElement.style.setProperty('--top-area-height', topAreaHeight + 'px');
   });
 </script>
