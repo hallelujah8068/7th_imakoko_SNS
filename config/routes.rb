@@ -25,4 +25,5 @@ Rails.application.routes.draw do
     resources :follows, only: [:index], controller: 'follows'
   end
   get 'users', to: 'users#show'
+  get '*path', to: 'application#render404'
 end

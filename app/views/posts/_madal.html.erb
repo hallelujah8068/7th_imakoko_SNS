@@ -93,6 +93,21 @@
     });
   });
 
+  // モーダル内のキャンセルボタンがクリックされたときの処理
+  document.querySelectorAll('.cancelUnfollow').forEach(function(button) {
+    button.addEventListener('click', function() {
+      // モーダルを閉じる
+      this.closest('.modal').style.display = 'none';
+    });
+  });
+
+  // モーダル外をクリックしたら閉じる
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none';
+    }
+  };
+
   function updateLocationInModal(event, formSelector) {
     event.preventDefault(); // フォームのデフォルトの動作を防ぐ
 

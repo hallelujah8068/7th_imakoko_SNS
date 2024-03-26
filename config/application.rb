@@ -12,6 +12,10 @@ module Myapp
     config.load_defaults 7.0
     
     config.i18n.default_locale = :ja 
+
+    # Railtiesの読み込み順を設定
+    config.railties_order = [ActiveStorage::Engine, :main_app, :all]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

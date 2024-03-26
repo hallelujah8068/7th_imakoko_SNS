@@ -3,15 +3,17 @@
   /* height: 100%; */
   /* padding-left: 18px; */
   border: solid #EEE;
+  border-right: none;
 }
 
 .top-area {
   position: fixed;
+  top: 0;
   z-index: 1000;
   background: #fff;
-  border-bottom: solid #EEE;
+  border-bottom: solid #EEEEEE;
   padding-bottom: 20px;
-  width: 39.8%;
+  width: 39.9%;
 }
 
 .tweet-area {
@@ -77,6 +79,10 @@ input[type="submit"].top-tweet:disabled {
   /* グレーなどの適切な色に変更 */
 }
 
+input[type="submit"].top-tweet:hover {
+  cursor: pointer;
+}
+
 .relord-tweets {
   margin-top: 206px;
   color: #707070;
@@ -106,6 +112,13 @@ input[type="submit"].top-tweet:disabled {
   padding-right: 63px;
   border-bottom: solid #EEE;
   border-top: none;
+  border-right: solid #EEE;
+  border-left: solid #EEE;
+}
+
+.tweet-wrapper-noposts {
+  height: calc(100vh - var(--user-area-height));
+  /* --user-area-height変数を使用してuser_areaの高さを指定 */
 }
 
 .author-info {
