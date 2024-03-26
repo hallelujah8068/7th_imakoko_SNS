@@ -108,6 +108,11 @@ input[type="submit"].top-tweet:disabled {
   border-top: none;
 }
 
+.tweet-wrapper-noposts {
+  height: calc(100vh - var(--user-area-height));
+  /* --user-area-height変数を使用してuser_areaの高さを指定 */
+}
+
 .author-info {
   display: flex;
   align-items: center;
