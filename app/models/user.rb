@@ -56,6 +56,11 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def following_posts
+    following_ids = self.following.pluck(:id)
+    Post.where(user_id: following_ids)
+  end
+  
   private
 
   def validate_user_icon_size
