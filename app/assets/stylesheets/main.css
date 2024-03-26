@@ -77,6 +77,10 @@ input[type="submit"].top-tweet:disabled {
   /* グレーなどの適切な色に変更 */
 }
 
+input[type="submit"].top-tweet:hover {
+  cursor: pointer;
+}
+
 .relord-tweets {
   margin-top: 206px;
   color: #707070;
