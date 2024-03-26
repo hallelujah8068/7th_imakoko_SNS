@@ -24,7 +24,7 @@
 
 <%# load_more_tweetsを呼び出す%>
 <div class="relord-tweets">
-  <%= link_to "30件のツイートを取得",load_more_path, class: "load-more-tweets-button",data: {"turbolinks" => false}  %>
+  <%= link_to "30件のツイートを取得",root_path, class: "load-more-tweets-button",data: {"turbolinks" => false}  %>
 </div>
 <%# tweet-wrapperにdata-post-idを追加してIDをjsに渡せるよう修正 %>
   <% @posts.each do |post| %>
