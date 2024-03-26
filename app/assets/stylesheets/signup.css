@@ -88,6 +88,7 @@ input {
   background: #FFF;
   border: none;
   padding-top: 12px;
+  margin-bottom: 5px;
 }
 
 .field {
@@ -192,6 +193,30 @@ hr {
 
 .session-link {
   font-weight: bold;
+}
+
+.image-select-area {
+  height: 54px;
+  background-color: #FFF;
+  padding-left: 10px;
+  color: #D9D9D9;
+  cursor: pointer;
+}
+
+.image-select-area :hover {
+  color: #0E1838;
+}
+
+.image-select-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.user-icon-preview-container {
+  border: solid 1px;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 @-webkit-keyframes fade-in-out {
