@@ -92,3 +92,6 @@ gem 'paranoia'
 
 #ajax
 gem 'jquery-rails'
+
+#seedデータ作成
+gem 'faker'

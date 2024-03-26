@@ -1,52 +1,43 @@
 # ユーザーの作成
 users = []
 
-5.times do |n|
+30.times do |n|
   user = User.create!(
-    email: "user#{n + 1}@example.com",
+    email: Faker::Internet.email,
     password: 'password',
-    name: "User#{n + 1}",
-    user_name: "user#{n + 1}",
-    thumbnail_path: '/path/to/thumbnail1.jpg',
-    description: "Description for User #{n + 1}"
+    name: Faker::Name.name,
+    user_name: Faker::Internet.unique.username(specifier: 5..8),
+    description: Faker::Lorem.sentence
   )
   users << user
 end
 
-# ユーザー2がフォローしているユーザーを3人作成
-user2 = users[1] # ユーザー2を取得
-
-# ユーザー2以外のユーザーからランダムに3人を選択してフォロー
-following_users = users.reject { |user| user == user2 }.sample(3)
-
-following_users.each do |following_user|
-  Follow.create!(
-    following: following_user,
-    follower: user2
-  )
-end
-
-# ポストの作成
-posts = []
+# フォロー関係の作成
 users.each do |user|
-  3.times do
-    posts << Post.create!(
-      user: user,
-      body: "デフォルト投稿",
-      latitude: 35.6895,
-      longitude: 139.6917
-    )
+  # ユーザー自身を除いた他のユーザーからランダムに3人を選択
+  following_users = users.reject { |u| u == user }.sample(3)
+
+  following_users.each do |following_user|
+    # フォロー関係を保存
+    user.following << following_user
   end
 end
 
-# コメントの作成
+# ポストの作成とコメントの作成
 users.each do |user|
-  posts.each do |post|
-    1.times do
+  5.times do
+    post = Post.create!(
+      user_id: user.id,
+      body: Faker::Lorem.paragraph(sentence_count: 3),
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude
+    )
+
+    5.times do
       Comment.create!(
-        user: user,
-        post: post,
-        body: "デフォルトコメント"
+        user_id: users.sample.id,
+        post_id: post.id,
+        body: Faker::Lorem.sentence
       )
     end
   end
