@@ -58,6 +58,7 @@ class User < ApplicationRecord
 
   def following_posts
     following_ids = self.following.pluck(:id)
+    following_ids << self.id  # ログインユーザーのIDをfollowing_idsに追加
     Post.where(user_id: following_ids)
   end
 end
