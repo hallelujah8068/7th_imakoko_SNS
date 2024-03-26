@@ -55,4 +55,9 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  def following_posts
+    following_ids = self.following.pluck(:id)
+    Post.where(user_id: following_ids)
+  end
 end
