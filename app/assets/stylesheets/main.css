@@ -2,8 +2,7 @@
   width: 100%;
   /* height: 100%; */
   /* padding-left: 18px; */
-  border: solid #EEE;
-  border-right: none;
+
 }
 
 .top-area {
@@ -11,9 +10,10 @@
   top: 0;
   z-index: 1000;
   background: #fff;
-  border-bottom: solid #EEEEEE;
   padding-bottom: 20px;
-  width: 39.9%;
+  width: 40%;
+  border-left: solid #EEE;
+  border-right: solid #EEE;
 }
 
 .tweet-area {
@@ -96,6 +96,8 @@ input[type="submit"].top-tweet:hover {
   padding-bottom: 5px;
   border-top: solid #EEEEEE;
   border-bottom: solid #EEEEEE;
+  border-right: solid #EEEEEE;
+  border-left: solid #EEEEEE;
 }
 
 .tweet-wrapper {
@@ -104,6 +106,9 @@ input[type="submit"].top-tweet:hover {
   padding-right: 63px;
   border-bottom: solid #EEEEEE;
   border-top: none;
+  border-right: solid #EEEEEE;
+  border-left: solid #EEEEEE;
+
 }
 
 .tweet-wrapper-comment {
@@ -119,7 +124,17 @@ input[type="submit"].top-tweet:hover {
 .tweet-wrapper-noposts {
   height: calc(100vh - var(--user-area-height));
   /* --user-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
 }
+
+.tweet-wrapper-noposts-top {
+  height: calc(100vh - var(--top-area-height));
+  /* --top-area-height変数を使用してuser_areaの高さを指定 */
+  border: solid #EEE;
+  border-top: none;
+}
+
 
 .author-info {
   display: flex;
@@ -136,6 +151,7 @@ input[type="submit"].top-tweet:hover {
   line-height: normal;
   max-width: 50%;
   overflow: hidden;
+  word-break: keep-all;
 }
 
 .author-user_name {
