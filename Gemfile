@@ -54,6 +54,7 @@ gem 'devise-i18n'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'pry-byebug'
+gem 'active_storage_validations'
 
 
 group :development, :test do
