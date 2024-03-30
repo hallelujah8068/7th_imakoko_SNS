@@ -34,6 +34,8 @@
 
 .top-flash-area {
   height: 20px;
+  border-right: solid #EEEEEE;
+  border-left: solid #EEEEEE;
 }
 
 
